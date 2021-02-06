@@ -1,0 +1,374 @@
+.css{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+}
+.ccc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rcc{
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.rcc-wrap{
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ccs{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ccs-reverse{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+.rbc{
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.rbc-nowrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: nowrap
+}
+.rbd{
+  display: flex;
+  flex-direction: row;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.rbs{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-flow: nowrap;
+}
+.rau-wrap{
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+.rac-nowrap{
+  display: flex;
+  flex-direction: row;
+  flex-flow: nowrap;
+  justify-content: space-around;
+  align-items: center
+}
+.ras-nowrap{
+  display: flex;
+  flex-direction: row;
+  flex-flow: nowrap;
+  justify-content: space-around;
+  align-items: stretch
+}
+.rac{
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-items: center
+}
+
+.rbu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.rbu-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-flow: wrap
+}
+
+.rus{
+    display: flex;
+    flex-direction: row;
+    flex-flow: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.rus-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-flow: nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.rus-wrap{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.rcs{
+    display: flex;
+    flex-direction: row;
+    flex-flow: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+}
+.rcs-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-flow: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    white-space: nowrap;
+}
+.rcs-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.rds{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.csc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+.rsc{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+.rss{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-flow: nowrap;
+
+}
+.rdc{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.cbs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.cas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.cac{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cbc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.cbl{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+.cls{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.rcr{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.layout_page{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 15rpx;
+    margin-right: 15rpx;
+}
+
+
+
+.layout_page_hd{
+    background-color: rgba(211, 211, 211, 0.158);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.layout_page_hd_card{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 15rpx;
+    margin-bottom: 15rpx;
+}
+.layout_page_hd_card_line{
+      width: 1px;
+      height: 50rpx;
+      /* border-radius: 20rpx;
+      border: 5rpx solid rgb(255, 255, 255); */
+      background-color: rgb(250, 234, 4);
+      position: absolute;
+      margin-left: 75rpx;
+      margin-top: 30rpx;
+      
+}
+.layout_page_hd_card_img_area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 110rpx;
+    border: 6rpx solid rgba(248, 145, 11, 0.87);
+    margin-bottom: 10rpx;
+}
+
+.layout_page_hd_card_img_area_user{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 110rpx;
+      border: 6rpx solid rgba(211, 5, 201, 0.966);
+      margin-bottom: 10rpx;
+      
+}
+.layout_page_hd_card_img_icon{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 110rpx;
+    border: 2rpx solid rgb(255, 255, 255);
+    overflow: hidden;
+}
+.layout_page_hd_card_img_icon_lable{
+      width: 30rpx;
+      height: 30rpx;
+      border-radius: 30rpx;
+      border: 5rpx solid rgb(255, 255, 255);
+      position: absolute;
+      margin-top: 41rpx;
+      margin-left: 41rpx;
+      background-color: rgba(255, 145, 1, 0.993)
+
+}
+
+.layout_page_hd_card_name{
+      max-width: 110rpx;
+      height: 40rpx;
+      display: -webkit-box;
+      font-size:20rpx;
+      font-weight:600;
+
+      line-height: 40rpx;
+      word-break: break-all;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp:1;
+      overflow: hidden;
+      text-overflow:ellipsis;
+}
+
+
+.layout_page_bd{
+    width: 100%;
+
+}
+
+.layout_page_ft{
+    width: 100%;
+}
+.click_card{
+    border: 6rpx solid rgba(4, 228, 71, 0.87);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+
+<view class="cbs z3"  style="min-height:100vh" >
+
+
+
+
+
+</view>
+<!-- //头部 -->
+<!-- //头部 -->
+<view class="css customBar z3 buildHead" >
+  <view class="rcs " style="height:{{top}}px"></view>
+  <view class="rcs " style="height:32px">
+
+      <view class="rcc h-32px " bindtap="back">
+          <image class="h-30 w-30" mode="aspectFit" src="/images/back.png"></image>
+          <view class="fs-30 fw-700 c-4">卡点距离</view>
+      </view>
+
+  </view>
+  <view class="rcs " style="height:{{top}}px"></view>
+</view>
+
+<!-- 距离 -->
+<view hidden="{{!lengthStr}}" class="rcc z4" style="position: fixed;left:20vw;top:{{top}}px;width:60vw;height:32px">
+    <view class="rcc pl-40 pr-40 br-20 b-publish " style="height:32px">
+        <!-- <view></view> -->
+        <view class="c-white fs-25 fw-700">距离{{lengthStr}}</view>
+    </view>
+</view>
+<!-- 地图 -->
+<view class="userBack2 z1" style="width: 100vw; height: 100vh;" >
+    <map 
+        id="myMap"
+        style="width: 100vw; height: 100vh;"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        markers="{{markers}}"
+        circles="{{circles}}"
+        polyline="{{polyline}}"
+        scale="{{scale}}"
+        include-points="{{includePoints}}"
+        show-location
+    ></map>
+
+
+</view>
+
+<view class="rbc bottomBar1 z4">
+        <view class="rss ">
+
+        
+        
+        
+        </view>
+        <view class="rcc">
+    
+            <view class=" rcc">
+                                    <view  class=" w-100 h-100 br-100 rcc box100 b-white"  bindtap="showLength" >
+                                        <view class="rcc ">
+                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/way.png"></image>
+                                        </view>
+
+                                    </view>
+            </view>
+        </view>
+
+
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

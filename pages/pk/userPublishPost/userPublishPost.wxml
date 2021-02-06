@@ -1,0 +1,479 @@
+<view class="css b-white "  style="min-height:100vh">
+        <!-- 背景图片 -->
+        <view  class="css absolute z1" bindtap="{{creator.userId===user.userId?'uploadImg':''}}" data-userid="{{creator.userId}}" style="width: 100vw; height: 55vw;background-position: center;background-image: url({{userDynamic.userBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+        <view class="" style="height:50vw"></view>
+        <view class="rbc pl-3vw pr-3vw z2">
+            <image class="" style="width: 200rpx; height: 200rpx; border-radius:200rpx" mode="aspectFill" src="{{creator.imgUrl}}" bindtap="showSingleImg" data-url="{{creator.imgUrl}}" data-creator="{{creator.userId}}"></image>
+            <view class="rcc">
+                <view class="rcc">
+                    <navigator  wx:if="{{user.userId === creator.userId}}" class="rcc h-70 w-200 b-48 br-10 " hover-class="none" url="/pages/pk/followers/followers?userId={{creator.userId}}">
+                        <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/follow.png"></image> -->
+                        <!-- <view class="w-10"></view> -->
+                        <view class="fs-25 fw-400">关注</view>
+                        <view class="w-10 h-10 br-10 b-gray ml-10 mr-10"></view>
+                        <view class="fs-25 fw-400">{{userDynamic.follow}}</view>
+                  
+                    </navigator>
+                    <view wx:else class="rcc h-70 w-200 {{followStatu?'b-48 border10':'b-red'}} br-10"  bindtap="{{followStatu?'cancelFollow':'follow'}}" data-targetid="{{creator.userId}}">
+                        <view class="rcc {{followStatu?'c-1':'c-white'}} fs-28 fw-300">{{followStatu?'已关注':'关注'}}</view>
+                    </view>
+
+
+                    
+        
+                </view>
+                <view class="w-20"></view>
+                <navigator  class="rcc h-70 w-200 b-48 br-10 "  hover-class="none" url="/pages/pk/fans/fans?userId={{creator.userId}}">
+                        <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/fans.png"></image> -->
+                        <!-- <view class="w-10"></view>                         -->
+                        <view class="fs-25 fw-400">粉丝</view>
+                        <view class="w-10 h-10 br-10 b-gray ml-10 mr-10"></view>
+                        <view class="fs-25 fw-400">{{userDynamic.fans}}</view>
+                </navigator>
+
+
+            </view>
+
+        </view>
+        <view class="rbc-nowrap pl-30 pr-30 pt-10 " >
+            <view class="rcc pt-10" style="min-width:200rpx;max-width:260rpx">
+                <view class="rcc fs-45 fw-900 line-1-start" bindtap="setName"  data-name="{{creator.userName}}" data-creator="{{creator.userId}}">{{creator.userName}}</view>
+
+            </view>
+            
+            <view class="rbc" style="width:400rpx">
+                
+                <view class="ccc" bindtap="userCardApply" data-type="0" data-targetid="{{creator.userId}}">
+                    <view class="rcc h-40">
+                        <image class="w-25 h-25" mode="aspectFit" src="/images/hands.png"></image>
+                        <view class="w-10"></view>
+                        <view class="rcc fs-25 fw-400">{{userCard.likeMe}}</view>
+                    </view>
+                    <view class="h-10"></view>
+                    <view class="fs-20 fw-300 c-4">想认识{{user.userId===creator.userId?"我":"Ta"}}的人</view>
+                </view>
+     
+                <view class="ccc" bindtap="userCardApply" data-type="1" data-targetid="{{creator.userId}}">
+                    <view class="rcc h-40">
+                        <!-- <image class="rcc w-40 h-40 pt-5" src="/images/shank.png" mode="aspectFit"></image> -->
+                        <!-- <view class="w-10"></view> -->
+                        <image class="w-25 h-25" mode="aspectFit" src="/images/sayHello.png"></image>
+                        <view class="w-10"></view>
+                        <view class="rcc fs-25 fw-400">{{userCard.meLike}}</view>
+                    </view>
+                    <view class="h-10"></view>
+                    <view class="fs-20 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}想认识的人</view>
+                </view>
+
+                <navigator  class="rcc " hover-class="none" url="/pages/pk/userCard/userCard?userId={{creator.userId}}">
+                    
+                    
+                 
+                    <view class="ccc">
+                        <view class="rcc h-40">
+                            <image class="w-25 h-25" mode="aspectFit" src="/images/hiscard.png"></image>
+                            <view class="w-10"></view>
+                            <view class="rcc fs-25 fw-400">{{userCard.unLock}}</view>
+                        </view>
+                        <view class="h-10"></view>
+                        <view class="fs-20 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}的名片</view>
+                    </view>
+                    <!-- <view class="w-10"></view> -->
+                    <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image> -->
+                </navigator>                
+                <!-- <navigator class="ccc" hover-class="none" url="/pages/pk/followers/followers?userId={{creator.userId}}">
+                    <view class="rcc">
+                        <image class="rcc w-40 h-40 pt-5 " src="/images/follow.png" mode="aspectFit"></image>
+                        <view class="w-10"></view>
+                        <view class="rcc fs-35 fw-400">676</view>
+                    </view>
+                </navigator> -->
+            </view>
+            
+
+            <!-- <navigator  class="rcc h-70 w-180 b-48 br-10  fs-28 fw-300" url="/pages/pk/followers/followers?userId={{creator.userId}}" data-targetid="{{creator.userId}}">关注</navigator> -->
+
+      
+
+        </view>
+        <view class="h-40"></view>
+        <view class="b-48 h-10"></view>
+        <view class="rcs p-30">
+            <navigator class="rcc" hover-class="none" url="/pages/pk/invite/invite?userId={{creator.userId}}">
+                <view class="fs-30 fw-700 ">{{userDynamic.collectTimes}}</view>
+                <view class="w-10"></view>
+                <view class="fs-25 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}的收藏</view>
+            </navigator>
+            <view class="w-40"></view>
+            <navigator class="rcc" hover-class="none" url="/pages/pk/userPk/userPk?userId={{creator.userId}}">
+                <view class="fs-30 fw-700 ">{{userDynamic.pkTimes}}</view>
+                <view class="w-10"></view>
+                <view class="fs-25 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}的卡点</view>
+            </navigator>
+            <view class="w-40"></view>
+            <view class="rcc">
+                <view class="fs-30 fw-700 ">{{userDynamic.postTimes}}</view>
+                <view class="w-10"></view>
+                <view class="fs-25 fw-300 c-4">次打卡</view>
+            </view>
+        </view>
+
+
+<!-- 
+        <view class="h-80 b-line"></view> -->
+        <!-- <view class="h-40"></view> -->
+
+
+
+
+
+
+        <view class="css ">
+
+
+
+
+
+            <view class="css " wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
+                <view class="b-48 h-10"></view>
+                <view class="css pt-40 pb-40"  bindtap="inPk" data-pkid="{{post.pkId}}">
+                    <view class="rss b-white" >
+            
+                        <view class="css" style="width: 15vw">
+                                <view class="rcc">
+                                    <view class="rcc w-10vw h-10vw br-10vw " >
+                                        <image class="rcc w-50 h-50 br-50 " src="/images/locate.png" mode="aspectFit"></image>
+                                    </view>
+                                </view>
+                                <view class="css">
+                                            <view class="rcc h-10vw">
+                                                <view class="rus-wrap fs-22 fw-300 line-1-start">23分钟</view>
+                                            </view>
+                                            <view class="ccc h-10vw">
+                                                <view class="rcc fs-30 fw-700">昨天</view>
+                                                <view class="h-5vw"></view>
+                                            </view>
+                                        
+                                            <view class="ccc h-10vw">
+                                                <view class="rcc fs-25 fw-400 c-4">2020</view>
+                                                <view class="h-5vw"></view>
+                                            </view>
+                                        
+                                </view>
+                                <!-- <view class="rss" style="flex:1">
+                                    <view class="" style="flex:1"></view>
+                                    <view class="l-line" style="flex:1"></view>
+                                </view>
+                                <view class="h-10vw"></view> -->
+                        </view>
+                        <view class="rss" style="width:77vw">
+                                <view class="css" style="flex:1">
+                                    <view class="css">
+                                        <view class="cas h-10vw">
+                                                <view class="rus line-1-start fs-35 fw-650" >{{post.pkTopic}}</view>
+                                        </view>
+                                      
+                                        <view class="css {{(!post.postImages||post.postImages.length===0)?'':'p-3vw b-48'}}" catchtap="return">
+                                            <view class="css">
+                                                <view wx:if="{{!post.postImages||post.postImages.length===0}}" class="css br-20" style="background-color:#{{post.backColor}}">
+                                                    <view class="csc p-50 br-20 "  style="min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
+                                                        <text class="{{post.tag?'line-100-center':'line-5-center '}} fs-35 fw-700" bindtap="openText" data-index="{{bindex}}" style="color:#{{post.fontColor}}">{{post.topic}}</text>
+                                                    </view>
+                                                    
+                                                </view>
+                                                <text wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-500" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</text>
+       
+                                                <view class="h-10"></view>
+                                            </view>
+                                            <view class="css">
+
+                                                    
+                                                <!-- 9张图片 -->
+                                                <view  wx:if="{{post.postImages.length===1}}" class="rus">
+                                                    <image class="rcc br-10"  style="width: 71vw;height:50vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                </view>
+                                                <view  wx:elif="{{post.postImages.length===2}}" class="css">
+                                                    <view class="rcs">
+                                                        <image class="rcc br-10"  style="width: 35vw;height:35vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 35vw;height:35vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                    </view>
+                                    
+                                                </view>
+                                                <view  wx:elif="{{post.postImages.length===4}}" class="css">
+                                                    <view class="rcs">
+                                                        <image class="rcc br-10"  style="width: 35vw;height:30vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 35vw;height:30vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                    </view>
+                                                    <view style="height: 0.6vw"></view>
+                                                    <view class="rcs">
+                                                        <image class="rcc br-10"  style="width: 35vw;height:30vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 35vw;height:30vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                    </view>
+                                                </view>
+                                                <view wx:else class="css">
+                                                    <view hidden="{{post.postImages.length===0}}" class="rcs">
+                                                        <image class="rcc br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                    </view>
+                                                    <view hidden="{{post.postImages.length<4}}" style="height: 0.6vw"></view>
+                                                    <view hidden="{{post.postImages.length<4}}" class="rcs">
+                                                        <image class="rcc  br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc  br-10" style="width: 23vw;height:23vw" src="{{post.postImages[4].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="4" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc  br-10" style="width: 23vw;height:23vw" src="{{post.postImages[5].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="5" data-imgs="{{post.postImages}}"></image>
+                                                    </view> 
+                                                    <view hidden="{{post.postImages.length<7}}" style="height: 0.6vw"></view>
+                                                    <view hidden="{{post.postImages.length<7}}" class="rcs">
+                                                        <image class="rcc br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[6].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="6" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[7].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="7" data-imgs="{{post.postImages}}"></image>
+                                                        <view style="width: 0.6vw"></view>
+                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[8].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="8" data-imgs="{{post.postImages}}"></image>
+                                                    </view>
+                                                </view>
+
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="rbc" catchtap="return">
+                                        <view class="rcc pt-20 pb-20">
+                                            <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFill"></image>
+                                            <view class="w-10"></view>
+                                            <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次在此打卡</view>
+                                        </view>
+                                        <!-- 随着天数增加，会变得越来越长 -->
+                                        <view class="rcc" >
+                                            <view hidden="{{creator.userId != user.userId}}" class="fs-25 fw-300 pb-20 pt-20 z3"  bindtap="deletePost" data-post="{{post}}" data-pkid="{{post.pkId}}" data-index="{{bindex}}" >删除</view>
+                                            <!-- 预留评论和点赞 -->
+                                        </view>
+                                    </view>
+                                </view>
+                                
+        
+                        </view>
+                
+                    </view>
+                </view>
+            </view>
+ 
+            <view class="css h-300">
+                <view hidden="{{!nomore}}" class="rcc h-100 fs-30 fw-400 c-3">没有更多...</view>
+            </view>
+        </view> 
+
+
+
+
+
+
+    
+</view>
+
+
+<!-- //头部 -->
+<view class="css customBarTop z3 buildHead1" >
+  <view class="rcs " style="height:{{top}}px"></view>
+  <view class="rcs pl-3vw pr-3vw" style="height:32px">
+
+      <view class="rcc h-32px " bindtap="back">
+          <image class="h-25 w-25" mode="aspectFit" src="/images/back1.png"></image>
+          <view class="fs-30 fw-400 pl-20 c-white">足迹</view>
+      </view>
+
+  </view>
+  <view class="rcs " style="height:{{top}}px"></view>
+  <!-- <view class="rbc pt-30 pb-30" >
+            <view class="rcc">
+                <view class="rcc" style="width: 17vw">
+                            <view class="rcc">
+                                <view class="rcc ">
+                                    <image class="rcc w-10vw h-10vw br-10 " src="{{creator.imgUrl}}" mode="aspectFit"></image>
+                                </view>
+                            </view>
+                
+                </view>
+                <view style="width: 3vw"></view>
+                <view class="cas" style="width:30vw">
+                    <view class="css"> 
+                       <view class="rus line-1-start fs-35 fw-650 c-word-6 f-shadow3" >{{creator.userName}}</view>
+                    </view>
+                </view>
+                
+            </view>
+            <view class="rcc">
+                <view class="rcc">
+                    <image class="w-40 h-40" mode="aspectFit" src="/images/hiscard.png"></image>
+                 
+                </view>
+                <view style="width:10vw"></view>
+
+            </view>
+
+  </view> -->
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view>
+
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{dialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
+                    </view>
+                    
+                </view>
+    
+            </view>
+
+
+        </view>
+ 
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
+        <view class="ccc levelDialog_view">
+            <view class="rcc">
+                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
+            </view>
+            <view style="height:30rpx"></view>
+            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+        </view>
+    </view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{operateDialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-3"  bindtap="operateDialog_cancel">取消</view> 
+                        <view class="w-70"></view>
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="operateDialog_confirm" >确定</view>
+                    </view>
+                    
+                </view>
+                <!-- <view class="rcc p-30 fs-25 fw-400 c-3"  bindtap="operateDialog_cancel">知道了</view> -->
+    
+            </view>
+
+
+        </view>
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+        <view></view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialogError.visible!=true}}">
+        <view></view>
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+    </view>
+    <view catchtouchmove="return" class="coverAll99" hidden="{{labelLoadingDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="rcc labelLoadingDialog " hidden="{{labelLoadingDialog.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <image class="labelLoadingDialog_image" mode="aspectFill" src="/images/loading.gif"></image>
+            <view class="labelLoadingDialog_text">加载中</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogSuccess.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadsuccess.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载成功</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogError.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadfail.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载失败</view>
+        </view>
+    </view>
+    <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>
+    <view class="rcc shortTextDialog" hidden="{{shortTextDialog.visible!=true}}">
+        <view class="css shortTextDialog_view">
+            <view class="rcc shortTextDialog_title">{{shortTextDialog.title}}</view>
+            <view style="height:60rpx"></view>
+            <view class="css">
+                <input bindinput="_shortTextDialog_input" class="shortTextDialog_input" maxlength="{{shortTextDialog.maxLength}}" placeholder="点击输入昵称" value="{{shortTextDialog.text}}"></input>
+            </view>
+            <view style="height:60rpx"></view>
+            <view class="rac">
+                <!-- <view bindtap="_shortTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
+                <view bindtap="_shortTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass" wx:if="{{shortTextDialog.text.length>0}}">确定</view>
+                -->
+
+
+                <view bindtap="_shortTextDialog_close" class="rcc c-3 fs-30 fw-700" >取消</view>
+      
+                <view wx:if="{{shortTextDialog.text.length>0}}" bindtap="_shortTextDialog_confirm" class="rcc c-1 fs-30 fw-700">确定</view>
+                <view wx:else class="rcc shortTextDialog_cancel" class="rcc c-3 fs-30 fw-700">确定</view>
+
+
+
+            </view>
+        </view>
+    </view>
+
+
+
+
+</view>
+
+
+

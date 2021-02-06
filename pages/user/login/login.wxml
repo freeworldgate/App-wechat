@@ -1,0 +1,64 @@
+
+<view class="cas b-white h-100vh">
+
+
+    <view></view>
+
+    <view class="rcc">
+        <image class="w-400 h-400" mode="aspectFit" src="/images/login.png"></image>
+    </view>
+
+    <view class="rcc">
+        <view hidden='{{loginStatu === 1}}' class="rcc w-300 h-80 br-80 b-1 ">
+            <button  class="rcc message1 w-300 h-60 br-60 c-white fs-25 fw-400"  bindgetuserinfo="login" open-type="getUserInfo">登录</button>
+        </view>
+        <view hidden='{{loginStatu != 1}}' class="rcc w-300 h-80 br-80 b-48 ">
+            <button  class="rcc message1 w-300 h-60 br-60 c-3 fs-25 fw-400"  bindtap='back'>返回</button>
+        </view>
+    </view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <!-- <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+      
+        </view>
+  
+
+
+
+
+        
+        <view class="h-200"></view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+
+            </view>
+        </view>
+        <view class="weui-msg__extra-area">
+            <view class="weui-footer">
+                <view class="weui-footer__text">Copyright © 2020-2025 次次科技</view>
+            </view>
+        </view>
+    </view> -->
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

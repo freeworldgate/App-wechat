@@ -1,0 +1,57 @@
+.navigate-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #FFF;
+}
+ 
+.navigate-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+ 
+.navigate-icon {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+}
+ 
+.navigate-title {
+  width: 550rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  color: #3c3c3c;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+ 
+/*箭头部分*/
+.navigator-back {
+  width: 36rpx;
+  height: 36rpx;
+  align-self: center;
+}
+ 
+.navigator-back:after {
+  content: '';
+  display: block;
+  width: 22rpx;
+  height: 22rpx;
+  border-right: 4rpx solid #000;
+  border-top: 4rpx solid #000;
+  transform: rotate(225deg);
+}
+ 
+.navigator-home {
+  width: 56rpx;
+  height: 56rpx;
+  background: url(https://qiniu-image.qtshe.com/20190301home.png) no-repeat center center;
+  background-size: 100% 100%;
+  align-self: center;
+}

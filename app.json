@@ -1,0 +1,92 @@
+{
+  "pages": [
+
+    "pages/pk/locate/locate",
+   
+    "pages/plugin/location-picker/location-picker",
+		"pages/webservice/search-form/search-form",
+    "pages/webservice/search-result/search-result",
+    "pages/webservice/reverseGeocoder-form/reverseGeocoder-form",
+    "pages/webservice/reverseGeocoder-result/reverseGeocoder-result",
+    "pages/webservice/policy-list/policy-list",
+
+    "pages/manage/approveFind/approveFind",
+    "pages/pk/userCardApply/userCardApply",
+    "pages/pk/payForPk/payForPk",
+    "pages/pk/payForTime/payForTime",
+    "pages/pk/pay/pay",
+    "pages/pk/userFind/userFind",
+    "pages/pk/editText/editText",
+    "pages/pk/showText/showText",
+    "pages/pk/editTag/editTag",
+    "pages/pk/findSomeOne/findSomeOne",
+    "pages/pk/findCard/findCard",
+    "pages/pk/userCard/userCard",
+    "pages/pk/editUserGroup/editUserGroup",
+    "pages/pk/singleLocation/singleLocation",
+    "pages/pk/followers/followers",
+    "pages/pk/fans/fans",
+    "pages/pk/userPk/userPk",
+    "pages/pk/userPublishPost/userPublishPost",
+    "pages/pk/groupCardList/groupCardList",
+    "pages/pk/groupCard/groupCard",
+    "pages/pk/userSort/userSort",
+    "pages/pk/userGroups/userGroups",
+    "pages/pk/userFinds/userFinds",
+    "pages/pk/invite/invite",
+    "pages/pk/showLocation/showLocation",
+    "pages/pk/locationImages/locationImages",
+    "pages/pk/locationApprovingImages/locationApprovingImages",
+    "pages/pk/drawPost/drawPost",
+    "pages/pk/uploadImgs/uploadImgs",
+    "pages/pk/timepage/timepage",
+    "pages/pk/hiddentimepage/hiddentimepage",
+    "pages/user/login/login",
+    "pages/pk/message/message"
+
+
+
+
+
+    
+
+
+
+
+
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc":"你的位置将用于小程序使用"
+    },
+    "scope.userLocationBackground": {
+      "desc":"你的位置将用于小程序使用"
+    }
+  },
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.5",
+      "provider": "wx50b5593e81dd937a"
+    },
+    "chooseLocation": {
+      "version": "1.0.5",
+      "provider": "wx76a9a06e5b4e693e"
+    },
+    "subway": {
+      "version": "1.0.8",
+      "provider": "wx6aaf93c4435fa1c1"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"servicemarket": true
+}

@@ -1,0 +1,308 @@
+<view class="cas b-48"  style="height:100vh">
+            <view class="css " >
+            </view>
+            <view class="css pl-5vw pr-5vw">
+                <view class="css b-white br-20 ">
+
+                    <view class="rbc p-3vw" >
+                            <view class="rcc" >
+                                
+                                            <navigator class="rcc" hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{userCard.user.userId}}">
+                                                <view class="rcc pr-10 pt-20 pb-20">
+                                                    <image class="rcc w-60 h-60 br-60 " src="{{userCard.user.imgUrl}}" mode="aspectFill"></image>
+                                                </view>
+                                            </navigator> 
+                                
+                            
+                            </view>
+                        
+                            <view class="cas" style="flex:1">
+                                <view class="css"> 
+                                    <view class="rus line-1-start fs-30 fw-700 c-4" >{{userCard.user.userName}}</view>
+                                </view>
+                            </view>
+                            <view class="rcc">
+                                <view style="width: 10vw"></view>
+                                <view wx:if="{{userCard.user.userId===user.userId}}" class="rcc" bindtap="uploadImg">
+                                    <image class="w-40 h-40" mode="aspectFit" src="/images/upload.png" ></image>
+                                    <view class="w-10"></view>
+                                    <view class="fs-25 fw-400">上传</view>
+                                </view>
+                                <view wx:else class="rcc" bindtap="{{userCard.unLock?'':'apply'}}">
+                                    <image class="w-40 h-40" mode="aspectFit" src="/images/unlock.png" ></image>
+                                    <view class="w-10"></view>
+                                    <view class="fs-25 fw-400">{{userCard.unLock?'已解锁':'解锁'}}</view>
+                                </view>
+
+                                
+
+                            </view>
+
+                    </view>
+        
+                    <!-- //图片 -->
+                    <view class="rcc" style="width:90vw;height:90vw">
+                        <image wx:if="{{userCard.userCard}}" class="" style="width:90vw;height:90vw " mode="aspectFill" src="{{userCard.userCard}}"  bindtap="showSingleImg" data-url="{{userCard.userCard}}" ></image>
+                        <image wx:else class="" style="width:90vw;height:90vw " mode="aspectFit" src="/images/img.png" ></image>
+
+                        <view hidden="{{(userCard.user.userId===user.userId) || userApply.lock}}" class="rcc absolute b-user-card" style="width:90vw;height:90vw">
+                            <image style="width:90vw;height:90vw " mode="aspectFit" src="/images/lockCard.png" ></image>
+                        </view>
+                    </view>
+                    <view class="css p-3vw">
+        
+                        <view class="rbc pt-20 pb-20">
+                            <view class="rcc p-10 fs-28 fw-400 c-4 "  style="flex:1" bindtap="userCardApply" data-type="0" data-targetid="{{userCard.user.userId}}">想认识{{userCard.user.userId===user.userId?'我':'Ta'}}的人({{userCard.likeMe}})</view>
+                            <view class="w-5 l-line" style="height:3vw"></view>  
+                            <view class="rcc p-10 fs-28 fw-400 c-4 " style="flex:1" bindtap="userCardApply" data-type="1" data-targetid="{{userCard.user.userId}}">{{userCard.user.userId===user.userId?'我':'Ta'}}想认识的人({{userCard.meLike}})</view>
+                            
+                        </view>
+                        
+                        <view class="csc h-50">
+                            <view hidden="{{!userApply}}" class="rss ">
+                                <view class="rcc">
+                                    <image class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{userApply.applyer.imgUrl}}" ></image>
+                                </view>
+                                <view class="w-10"></view>
+                                <view class="cas " style="flex:1" bindtap="showText" data-text="{{userApply.text}}">
+                                    <view class="rus line-1-start fs-25 fw-300 c-3">{{userApply.text}}</view>
+                                </view>
+                            </view>
+                        </view>
+
+
+                    </view>
+                </view>
+                <view class="rbc pl-3vw pr-3vw pt-20">
+                    <view class="rcc">
+                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/unlock.png" ></image>
+                        <view class="w-10 h-10 br-10 b-gray ml-10 mr-10"></view>
+                        <view class="fs-25 fw-400 c-4">已解锁</view>
+                        <view class="w-10 h-10 br-10 b-gray ml-10 mr-10"></view>
+                        <view class="fs-25 fw-400 c-4">{{userCard.unLock}}</view>
+               
+                    </view>
+                    <view class="rcc">
+                        <image hidden="{{!userCard.member3}}" class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{userCard.member3.imgUrl}}" ></image>
+                        <view  hidden="{{!userCard.member2}}" class="w-10"></view>
+                        <image hidden="{{!userCard.member2}}" class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{userCard.member2.imgUrl}}" ></image>
+                        <view  hidden="{{!userCard.member1}}" class="w-10"></view>
+                        <image hidden="{{!userCard.member1}}" class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{userCard.member1.imgUrl}}" ></image>
+                    </view>
+
+                </view>
+            </view>
+            <view class="rcc">
+                <view hidden="{{!(userApply.lock && userCard)}}" class="rcc br-20 b-white w-400 h-100 fs-30 fw-700 c-4" bindtap="saveImg" data-url="{{userCard.userCard}}">保存到相册</view>
+            </view>
+</view>
+
+
+<!-- //头部 -->
+
+<!-- //头部 -->
+<view class="css  customCenterBar z3" >
+        <view class="rcs " style="height:{{top}}px"></view>
+        <view class="rbc" style="height:32px">
+            <view class="rcs" style="flex:1">
+                <view class="rcc h-32px" bindtap="back">
+                    <view class="w-4vw"></view>
+                    <image class="h-30 w-30" mode="aspectFit" src="/images/back.png"></image>
+                    <view class="w-4vw"></view>
+                    <view class="rcc fs-35 fw-700">名片</view>
+                </view>
+
+            </view>
+
+            <!-- <view class="rcc fs-35 fw-700">捞人</view> -->
+            <view class="rcc" style="flex:1">
+            </view>
+        
+        </view>
+        <view class="rcs " style="height:10px"></view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view>
+
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{dialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
+                    </view>
+                    
+                </view>
+    
+            </view>
+
+
+        </view>
+ 
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
+        <view class="ccc levelDialog_view">
+            <view class="rcc">
+                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
+            </view>
+            <view style="height:30rpx"></view>
+            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+        </view>
+    </view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{operateDialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-3"  bindtap="operateDialog_cancel">取消</view> 
+                        <view class="w-70"></view>
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="operateDialog_confirm" >确定</view>
+                    </view>
+                    
+                </view>
+                <!-- <view class="rcc p-30 fs-25 fw-400 c-3"  bindtap="operateDialog_cancel">知道了</view> -->
+    
+            </view>
+
+
+        </view>
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+        <view></view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialogError.visible!=true}}">
+        <view></view>
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+    </view>
+    <view catchtouchmove="return" class="coverAll99" hidden="{{labelLoadingDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="rcc labelLoadingDialog " hidden="{{labelLoadingDialog.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <image class="labelLoadingDialog_image" mode="aspectFill" src="/images/loading.gif"></image>
+            <view class="labelLoadingDialog_text">加载中</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogSuccess.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadsuccess.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载成功</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogError.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadfail.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载失败</view>
+        </view>
+    </view>
+
+    
+    <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{editTextDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="css editTextDialog" hidden="{{editTextDialog.visible!=true}}">
+        <view class="css editTextDialog_view ">
+            <view class="rbc">
+                <view class="t19-13-1" style="padding-left:15rpx">{{editTextDialog.title}}</view>
+                <view class="rcc"></view>
+            </view>
+            <view class="rcc t19-2">
+                <textarea adjustPosition="true" bindinput="_editTextDialog_input" class=" t19-1-2" maxlength="{{editTextDialog.maxLength}}" placeholder="{{editTextDialog.placeholder}}" value="{{editTextDialog.text}}"></textarea>
+            </view>
+            <view class="rbc">
+                <view>
+                    <view class="t19-7-1" hidden="{{editTextDialog.maxLength>editTextDialog.text.length}}">内容已达最大长度!</view>
+                </view>
+                <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
+            </view>
+            <view style="height:20rpx"></view>
+            <view class="rbc pt-50 pb-20 t-line">
+                <view></view>
+                <view class="rcc">
+                    <view bindtap="_editTextDialog_close" class="rcc c-3 fs-30 fw-700" hoverClass="c-3-1">取消</view>
+                    <view class="w-100"></view>
+                    <view bindtap="_editTextDialog_confirm" class="rcc c-1 fs-30 fw-700" hoverClass="c-3-1">确定</view>
+                    <view class="w-50"></view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+    <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>
+    <view class="rcc shortTextDialog" hidden="{{shortTextDialog.visible!=true}}">
+        <view class="css shortTextDialog_view">
+            <view class="rcc shortTextDialog_title">{{shortTextDialog.title}}</view>
+            <view style="height:60rpx"></view>
+            <view class="css">
+                <input bindinput="_shortTextDialog_input" class="shortTextDialog_input" maxlength="{{shortTextDialog.maxLength}}" placeholder="点击输入最多{{shortTextDialog.maxLength}}位数字" value="{{shortTextDialog.text}}"></input>
+            </view>
+            <view style="height:60rpx"></view>
+            <view class="rac">
+                <view bindtap="_shortTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
+                <view bindtap="_shortTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass" wx:if="{{shortTextDialog.text.length>0}}">确定</view>
+                <view class="rcc shortTextDialog_cancel" wx:else>确定</view>
+            </view>
+        </view>
+    </view>
+
+
+
+
+
+
+
+
+
+</view>
+
+
+

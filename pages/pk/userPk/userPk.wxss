@@ -1,0 +1,4 @@
+/* pages/pk/userPk/userPk.wxss */
+page{
+  background-color:    #f8f8f8,
+}

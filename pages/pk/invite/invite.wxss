@@ -1,0 +1,6 @@
+/* pages/pk/invite/invite.wxss */
+
+page{
+  background-color:    "#f8f8f8",
+}
+

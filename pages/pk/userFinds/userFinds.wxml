@@ -1,0 +1,233 @@
+<!--pages/pk/userPk/userPk.wxml-->
+
+<view class="css " style="min-height:100vh">
+
+
+
+<view style="height:{{top+32}}px"></view>
+
+<view class="h-30"></view> 
+
+<view class="css z4" >
+    <view class="css">
+    
+
+        <view class="css"  >
+            <block wx:for="{{findUsers}}" wx:for-index="bindex" wx:for-item="findUser" >
+                <view class="css z4" style="padding-left:2vw;padding-right:2vw" >
+
+                    <view class="css b-white br-20 pt-20 pb-20 z4" style="padding-left:4vw;padding-right:4vw" >
+                            <navigator class="rbc-nowrap pt-30 pb-30 " hover-class="none" url="/pages/pk/userFind/userFind?pkId={{findUser.pkId}}"> 
+                                <view class="rcs fs-30 fw-700">状态</view>
+                                <view class="rcc">
+                                    <view hidden="{{findUser.statu.key!=2}}" class="rcc">
+                                        <view class="rcs fs-23 fw-300 c-3 pl-10 pr-10 pb-5 pt-5 b-48 br-10">已打捞{{findUser.timeExpire}}</view>
+                                    </view>
+                                    <view class="w-20"></view>
+
+                                    <view class="rus fs-30 fw-400 c-1">{{findUser.statu.name}}</view>
+                                    <view class="rcc w-30 h-30">
+                                        <view class="w-15 h-15 br-15 b-5"></view>
+                                    </view>
+                                </view>
+                            </navigator>
+                            <view hidden="{{!findUser.startTime||!findUser.endTime}}" class="rbc-nowrap pt-30 pb-30"> 
+                                <view class="rcs w-300 fs-30 fw-700">时间</view>
+                            
+                                <view class="rcc fs-30 fw-400 c-4 ">{{findUser.startTime}}~{{findUser.endTime}}</view>
+                            </view>
+                            <navigator class="rbc-nowrap pt-30 pb-30" hover-class="none" url="/pages/pk/timepage/timepage?pkId={{findUser.pkId}}"> 
+                                <view class="rcs fs-30 fw-700">卡点</view>
+                                <view class="w-100"></view>
+                                <view class="rbc-nowrap" style="flex:1" >
+                                    <view></view>
+                                    <view class="css">
+                                        <view class="rus fs-30 fw-400 c-4  line-1-start">{{findUser.pkName}}</view>
+                                    </view>
+                                    
+                                </view>
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                            </navigator>
+                            <navigator class="css pt-30 pb-30 " hover-class="none" url="/pages/pk/userFind/userFind?pkId={{findUser.pkId}}">
+                                <view class="rbc-nowrap "> 
+                                    <view class="rcs ">
+                                        <view class="rcs fs-30 fw-700">打捞时长</view>
+                                        <view class="w-20"></view>
+                                    </view>
+                                    <view class="rcc">
+                                        <view class="rus fs-30 fw-300 c-4">{{findUser.findLength}}天</view>   
+                                        <!-- <view class="w-10"></view> -->
+                                        <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image> -->
+                                    </view>
+
+                                </view>
+                            </navigator>
+
+                            <view class="rbc-nowrap pt-30 pb-30 " > 
+                                <view class="rcs fs-30 fw-700">场景描述</view>
+                                <view class="w-100"></view>
+                                <view class="rbc-nowrap" style="flex:1" >
+                                    <view></view>
+                                    <view class="css" bindtap="showText" data-text="{{findUser.text}}">
+                                        <view class="rus fs-30 fw-400 c-4  line-1-start" >{{findUser.text}}</view>
+                                    </view>
+                                    
+                                </view>
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                            </view>
+
+                            <navigator class="rbc-nowrap pt-30 pb-30" hover-class="none" url="/pages/pk/userFind/userFind?pkId={{findUser.pkId}}"> 
+                                <view class="css">
+                                <view class="rcs fs-30 fw-700">图片</view>
+                                <view class="rcs fs-23 fw-300">最多三张图片</view>
+                                </view>  
+                            
+
+                                <view class="rcc">
+                                    <view hidden="{{!findUser.img3}}" class="rcc w-100 h-100 br-10 b-48">
+                                        <image class="w-100 h-100 br-10" mode="aspectFill" src="{{findUser.img3}}"></image>
+                                    </view>
+                                
+                                    <view  hidden="{{!findUser.img2}}" class="w-10"></view>
+                                    <view  hidden="{{!findUser.img2}}" class="rcc w-100 h-100 br-10 b-48">
+                                        <image class="w-100 h-100 br-10" mode="aspectFill" src="{{findUser.img2}}"></image>
+                                    </view>
+                                    <view  hidden="{{!findUser.img1}}" class="w-10"></view>
+                                    <view  hidden="{{!findUser.img1}}" class="rcc w-100 h-100 br-10 b-48">
+                                        <image class="w-100 h-100 br-10" mode="aspectFill" src="{{findUser.img1}}"></image>
+                                    </view>
+                                
+                                    <view class="rcc w-10"></view>
+                                    <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                                </view>
+                            </navigator>                                 
+                                                                            
+                    </view> 
+                    <view class="h-30"></view>
+                 
+                
+                </view> 
+            </block>
+        </view>    
+
+
+    </view>
+    <view hidden="{{!nomore}}" class="rcc p-50">
+            <view class="fs-30 fw-400 c-white ">没有更多</view>
+    </view>
+
+</view>
+<!-- <view wx:else class="ccc z4 "  style="padding-top:20vh">
+    <view class="rcc">
+        <image class="h-300 w-300" mode="aspectFit" src="{{emptyImage}}" ></image>
+    </view>
+    <view class="fs-30 fw-400 c-3">暂无打捞信息</view>
+
+</view> -->
+
+</view>
+
+<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: 100% 100%; "></view>
+
+<view class="css customBar z4">
+<view class="rcs " style="height:{{top}}px"></view>
+    <view class="rcs " style="height:32px">
+
+    <view class="rcc h-32px ">
+        <image class="h-40 w-40"  mode="aspectFit" src="/images/yu.png"></image>
+        <view class="w-20"></view>
+        <view class="fs-30 fw-400 c-white">我的渔场</view>
+    </view>
+
+    </view>
+
+</view>
+
+<view>
+
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{dialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
+                    </view>
+                    
+                </view>
+    
+            </view>
+
+
+        </view>
+ 
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
+        <view class="ccc levelDialog_view">
+            <view class="rcc">
+                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
+            </view>
+            <view style="height:30rpx"></view>
+            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+        </view>
+    </view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{operateDialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-3"  bindtap="operateDialog_cancel">取消</view> 
+                        <view class="w-70"></view>
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="operateDialog_confirm" >确定</view>
+                    </view>
+                    
+                </view>
+                <!-- <view class="rcc p-30 fs-25 fw-400 c-3"  bindtap="operateDialog_cancel">知道了</view> -->
+    
+            </view>
+
+
+        </view>
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogSuccess.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadsuccess.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载成功</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogError.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadfail.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载失败</view>
+        </view>
+    </view>
+
+</view>
+
+

@@ -1,0 +1,249 @@
+<view class="css" style="min-height:100vh">
+
+
+    <view class="css" >
+        <view class="css">
+        
+
+            <view class="css pl-4vw pr-4vw"  >
+                <view class="css " >
+                        <view class="rcs " style="height:{{top}}px"></view>
+                        <view class="rus" style="height:32px">
+                            <view class="rus">
+                            </view>
+                            <view class="w-300"></view>
+                        </view>
+                        <view class="rcs " style="height:10px"></view>
+                </view>
+
+                <block wx:for="{{pkGroups}}" wx:for-index="bindex" wx:for-item="pkGroup" >
+
+                  <view class="css b-white br-20 p-4vw z4" >
+                            <view class="rcs">
+                                <image class="h-40 w-40" mode="aspectFit" src="/images/groupCode.png"></image>
+                                <view class="w-20"></view>
+                                <view class="rus fs-23 fw-400 c-4">更新时间 {{pkGroup.lastUpdateTime}}</view>
+                            </view>
+                            <view class="css pb-20 pt-20" bindtap="showText" data-text="{{pkGroup.groupName}}">
+                                <view class="rus line-1-start fs-35 fw-700">{{pkGroup.groupName}}</view>
+                            </view>
+                            
+                            <view class="rus line-3-start fs-28 fw-300 c-4" bindtap="showText" data-text="{{pkGroup.groupDesc}}">{{pkGroup.groupDesc}}</view>
+                            <view class="css pt-30 pb-30">
+                                <view class="rss ">
+                                    <view class="rcc w-120 h-160 b-48">
+                                        <image class=" w-120 h-160 " src="{{pkGroup.groupCard}}" mode="aspectFill"></image>
+                                    </view>
+                                    <view class="rac" style="flex:1">
+                                        <view class="ccc">
+                                            <view class="rcc">
+                                                <view class="rus fs-40 fw-700 line-h50">{{pkGroup.members}}</view>
+                                                <view class="rus fs-30 fw-700 pt-10">人</view>
+                                            </view>
+                                            <view class="h-10"></view>
+                                            <view class="rcc fs-30 fw-400  c-4">成员</view>
+                                        </view>
+
+                                        <view class="ccc" bindtap="goUser" data-user="{{pkGroup.user.userId}}">
+                                            <image class="rcc w-50 h-50 br-10 " src="{{pkGroup.user.imgUrl}}" mode="aspectFill"></image>
+                                            <view class="h-10"></view>
+                                            <view class="rcc fs-30 fw-400  c-4">群主</view>
+                                        </view>
+
+                                        <!-- <view class="ccc">
+                                            <view class="rcc">
+                                                <view class="rus fs-40 fw-700 line-h50">43</view>
+                                                <view class="rus fs-30 fw-700 pt-10">米</view>
+                                            </view>
+                                            <view class="h-10"></view>
+                                            <view class="rcc fs-30 fw-400  c-4">我的距离</view>
+                                        </view> -->
+
+                                    </view>
+
+
+
+                                </view>
+                                
+
+                            </view>
+
+                
+                            <view class="css t-line">
+                                    <view class="h-4vw"></view>
+                                    <view class="rbc">
+                                
+                                        <view class="rcc">
+                                                    <image class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{pkGroup.user.imgUrl}}" ></image>
+                                                    <view class="w-10"></view>
+                                                    <image hidden="{{!pkGroup.member1}}" class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{pkGroup.member1.imgUrl}}" ></image>
+                                                    <view class="w-10"></view>
+                                                    <image hidden="{{!pkGroup.member2}}" class="rcc w-40 h-40 br-40" mode="aspectFill" src="{{pkGroup.member2.imgUrl}}" ></image>
+                                        </view>
+                                        <view class="rcc h-60 c-word-6 f-shadow3 br-10  fs-30 fw-700"></view>
+                                    </view>
+                            </view>
+                  </view>
+                  <view class="h-20"></view>
+
+
+
+                </block>
+            </view>    
+
+
+        </view>
+        <view hidden="{{!nomore}}" class="rcc p-50">
+                <view class="fs-30 fw-400 c-white">没有更多</view>
+        </view>
+
+    </view>
+  
+
+</view>
+<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: 100% 100%; "></view>
+
+
+
+<view class="css customBar z4">
+  <view class="rcs " style="height:{{top}}px"></view>
+  <view class="rcs " style="height:32px">
+
+    <view class="rcc h-32px ">
+        <image class="h-40 w-40"  mode="aspectFit" src="/images/unlock.png"></image>
+        <view class="w-20"></view>
+        <view class="fs-30 fw-400 c-white">已解锁群</view>
+    </view>
+
+  </view>
+
+</view>
+
+
+
+
+
+
+
+<view>
+
+
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{dialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
+                    </view>
+                    
+                </view>
+    
+            </view>
+
+
+        </view>
+ 
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+    <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
+        <view class="ccc levelDialog_view">
+            <view class="rcc">
+                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
+            </view>
+            <view style="height:30rpx"></view>
+            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+        </view>
+    </view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-10"   >
+ 
+            <view class="css p-5vw ">
+                <view class="css pt-70 pb-70">
+                    <view class="rus fs-35 fw-300 line-3-start">{{operateDialog.text}}</view> 
+                </view>
+                <view class="h-3vw"></view>
+                <view class="rbc pl-3vw pr-3vw">
+                    <view></view>
+                    <view class="rcc">
+                        <view class="rcc fs-32 fw-300 c-3"  bindtap="operateDialog_cancel">取消</view> 
+                        <view class="w-70"></view>
+                        <view class="rcc fs-32 fw-300 c-green"  bindtap="operateDialog_confirm" >确定</view>
+                    </view>
+                    
+                </view>
+                <!-- <view class="rcc p-30 fs-25 fw-400 c-3"  bindtap="operateDialog_cancel">知道了</view> -->
+    
+            </view>
+
+
+        </view>
+        <!-- <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view> -->
+    </view>
+
+
+
+
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+        <view></view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialogError.visible!=true}}">
+        <view></view>
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+    </view>
+    <view catchtouchmove="return" class="coverAll99" hidden="{{labelLoadingDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="rcc labelLoadingDialog " hidden="{{labelLoadingDialog.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <image class="labelLoadingDialog_image" mode="aspectFill" src="/images/loading.gif"></image>
+            <view class="labelLoadingDialog_text">加载中</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogSuccess.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadsuccess.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载成功</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogError.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadfail.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载失败</view>
+        </view>
+    </view>
+
+
+
+
+
+</view>
+
+

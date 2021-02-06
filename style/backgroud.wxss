@@ -1,0 +1,77 @@
+.bwhite{
+  background-color: white;
+}
+.bblack{
+   background-color: black;
+}
+.bred{
+  background-color: #ff0000;
+}
+.bblue{
+  background-color: blue;
+}
+.bgreen{
+  background-color: green;
+}
+
+.blightGray{
+  background-color: rgb(221, 221, 221);
+}
+.blightGray1{
+  background-color: rgb(226, 226, 226);
+}
+.blightGray2{
+  background-color: rgb(197, 197, 197);
+}
+
+.bpink{
+  background-color: pink;
+}
+
+
+
+.back1{
+  background-color: rgb(240, 240, 240);
+}
+.back2{
+  background-color: rgb(240, 240, 240);
+}
+
+.order0{
+      background: -webkit-linear-gradient(top,rgb(186, 72, 231),rgb(146, 35, 190));
+}
+.order1{
+      background: -webkit-linear-gradient(top,rgba(134, 126, 100, 0.747),rgba(221, 216, 216, 0.747));
+}
+.order2{
+      background: -webkit-linear-gradient(top,rgba(238, 238, 238, 0.966),rgba(252, 252, 252, 0.747));
+}
+.order3{
+      background: -webkit-linear-gradient(left,rgba(250, 243, 243, 0.966),rgba(247, 246, 237, 0.747));
+}
+.order4{
+      background: -webkit-linear-gradient(left,rgba(71, 70, 55, 0.966),rgba(23, 61, 66, 0.747));
+}
+.b14{
+      background: -webkit-linear-gradient(top,rgb(255, 245, 241),rgb(253, 249, 236));
+}
+.button{
+  width: 500rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: green;
+  border-radius: 12rpx;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 30rpx;
+}
+
+
+
+
+
+
+
+
+
+

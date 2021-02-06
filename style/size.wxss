@@ -1,0 +1,46 @@
+.width1{
+  width: 600rpx;
+  height: 600rpx;
+}
+
+.width2{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+.width3{
+  width: 160rpx;
+  height: 160rpx;
+  /* border-radius: 15rpx; */
+}
+
+
+
+
+
+
+
+
+
+.width_240rpx{
+    width: 240rpx;
+}
+
+.size_150rpx{
+    width: 150rpx;
+    height: 150rpx;
+}
+.size_147rpx{
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.size_40rpx{
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.button_width{
+    width: 650rpx;
+}
+
