@@ -46,10 +46,6 @@ Page({
     var pk = wx.getStorageSync('drawPk');
     wx.removeStorageSync('drawPk')
     that.data.pk = pk;
-    // var httpClient = template.createHttpClient(that);
-    // httpClient.setMode("page", false);
-    // httpClient.send(request.url.queryPkCode, "GET", { pkId: pk.pkId});
-
 
   },
   onShow:function(){
@@ -243,7 +239,7 @@ Page({
     var row = [];
     context.setFontSize(3 * vwPx);
     // context.font = 'normal bold '+ 4.3 * vwPx +'px sans-serif';
-    context.setFillStyle("#a0a0a0")
+    context.setFillStyle("#909090")
     
     for (var a = 0; a < chr.length; a++) {
      if (context.measureText(temp).width < 60*vwPx) {
@@ -254,15 +250,8 @@ Page({
     {
       temp += "...";
     }
-    
-
-  
-    context.fillText("微信扫一扫", (98-3*6.5)*vwPx, 125 * vwPx, 20*vwPx);
-
-
-
+    context.fillText("微信扫一扫", (98-3*6.7)*vwPx, 125 * vwPx, 20*vwPx);
   },
-
   drawImg:function(){
 
     var that = this;

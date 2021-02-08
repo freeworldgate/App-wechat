@@ -127,16 +127,23 @@ Page({
   },
   giveUpUserPkFind:function(){
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (time) {
-      that.data.findUser.statu = null;
-      that.setData({
-        findUser:that.data.findUser,
-        leftTime:time
+    template.createOperateDialog(that).show("取消","终止打捞后，剩余未打捞时间将自动返还到你的剩余时间中...",function(){
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (time) {
+        that.data.findUser.statu = null;
+        that.setData({
+          findUser:that.data.findUser,
+          leftTime:time
+        })
       })
-    })
-    httpClient.send(request.url.giveUpUserPkFind, "GET", {pkId:that.data.pk.pkId});
+      httpClient.send(request.url.giveUpUserPkFind, "GET", {pkId:that.data.pk.pkId});
+    },function(){});
+
+
+
+
+
 
   },
   startFind:function(){

@@ -52,21 +52,21 @@
                                         <view class="css pl-3vw pr-3vw" >
                                             <view class="css pt-30 pb-30">
                                             
-                                                    <view class="rcc fs-32 fw-400 line-5-center" bindtap="showText" data-text="{{findUser.text}}">{{findUser.text}}</view>
+                                                    <view class="rcc fs-32 fw-400 line-3-center" bindtap="showText" data-text="{{findUser.text}}">{{findUser.text}}</view>
                                         
 
                                             </view>
                                             <view class="css">
                                                 <view wx:if="{{findUser.img1&&findUser.img2&&findUser.img3}}" class="css">
                                                     <view class="rbc">
-                                                        <view class="rcc br-10" style="width:27.5vw;height:23vw">
-                                                            <image class="br-10" style="width:27.5vw;height:23vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
+                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
-                                                        <view class="rcc br-10" style="width:27.5vw;height:23vw">
-                                                            <image class="br-10" style="width:27.5vw;height:23vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
+                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
-                                                        <view class="rcc br-10" style="width:27.5vw;height:23vw">
-                                                            <image class="br-10" style="width:27.5vw;height:23vw" mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
+                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
                                                     </view>
                                                 </view>
@@ -136,7 +136,7 @@
 
 </view>
 
-<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: 100% 100%; "></view>
+<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
 <!-- //头部 -->
 <view class="css customCenterBar z4" >
     <view class="rcs " style="height:{{top}}px"></view>

@@ -31,7 +31,7 @@
                                 <view wx:else class="rcc" bindtap="{{userCard.unLock?'':'apply'}}">
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/unlock.png" ></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-25 fw-400">{{userCard.unLock?'已解锁':'解锁'}}</view>
+                                    <view class="fs-25 fw-400">{{userCard.unLock?'已解锁':'招呼'}}</view>
                                 </view>
 
                                 
@@ -114,7 +114,6 @@
 
             </view>
 
-            <!-- <view class="rcc fs-35 fw-700">捞人</view> -->
             <view class="rcc" style="flex:1">
             </view>
         

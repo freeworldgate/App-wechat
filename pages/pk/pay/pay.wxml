@@ -23,7 +23,10 @@
     </view>
 
 
-    <view class="css p-5vw">
+    <view wx:if="{{statu==='success'}}" class="ccc" style="flex:1">
+        <view class="fs-30 fw-700">SUCCESS</view>
+    </view>
+    <view wx:else class="css p-5vw">
         <view class="ccc ">
           <image class="w-150 h-150 br-150 box8" mode="aspectFill" src="{{user.imgUrl}}"></image>
           <view class="h-20"></view>

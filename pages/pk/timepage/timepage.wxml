@@ -195,15 +195,15 @@
                                                 </view>
                                                 <view  wx:elif="{{post.postImages.length===4}}" class="css">
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 37.8vw;height:37.8vw" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10"  style="width: 33vw;height:33vw" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 37.8vw;height:37.8vw" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10" style="width: 33vw;height:33vw" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                     <view style="height: 0.6vw"></view>
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 37.8vw;height:37.8vw" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10"  style="width: 33vw;height:33vw" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 37.8vw;height:37.8vw" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10" style="width: 33vw;height:33vw" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                 </view>
                                                 <view wx:else class="css">
@@ -256,7 +256,7 @@
                                                         
                                                             <view class="rcc">
                                                                 <view  class="rcc" >
-                                                                        <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc fs-20 c-1 b-48 fw-400 pl-20 pr-20 pt-10 pb-10 br-10" style="pointer-events: none">顶置</view>
+                                                                        <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc fs-20 c-1 b-48 fw-400 pl-20 pr-20 pt-10 pb-10 br-10" style="pointer-events: none">已顶置</view>
                                                                         <view wx:else class="rcc">
                                                                             <view class="rcc fs-20 fw-300 line-1-start pl-10 pr-10 pt-5 pb-5 br-5 b-48 c-4">刚刚</view>
                                                                         </view>

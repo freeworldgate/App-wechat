@@ -10,7 +10,6 @@
     "pages/webservice/reverseGeocoder-result/reverseGeocoder-result",
     "pages/webservice/policy-list/policy-list",
 
-    "pages/manage/approveFind/approveFind",
     "pages/pk/userCardApply/userCardApply",
     "pages/pk/payForPk/payForPk",
     "pages/pk/payForTime/payForTime",

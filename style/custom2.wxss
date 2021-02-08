@@ -2796,13 +2796,13 @@ input {
   position: fixed;
 
   left: 3vw;
-  bottom: 90vw;
+  bottom: 94vw;
 }
 .rightButton{
   position: fixed;
 
   right: 3vw;
-  bottom: 90vw;
+  bottom: 94vw;
 }
 
 

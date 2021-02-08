@@ -121,82 +121,11 @@ Page({
     });
 
   },
-  like:function(){
-    var that = this;
-    login.getUser(function(user){
-      that.setData({greateStatu:!that.data.greateStatu});
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", true);    
-      httpClient.send(request.url.likePk, "GET",{pkId: that.data.pkId});
-    })
-  },
-  collect:function(){
-    var that = this;
-    login.getUser(function(user){
-
-      that.setData({inviteStatu:!that.data.inviteStatu})
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", true);    
-      httpClient.send(request.url.collectPk, "GET",{pkId: that.data.pkId});
-    })
-
-  },
-  goPost:function(){
-
-    var that = this;
-    var pkId = res.currentTarget.dataset.pkId;
-    var postId = res.currentTarget.dataset.postId;
-
-    wx.navigateTo({
-      url: '/pages/pk/prepost/prepost?pkId='+pkId + "&postId=" + postId,
-    })
-
-
-  },
-
-  drawPkCode:function(res){
-    var that = this;
-    var pk = res.currentTarget.dataset.pk;
-    wx.setStorageSync('drawPk', pk);
-    wx.navigateTo({
-      url: '/pages/pk/drawPost/drawPost?',
-    })
-
-
-
-  },
 
 
 
 
-  publish:function(){
-    var that = this;
-  
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
 
-    
-    httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
-  },
-
-  uploadImgs:function(successCallBack){
-    var that = this;
-
-  },
-
-
-
-
-  hiddenMap:function(){
-    this.setData({
-      mapShow:false
-    })
-  },
-  showMap:function(){
-    this.setData({
-      mapShow:true
-    })
-  },
   queryLengthTime:function(pkId){
     var that = this;
     locationUtil.getLocation(function(latitude,longitude){
@@ -688,67 +617,7 @@ Page({
 
 
   },
-  setLocation:function(){
-    var that = this;
-      template.createOperateDialog(that).show("添加主题位置", "将主题锁定到当前位置，以便附近用户可见...", function () {
-      tip.showContentTip("定位中...") 
-      that.setNetLocation();
-    }, function () {});
-  },
 
-  setNetLocation: function () {
-    let that = this;
-    wx.getSetting({
-      success: (res) => {
-        console.log(JSON.stringify(res))
-        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
-        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
-        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
-        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
-          wx.showModal({
-            title: '请求授权当前位置',
-            content: '需要获取您的地理位置，请确认授权',
-            success: function (res) {
-              if (res.cancel) {
-                wx.showToast({
-                  title: '拒绝授权',
-                  icon: 'none',
-                  duration: 1000
-                })
-              } else if (res.confirm) {
-                wx.openSetting({
-                  success: function (dataAu) {
-                    if (dataAu.authSetting["scope.userLocation"] == true) {
-                      wx.showToast({
-                        title: '授权成功',
-                        icon: 'success',
-                        duration: 1000
-                      })
-                      //再次授权，调用wx.getLocation的API
-                      that.getLocation();
-                    } else {
-                      wx.showToast({
-                        title: '授权失败',
-                        icon: 'none',
-                        duration: 1000
-                      })
-                    }
-                  }
-                })
-              }
-            }
-          })
-        } else if (res.authSetting['scope.userLocation'] == undefined) {
-          //调用wx.getLocation的API
-          that.getLocation();
-        }
-        else {
-          //调用wx.getLocation的API
-          that.getLocation();
-        }
-      }
-    })
-  },
   // 获取定位当前位置的经纬度
   getLocation: function () {
     let that = this;

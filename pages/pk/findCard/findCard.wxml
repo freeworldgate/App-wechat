@@ -175,13 +175,12 @@
                 <view class="rcc h-32px w-32px br-32px " bindtap="relaunch">
              
                     <image class="h-40 w-40" mode="aspectFit" src="/images/home1.png"></image>
-                    <!-- <view class="w-10"></view>
-                    <view class="rcc fs-35 fw-400 c-4-1">捞人卡</view> -->
+  
                 </view>
 
             </view>
             <view class="rcc">
-                <view class="rcc fs-35 fw-700 c-white">捞人卡</view>
+                <view class="rcc fs-35 fw-700 c-white">打捞卡</view>
             </view>
             
             <view class="rcc" style="flex:1">

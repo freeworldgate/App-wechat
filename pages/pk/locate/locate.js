@@ -208,65 +208,6 @@ Page({
   },
 
 
-
-  addPost: function () {
-
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-
-    httpClient.addHandler("publishPost", function () {
-      template.createOperateDialog(that).show("发布图册", "将要消耗您一个图册", function () {
-        that.publishPost();
-      }, function () { });
-    });
-    httpClient.addHandler("free", function () {
-      that.publishPost();
-    });
-    httpClient.send(request.url.addPost, "GET", { pkId: that.data.pkId });
-  },
-
-  publishPost: function () {
-    var that = this;
-
-    template.createEditImageDialog(that).setDialog("编辑图册", "编辑你想说的话", 9, function () {
-      // 发布图册
-
-
-
-    }).show();
-  },
-
-  showPk:function(res){
-    var that = this;
-    var pkId = res.currentTarget.dataset.pkid;
-
-    template.createShowPkDialog(that).show("","")
-
-  },
-
-
-
-
-
-
-
-  click: function (e) {
-    var tab = parseInt(e.currentTarget.dataset.tab);
-    var id = e.currentTarget.dataset.id;
-    var user = wx.getStorageSync("user");
-
-    var httpClient = template.createHttpClient(this);
-    httpClient.setMode("label", false);
-    httpClient.addHandler("login", function () {
-      login.getUser(function (user) {
-        console.log("登录成功:", user);
-      });
-    });
-    httpClient.send(request.url.click, "GET", { userId: user.userId, tab: tab, id: id });
-
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

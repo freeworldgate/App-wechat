@@ -10,7 +10,7 @@
                 <view class="rcc h-32px " bindtap="back">
                 <image class="rcc h-30 w-30" mode="aspectFit" src="/images/back.png"></image>
                 <!-- <view class="w-20"></view> -->
-                <!-- <view class="rcc fs-30 fw-700">捞人</view> -->
+                <!-- <view class="rcc fs-30 fw-700"打捞</view> -->
                 </view>
 
               </view>

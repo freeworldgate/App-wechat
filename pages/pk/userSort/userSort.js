@@ -1,27 +1,8 @@
 // pages/pk/pk/pk.js
 var request = require('./../../../utils/request.js')
-var http = require('./../../../utils/http.js')
-var tip = require('./../../../utils/tipUtil.js')
-var login = require('./../../../utils/loginUtil.js')
-var locationUtil = require('./../../../utils/locationUtil.js')
-var route = require('./../../../utils/route.js')
-var redirect = require('./../../../utils/redirect.js')
-var uuid = require('./../../../utils/uuid.js')
 var inviteReq = require('./../../../utils/invite.js')
-var userInvite = require('./../../../utils/userInvite.js')
-var upload = require('./../../../utils/uploadFile.js')
 var template = require('./../../../template/template.js')
-var amapFile = require('./../../../utils/amap-wx.js')
 
-
-
-const width = wx.getSystemInfoSync().windowWidth;
-const vwPx = width/100;
-const r_width = 2*vwPx;
-const l_width = 2*vwPx;
-const img_width = 10*vwPx;
-const small_size = (100*vwPx - r_width - l_width*2 - img_width - 1*vwPx)/3;
-const large_size = small_size * 2 + 0.5 *vwPx
 
 
 Page({
@@ -106,8 +87,6 @@ Page({
       })
     })
     httpClient.send(request.url.nextUserPkPost, "GET", { page: that.data.page,pkId: that.data.pkId });
-
-    // wx.stopPullDownRefresh()
   },
 
 })

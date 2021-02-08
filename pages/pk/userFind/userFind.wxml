@@ -1,5 +1,5 @@
 
-<view class="css b-black" style="min-height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: 100% 100%; ">
+<view class="css b-black" style="min-height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto  100% ; ">
     <view class="css " >
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rbc" style="height:32px">
@@ -8,13 +8,12 @@
 
                 <view class="rcc h-32px " bindtap="back">
                     <image class="rcc h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
-                <!-- <view class="w-20"></view> -->
-                <!-- <view class="rcc fs-30 fw-700">捞人</view> -->
+       
                 </view>
 
               </view>
             </view>
-            <view class="rcc fs-35 fw-700 c-white">捞人卡</view>
+            <view class="rcc fs-35 fw-700 c-white">打捞卡</view>
             <view style="flex:1"></view>
         
         </view>

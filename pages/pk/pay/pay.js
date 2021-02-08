@@ -42,7 +42,34 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.send(request.url.payForPk, "GET", {});
+    httpClient.addHandler("success", function (pay) {
+        wx.requestPayment({
+          timeStamp: pay.timeStamp,
+          nonceStr: pay.nonceStr,
+          package: pay.packageStr,
+          signType: pay.signType,
+          paySign: pay.paySign,
+          success (res) {
+
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("page", true);
+            httpClient.send(request.url.paySuccess, "GET", {payId:pay.payId});
+
+            that.setData({
+                statu:"success"
+            })
+          
+          
+          },
+          fail (res) {
+              tip.showContentTip("支付失败");
+
+           }
+
+
+        })
+    })
+    httpClient.send(request.url.payType, "GET", {type:that.data.type,payId:that.data.selectPay.payId});
   },
   change:function(res){
     var that = this;
@@ -57,4 +84,5 @@ Page({
       delta: 0,
     })
   },
+  
 })
