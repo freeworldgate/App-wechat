@@ -25,6 +25,7 @@
     "pages/pk/singleLocation/singleLocation",
     "pages/pk/followers/followers",
     "pages/pk/fans/fans",
+    "pages/pk/members/members",
     "pages/pk/userPk/userPk",
     "pages/pk/userPublishPost/userPublishPost",
     "pages/pk/groupCardList/groupCardList",

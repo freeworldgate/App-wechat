@@ -546,7 +546,7 @@
     /* height: 30%; */
     position: fixed;
     z-index: 31;
-    top: 40vh; 
+    top: 30vh; 
     /* top:0px; */
     left: 5vw;
 
@@ -986,7 +986,7 @@
     position: fixed;
     z-index: 105;
     left: 0px;
-    top: 15%;
+    top: 30%;
     /* background-color: white; */
 }
 

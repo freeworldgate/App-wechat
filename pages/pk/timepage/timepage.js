@@ -530,16 +530,31 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("顶置图册", "确定将该帖设置为首页?...", function () {
+    template.createOperateDialog(that).show("顶置图册", "确定将该帖设置为首页?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (post) {
-              that.data.posts.splice(index, 1); 
-              that.data.posts.unshift(post);
-              that.setData({
-                posts: that.data.posts,
-                ['pk.topPostId']:post.postId  
+      httpClient.addHandler("success", function () {
+          template.createEditNumberDialog(that).show("设置顶置周期(单位分钟)",4,"顶置周期内不可更改...",function(value){
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (post) {
+                  that.data.posts.splice(index, 1); 
+                  that.data.posts.unshift(post);
+                  that.setData({
+                    posts: that.data.posts,
+                    ['pk.topPostId']:post.postId  
+                  })
               })
+              httpClient.send(request.url.setTopPostTime, "GET", { postId: post.postId,pkId:pkId,value:value });
+          
+
+          });
+
+
+
+
+
+
 
 
       })
@@ -583,7 +598,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?...", function () {
+    template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {
@@ -690,6 +705,7 @@ Page({
               })
               return;
             }
+
             wx.chooseImage({
               count: 9,
               sizeType: ['compressed', 'original'],

@@ -429,7 +429,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("删除打卡信息?", "删除?...", function () {
+    template.createOperateDialog(that).show("删除打卡信息?", "删除该条打卡信息?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {

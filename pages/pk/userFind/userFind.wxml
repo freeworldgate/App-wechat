@@ -70,7 +70,7 @@
             <view hidden="{{!findUser.startTime||!findUser.endTime}}" class="rbc-nowrap pt-30 pb-30"> 
                 <view class="rcs  fs-30 fw-700">时间</view>
             
-                <view class="rcc fs-30 fw-400 c-4 ">1月31日 22:30 ~ 2月1日 22:30</view>
+                <view class="rcc fs-30 fw-400 c-4 ">{{findUser.startTime}}~{{findUser.endTime}}</view>
             </view>
             <view class="rbc-nowrap pt-30 pb-30" bindtap="showPk" data-pk="{{pk}}"> 
                 <view class="rcs fs-30 fw-700">卡点</view>

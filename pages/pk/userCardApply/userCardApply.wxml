@@ -17,7 +17,7 @@
                                     <view class="w-10"></view>
                                     <view class="rcc fs-25 fw-400 c-4" >在向你打招呼</view>
                                 </navigator>
-                                <view class="fs-25 fw-300 c-4">3分钟前</view>
+                                <view class="fs-25 fw-300 c-4">{{apply.time}}</view>
                         
 
                 </view>
@@ -61,7 +61,7 @@
 
                             
                                 </view>
-                                <view class="fs-25 fw-300 c-4">3分钟前</view>
+                                <view class="fs-25 fw-300 c-4">{{apply.time}}</view>
                         
 
                 </view>

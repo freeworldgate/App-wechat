@@ -191,7 +191,7 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("pay", function () {
         
-      template.createOperateDialog(that).show("余额不足?", "余额不足?...", function () {
+      template.createOperateDialog(that).show("余额不足?", "可用卡点不足?", function () {
           wx.navigateTo({
             url: '/pages/pk/pay/pay?type=5',
           })

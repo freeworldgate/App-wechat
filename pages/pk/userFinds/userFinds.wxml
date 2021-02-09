@@ -32,7 +32,7 @@
                                 </view>
                             </navigator>
                             <view hidden="{{!findUser.startTime||!findUser.endTime}}" class="rbc-nowrap pt-30 pb-30"> 
-                                <view class="rcs w-300 fs-30 fw-700">时间</view>
+                                <view class="rcs w-150 fs-30 fw-700">时间</view>
                             
                                 <view class="rcc fs-30 fw-400 c-4 ">{{findUser.startTime}}~{{findUser.endTime}}</view>
                             </view>
@@ -127,7 +127,7 @@
 
 </view>
 
-<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: 100% 100%; "></view>
+<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto  100% ; "></view>
 
 <view class="css customBar z4">
 <view class="rcs " style="height:{{top}}px"></view>

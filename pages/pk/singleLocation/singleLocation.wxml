@@ -112,7 +112,7 @@
                                                                     <view class="rss" style="padding-top:2.5vw">
                                                                         <view class="ccs w-12vw"><view class="fs-30 fw-300">签名</view></view>
                                                                         <view class="w-3vw"></view>
-                                                                        <view class="rbc-nowrap" style="flex:1">
+                                                                        <view class="rbc-nowrap" style="flex:1" bindtap="showText" data-text="{{sign}}">
                                                                             <view class="css"  style="flex:1">
                                                                                 <view class="rus line-2-start fs-30 fw-300 ">{{pk.sign}}</view>
                                                                             </view>
@@ -218,7 +218,7 @@
         <view class="rbc-nowrap pt-20 pb-20" bindtap="editSign">
             <view class="rcs w-300 fs-30 fw-400 w-100">签名</view>
             <view class="rcc">
-              <view class="css" style="flex:1" bindtap="showText" data-text="{{sign}}">
+              <view class="css" style="flex:1" >
                 <view class="rus fs-30 fw-300 c-4  line-1-start">{{sign}}</view>
               </view>
               <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>

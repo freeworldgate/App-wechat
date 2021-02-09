@@ -94,7 +94,15 @@ Page({
 
 
 
+  showSingleImg:function(res){
+    var that  = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      current:url,
+      urls:[url]
+    })
 
+  },
 
   init:function (tab,latitude,longitude) {
     var that = this;

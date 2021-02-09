@@ -32,16 +32,16 @@
                         <view class="css" style="width: 15vw">
                                 <view class="css">
                                             <view class="rcc ">
-                                                <view class="rus-wrap fs-22 fw-300 line-1-start">23分钟</view>
+                                                <view class="rus-wrap fs-22 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
                                             </view>
                                             <view class="h-30"></view>
                                             <view class="ccc ">
-                                                <view class="rcc fs-30 fw-700">昨天</view>
+                                                <view class="rcc fs-25 fw-700">{{post.ptime.date}}</view>
                                              
                                             </view>
                                             <view class="h-30"></view>
                                             <view class="ccc ">
-                                                <view class="rcc fs-25 fw-400 c-4">2020</view>
+                                                <view class="rcc fs-25 fw-400 c-4">{{post.ptime.year}}</view>
                                         
                                             </view>
                                         

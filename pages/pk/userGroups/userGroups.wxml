@@ -40,27 +40,27 @@
                         <view class="css pt-30 pb-30">
                             <view class="rss ">
                                 <view class="rcc w-120 h-160 {{pkGroup.queryerMemberEntity?'b-48':'b-white'}}">
-                                    <view class="rcc">
+                                    <view class="rcc" bindtap="showSingleImg" data-url="{{pkGroup.groupCard}}">
                                         <image class=" w-120 h-160 " src="{{pkGroup.groupCard}}" mode="aspectFill"></image>
                                     </view>
                         
 
                                 </view>
                                 <view class="rac" style="flex:1">
-                                    <view class="ccc">
+                                    <navigator class="ccc" hover-class="none" url="/pages/pk/members/members?groupId={{pkGroup.groupId}}">
                                         <view class="rcc">
                                             <view class="rus fs-40 fw-700 line-h50">{{pkGroup.members}}</view>
                                             <view class="rus fs-30 fw-700 pt-10">人</view>
                                         </view>
                                         <view class="h-10"></view>
                                         <view class="rcc fs-30 fw-400  c-4">成员</view>
-                                    </view>
+                                    </navigator>
 
-                                    <view class="ccc">
+                                    <navigator class="ccc" hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{pkGroup.user.userId}}">
                                         <image class="rcc w-50 h-50 br-10 " src="{{pkGroup.user.imgUrl}}" mode="aspectFill"></image>
                                         <view class="h-10"></view>
                                         <view class="rcc fs-30 fw-400  c-4">群主</view>
-                                    </view>
+                                    </navigator>
 
                                     <!-- <view class="ccc">
                                         <view class="rcc">
@@ -130,7 +130,7 @@
     <view class="rcc h-32px ">
         <image class="h-40 w-40"  mode="aspectFit" src="/images/wechat.png"></image>
         <view class="w-20"></view>
-        <view class="fs-30 fw-400 c-white">我的群组</view>
+        <view class="fs-30 fw-400 c-white">群成员</view>
     </view>
 
   </view>

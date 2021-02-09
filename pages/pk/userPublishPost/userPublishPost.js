@@ -62,7 +62,7 @@ Page({
   uploadImg:function(res){
     var that = this;
     var userId = res.currentTarget.dataset.userid;
-    template.createOperateDialog(that).show("上传背景图?", "修改背景图?...", function () {
+    template.createOperateDialog(that).show("上传背景图?", "修改背景图?", function () {
   
       wx.chooseImage({
         count: 1,

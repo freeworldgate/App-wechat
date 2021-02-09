@@ -26,7 +26,7 @@
                     
                         <view class="cas" style="flex:1">
                             <view class="css"> 
-                            <view class="rus line-1-start fs-35 fw-650 c-word-6 f-shadow3" bindtap="userCenter" data-follower="{{follower}}">{{follower.userName}}</view>
+                            <view class="rus line-1-start fs-35 fw-400 " bindtap="userCenter" data-follower="{{follower}}">{{follower.userName}}</view>
                             </view>
                             <!-- <view class="rcs"><view class="fs-25 fw-400 c-3">300个关注</view></view> -->
                         </view>

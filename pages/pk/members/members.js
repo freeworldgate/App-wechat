@@ -1,4 +1,4 @@
-
+// pages/pk/pk/pk.js
 var request = require('./../../../utils/request.js')
 var http = require('./../../../utils/http.js')
 var tip = require('./../../../utils/tipUtil.js')
@@ -41,13 +41,11 @@ Page({
             top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
         })
     })
-    that.setData({
-      targetUserId:options.targetUserId,
-      type:options.type
-    })
+    that.data.groupId = options.groupId;
+
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
-    httpClient.send(request.url.queryUserCardApplys, "GET", {targetUserId:options.targetUserId,type:options.type});
+    httpClient.send(request.url.queryGroupMembers, "GET", {groupId:options.groupId});
 
   },
   back:function(){
@@ -55,51 +53,20 @@ Page({
       delta: 0,
     })
   },
-  deletApply:function(res){
+  userCenter:function(res){
     var that = this;
-    var applyId =  res.currentTarget.dataset.applyid;
-    var index =  res.currentTarget.dataset.index;
-    template.createOperateDialog(that).show("删除留言?", "删除留言?", function () {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function () {
-              that.data.applys.splice(index, 1); 
-              that.setData({
-                applys: that.data.applys,
-              })
+    var follower =  res.currentTarget.dataset.follower;
+
+    login.getUser(function(user){
+      wx.navigateTo({
+        url: '/pages/pk/userPublishPost/userPublishPost?userId='+follower.userId,
       })
-      httpClient.send(request.url.deleteApply, "GET", {applyId:applyId });
-    }, function () {});
 
-
-
-
-  },
-  showText:function(res){
-    var that  = this;
-    var text = res.currentTarget.dataset.text;
-    wx.navigateTo({
-      url: '/pages/pk/showText/showText?text='+text,
     })
-  },
-  changeLock:function(res){
-    var that = this;
-    var apply =  res.currentTarget.dataset.apply;
-    var index =  res.currentTarget.dataset.index;
-    template.createOperateDialog(that).show(apply.lock?"禁止?":"解锁?", apply.lock?"禁止用户查看你的二维码名片...":"解锁后，用户将能够查看你的二维码名片...", function () {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function () {
-          var lock = "applys["+index+"].lock" 
-        that.setData({
-          [lock]:!apply.lock
-        })
-      })
-      httpClient.send(request.url.changeLock, "GET", {applyId:apply.applyId });
-    }, function () {});
+
+
 
   },
-
   onReachBottom:function(){
     if(!this.data.nomore)
     {
@@ -111,15 +78,16 @@ Page({
   nextPage: function () {
     var that = this;
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
+    httpClient.setMode("label", false);
+    var user = wx.getStorageSync("user");
     httpClient.addHandler("success", function (data) {
-      var mapplys = that.data.applys.concat(data);
+      var newPosts = that.data.members.concat(data);
       that.setData({
-        applys: mapplys,
+        members: newPosts,
         page: that.data.page + 1
       })
     })
-    httpClient.send(request.url.nextUserCardApplys, "GET", { targetUserId:that.data.targetUserId,type:that.data.type,page: that.data.page });
+    httpClient.send(request.url.nextGroupMembers, "GET", { groupId:that.data.groupId,page: that.data.page });
 
     // wx.stopPullDownRefresh()
   },

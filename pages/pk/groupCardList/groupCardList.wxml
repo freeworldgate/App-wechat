@@ -31,18 +31,18 @@
                             <view class="rus line-3-start fs-28 fw-300 c-4" bindtap="showText" data-text="{{pkGroup.groupDesc}}">{{pkGroup.groupDesc}}</view>
                             <view class="css pt-30 pb-30">
                                 <view class="rss ">
-                                    <view class="rcc w-120 h-160 b-48">
+                                    <view class="rcc w-120 h-160 b-48"  bindtap="showSingleImg" data-url="{{pkGroup.groupCard}}">
                                         <image class=" w-120 h-160 " src="{{pkGroup.groupCard}}" mode="aspectFill"></image>
                                     </view>
                                     <view class="rac" style="flex:1">
-                                        <view class="ccc">
+                                        <navigator class="ccc" hover-class="none" url="/pages/pk/members/members?groupId={{pkGroup.groupId}}">
                                             <view class="rcc">
                                                 <view class="rus fs-40 fw-700 line-h50">{{pkGroup.members}}</view>
                                                 <view class="rus fs-30 fw-700 pt-10">人</view>
                                             </view>
                                             <view class="h-10"></view>
                                             <view class="rcc fs-30 fw-400  c-4">成员</view>
-                                        </view>
+                                        </navigator>
 
                                         <view class="ccc" bindtap="goUser" data-user="{{pkGroup.user.userId}}">
                                             <image class="rcc w-50 h-50 br-10 " src="{{pkGroup.user.imgUrl}}" mode="aspectFill"></image>

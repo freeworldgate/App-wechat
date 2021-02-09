@@ -161,7 +161,7 @@ Page({
     var imageId =  res.currentTarget.dataset.imageid;
     var index =  res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("审核通过?", "审核通过?...", function () {
+    template.createOperateDialog(that).show("审核通过?", "审核通过?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {

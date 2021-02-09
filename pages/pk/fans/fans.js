@@ -81,9 +81,9 @@ Page({
     httpClient.setMode("label", false);
     var user = wx.getStorageSync("user");
     httpClient.addHandler("success", function (data) {
-      var newPosts = that.data.images.concat(data);
+      var newPosts = that.data.followers.concat(data);
       that.setData({
-        images: newPosts,
+        followers: newPosts,
         page: that.data.page + 1
       })
     })

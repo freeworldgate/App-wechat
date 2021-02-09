@@ -140,7 +140,7 @@ Page({
     var imageId =  res.currentTarget.dataset.imageid;
     var index =  res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("删除卡点图片?", "删除卡点图片?...", function () {
+    template.createOperateDialog(that).show("删除卡点图片?", "删除卡点图片?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {
@@ -162,7 +162,7 @@ Page({
     var image =  res.currentTarget.dataset.image;
     var index =  res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("设置为卡点背景?", "设置为卡点背景?...", function () {
+    template.createOperateDialog(that).show("设置为卡点背景?", "设置为卡点背景?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {

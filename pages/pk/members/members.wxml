@@ -1,4 +1,4 @@
-<view class="css {{followers.length>0?'b-48':'b-white'}}"  style="min-height:100vh">
+<view class="css {{members.length>0?'b-48':'b-white'}}"  style="min-height:100vh">
   <view class="css " >
     <view class="rcs " style="height:{{top}}px"></view>
     <view class="rcs " style="height:32px">
@@ -7,16 +7,16 @@
     </view>
     <view class="rcs " style="height:20px"></view>
   </view>
-    <view wx:if="{{followers&&followers.length > 0}}" class="css">
-        <view class="css" wx:for="{{followers}}" wx:for-index="bindex" wx:for-item="follower" wx:key="postkey">
+    <view wx:if="{{members&&members.length > 0}}" class="css">
+        <view class="css" wx:for="{{members}}" wx:for-index="bindex" wx:for-item="member" wx:key="postkey">
 
             <view class="rss  pb-30 pt-30">
                         <view class="rcc" style="width: 150rpx">
                                 
                             
                                 
-                                            <view class="rcc" bindtap="userCenter" data-follower="{{follower}}">
-                                                <image class="rcc w-100 h-100 br-100 " src="{{follower.imgUrl}}" mode="aspectFill"></image>
+                                            <view class="rcc" bindtap="userCenter" data-follower="{{member}}">
+                                                <image class="rcc w-100 h-100 br-100 " src="{{member.imgUrl}}" mode="aspectFill"></image>
                                             </view>
                                     
                             
@@ -25,13 +25,13 @@
                     
                         <view class="cas" style="flex:1">
                             <view class="css"> 
-                            <view class="rus line-1-start fs-35 fw-400" bindtap="userCenter" data-follower="{{follower}}">{{follower.userName}}</view>
+                            <view class="rus line-1-start fs-35 fw-400" bindtap="userCenter" data-follower="{{members}}">{{member.userName}}</view>
                             </view>
                             <!-- <view class="rcs"><view class="fs-25 fw-400 c-3">300个粉丝</view></view> -->
                         </view>
                         <view class="rcc">
                             <view style="width: 10vw"></view>
-                            <view class="rcc c-3  fs-25 fw-300" >{{follower.followTime}}</view>
+                            <view class="rcc c-3  fs-25 fw-300" >{{member.followTime}}</view>
                             <view style="width:5vw"></view>
                         </view>
 
@@ -56,7 +56,7 @@
 </view>
 
 <!-- //头部 -->
-<view class="css b-line customCenterBar z3 {{followers.length>0?'b-48':'b-white'}}" >
+<view class="css b-line customCenterBar z3 {{members.length>0?'b-48':'b-white'}}" >
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rbc" style="height:32px">
             <view class="rcs" style="flex:1">
