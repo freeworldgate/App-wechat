@@ -18,8 +18,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
-    imgUrl:'https://oss.211shopper.com/dir2/wx-1606375746086.jpg'
+    opacity:'00',
+  
 
   },
 
@@ -34,15 +34,11 @@ Page({
             top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
         })
     })
-
     login.getUser(function(user){
       that.setData({user:user})
     })
     that.setData({pkId:options.pkId})
-
     that.queryFinds("page",options.pkId);
-
-
   },
   back:function(){
     wx.navigateBack({
@@ -58,14 +54,29 @@ Page({
 
   onShareAppMessage:function(res){
     var that = this;
-    var findId = res.target.dataset.findid;
-    var url = res.target.dataset.url;
-    var pkName = res.target.dataset.pkname;
-    return {
-        title: '遇见不撩 卡点互捞 @ ' + pkName ,
-        desc: pkName,
-        imageUrl:url+"?x-oss-process=image/crop,w_1000,h_1000,g_center",
-        path: '/pages/pk/findCard/findCard?findId=' + findId,
+    if(res.from==='menu')
+    {
+      return {
+                title: '欢迎打卡君!' ,
+                desc: "",
+                imageUrl:that.data.backUrl+"?x-oss-process=image/crop,w_1000,h_1000,g_center",
+                path: '/pages/pk/locate/locate',
+            }
+    }
+    else
+    {
+      var findId = res.target.dataset.findid;
+      var url = res.target.dataset.url;
+      var backimg = res.target.dataset.backimg;
+      var pkName = res.target.dataset.pkname;
+  
+        return {
+                  title: '遇见不撩 卡点互捞 @ ' + pkName ,
+                  desc: pkName,
+                  imageUrl:url+"?x-oss-process=image/crop,w_1000,h_1000,g_center",
+                  path: '/pages/pk/findCard/findCard?findId=' + findId,
+               }
+      
     }
 
   },
@@ -90,5 +101,34 @@ Page({
       current:img,
       urls: imgs,
     })
+  },
+
+  onPageScroll:function(e){
+    var that = this;
+    var top = e.scrollTop;
+
+    if(top<50)
+    { 
+        var topValue = parseInt((top) * (256/50)).toString(16);
+        that.setData({
+            opacity:topValue
+        })
+    }
+    if(top<1)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"00"
+        })
+    }
+    if(top>50)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"ff"
+        })
+    }
+
+
   }
 })

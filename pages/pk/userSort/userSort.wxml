@@ -30,22 +30,21 @@
                     <view class="rss b-white" >
             
                         <view class="css" style="width: 15vw">
-                                <view class="css">
-                                            <view class="rcc ">
-                                                <view class="rus-wrap fs-22 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
+                            <view class="css">
+                                            <view class="rcc fs-20 fw-300  c-word-6">时间</view>
+                                            <view class="rcc">
+                                                <view class="rus-wrap fs-23 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
                                             </view>
-                                            <view class="h-30"></view>
+                                            <view class="rcc fs-20 fw-300 pt-20 c-word-6">日期</view>
                                             <view class="ccc ">
-                                                <view class="rcc fs-25 fw-700">{{post.ptime.date}}</view>
-                                             
+                                                <view class="rcc fs-25 fw-300">{{post.ptime.date}}</view>
                                             </view>
-                                            <view class="h-30"></view>
-                                            <view class="ccc ">
-                                                <view class="rcc fs-25 fw-400 c-4">{{post.ptime.year}}</view>
-                                        
+                                            <view hidden="{{!post.ptime.year}}" class="rcc fs-20 fw-300 pt-20">年份</view>
+                                            <view hidden="{{!post.ptime.year}}" class="ccc">
+                                                <view class="rcc fs-25 fw-300 c-4">{{post.ptime.year}}</view>
                                             </view>
                                         
-                                </view>
+                            </view>
 
                         </view>
                         <view class="rss" style="width:77vw">

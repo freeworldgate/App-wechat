@@ -533,6 +533,7 @@
 .h-240{height: 240rpx;}
 .h-250{height:250rpx;}
 .h-300{height:300rpx;}
+.h-330{height:330rpx;}
 .h-340{height:340rpx;}
 .h-350{height:350rpx;}
 .h-380{height:380rpx;}
@@ -1829,7 +1830,19 @@ mw-200{
 .bottomBack1{
   background-image: linear-gradient(to top,#00000042,#00000000 );
 }
+.scrollCustomBar{
+  position: fixed;
+  width:100vw;
+  top: 0;
+  left: 0;
+}
 .buildHead1{
+  padding-left: 4vw;
+  padding-right: 4vw;
+  background-image: linear-gradient(to bottom,#00000050,#00000030,#00000010,#00000000 );
+}
+.buildHead1-1{
+
   background-image: linear-gradient(to bottom,#00000050,#00000030,#00000010,#00000000 );
 }
 .buildHead2{

@@ -54,8 +54,8 @@
                                 <view class="rcc box8 b-white" style="height:9vw;width:9vw;border-radius:10rpx" bindtap="groupCode">
                                     <image class="rcc w-40 h-40" src="/images/group1.png" mode="aspectFit"></image>
                                 </view>
-                                <view class="w-30"></view>
-                                <view class="rcc box8 b-white" style="height:9vw;width:9vw;border-radius:10rpx" bindtap="findSomeOne" data-pk="{{pk}}" >
+                                <view hidden="{{!pk.findSet}}" class="w-30"></view>
+                                <view hidden="{{!pk.findSet}}" class="rcc box8 b-white" style="height:9vw;width:9vw;border-radius:10rpx" bindtap="findSomeOne" data-pk="{{pk}}" >
                                     <image class="rcc w-40 h-40" src="/images/find.png" mode="aspectFit"></image>
                                 </view>
                                 <view class="w-30"></view>
@@ -143,14 +143,14 @@
                 <view class="css">
                     <view class="rss" >
                         <view class="css " style="width: 16vw">
-                            <view class="css">
+                            <view class="css" bindtap="userPage" data-user="{{post.creator.userId}}">
 
 
                                 <view class="css"> 
 
                                     <view class="rcc">
                                     
-                                        <view class="rcc" bindtap="userPage" data-user="{{post.creator.userId}}"  >
+                                        <view class="rcc"   >
                                             <image class="rcc circle2 box8 " src="{{post.creator.imgUrl}}" mode="aspectFill"></image>
                                         </view>
                             
@@ -183,7 +183,7 @@
                                                 <view  wx:if="{{!post.postImages||post.postImages.length===0}}" >
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===1}}" class="rus">
-                                                    <image class="rcc br-10"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                    <image class="rcc br-20"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===2}}" class="css">
                                                     <view class="rcs">
@@ -347,21 +347,20 @@
 
 </view>
 <!-- //头部 -->
-<view class="css customBar z3 buildHead1" >
-  <view class="rcs " style="height:{{top}}px"></view>
-  <view class="rcs " style="height:32px">
-
-      <view class="rcc h-32px " bindtap="{{type === 'share'?'relaunch':'back'}}">
-          <image wx:if="{{type === 'share'}}" class="h-50 w-50" mode="aspectFit" src="/images/home1.png"></image>
-          <image wx:else class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
-        
-
-      </view>
-
-  </view>
-  <view class="rcs " style="height:{{20}}px"></view>
+<view class="css scrollCustomBar z3" style="background-color:#f5f5f5{{opacity}}">
+    <view class="css {{opacity==='ff'?'':'buildHead1-1'}} pl-4vw pr-4vw" >
+        <view class="rcs " style="height:{{top}}px"></view>
+        <view class="rcs " style="height:32px">
+            <view class="rcc h-32px w-50" bindtap="{{type === 'share'?'relaunch':'back'}}">
+                <image wx:if="{{type === 'share'}}" class="h-50 w-50" mode="aspectFit" src="/images/home1.png"></image>
+                <image wx:else class="h-30 w-30" mode="aspectFit" src="{{opacity === 'ff'?'/images/back.png':'/images/back1.png'}}"></image>
+            </view>
+            <view hidden="{{opacity != 'ff' || type === 'share' }}" class="rus w-400"><view class="rus fs-30 fw-700 line-1-start">{{pk.name}}</view></view>
+           
+        </view>
+        <view class="rcs " style="height:{{5}}px"></view>
+    </view>
 </view>
-
 
 
 
@@ -437,7 +436,7 @@
                 <view class="rbc pl-3vw pr-3vw">
                     <view></view>
                     <view class="rcc">
-                        <view class="rcc fs-32 fw-300 c-3"  bindtap="hiddenLocation">确定</view>
+                        <view class="rcc fs-32 fw-300 c-3"  bindtap="hiddenLocation">取消</view>
                         <view class="w-70"></view>
                         <view class="rcc fs-32 fw-300 c-green"  bindtap="showLocation" data-pk="{{pk}}">确定</view>
                     </view>

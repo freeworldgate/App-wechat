@@ -30,6 +30,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    opacity:'00',
     imgUrl:'https://oss.211shopper.com/dir2/wx-1606375746086.jpg',
     pkGroups:[]
   },
@@ -216,8 +217,35 @@ Page({
     wx.previewImage({
       current:img,
     })
-  }
+  },
+  onPageScroll:function(e){
+    var that = this;
+    var top = e.scrollTop;
 
+    if(top<50)
+    { 
+        var topValue = parseInt((top) * (256/50)).toString(16);
+        that.setData({
+            opacity:topValue
+        })
+    }
+    if(top<1)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"00"
+        })
+    }
+    if(top>50)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"ff"
+        })
+    }
+
+
+  }
 
 
 })

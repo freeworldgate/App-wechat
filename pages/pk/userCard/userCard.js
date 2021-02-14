@@ -90,7 +90,7 @@ Page({
   apply:function(){
     var that = this;
     login.getUser(function(user){
-        template.createEditTextDialog(that).show("想认识Ta", "想ta打招呼，对方同意后将能够查看他的微信名片...","", 120,function(text){
+        template.createEditTextDialog(that).show("想认识Ta", "向ta打招呼，对方同意后将能够查看他的微信名片...","", 120,function(text){
           var httpClient = template.createHttpClient(that);
           httpClient.setMode("label", true);
           // httpClient.addHandler("success", function () {

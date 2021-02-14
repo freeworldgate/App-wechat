@@ -30,7 +30,7 @@
                                             </navigator>
 
                                             <view class="rcc">
-                                                <button open-type="share" class="rcc b-white message" style="width:50rpx;height:50rpx" data-findid="{{findUser.findId}}" data-pkname="{{findUser.pkName}}" data-url="{{findUser.img1?findUser.img1:findUser.user.imgUrl}}">
+                                                <button open-type="share" class="rcc b-white message" style="width:50rpx;height:50rpx" data-findid="{{findUser.findId}}" data-pkname="{{findUser.pkName}}" data-backimg="{{backUrl}}" data-url="{{findUser.img1?findUser.img1:findUser.user.imgUrl}}">
                                                     <view class="rcc ">
                                                         <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/share1.png"></image>
                                                     </view>
@@ -138,27 +138,31 @@
 
 <view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
 <!-- //头部 -->
-<view class="css customCenterBar z4" >
-    <view class="rcs " style="height:{{top}}px"></view>
-    <view class="rbc" style="height:32px">
-        <view class="rcs" style="flex:1">
-            <view class="rcc h-32px" bindtap="back">
-                <view class="w-4vw"></view>
-                <image class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
-                <view class="w-4vw"></view>
-            </view>
+<view class="css scrollCustomBar z5" style="background-color:#000000{{opacity}}">
+    <view class="css buildHead1" >
+        <view class="rcs " style="height:{{top}}px"></view>
+        <view class="rbc" style="height:32px">
+            <view class="rcs" style="flex:1">
+                <view class="rcc h-32px" bindtap="back">
+                    <view class="w-4vw"></view>
+                    <image class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
+                    <view class="w-4vw"></view>
+                </view>
 
-        </view>
-        <view class="rcc">
-            <view class="rcc fs-35 fw-700 c-white">捞一捞</view>
-        </view>
+            </view>
+            <view class="rcc">
+                <view class="rcc fs-35 fw-700 c-white">捞一捞</view>
+            </view>
+            
+            <view class="rcc" style="flex:1">
+            </view>
         
-        <view class="rcc" style="flex:1">
         </view>
-    
+        <view class="rcs " style="height:{{5}}px"></view>
     </view>
-    <view class="rcs " style="height:10px"></view>
 </view>
+
+
 
 
 

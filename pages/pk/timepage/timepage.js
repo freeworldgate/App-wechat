@@ -30,6 +30,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    opacity:'00',
     latitude: 30.319739999999985,
     //经度
     longitude: 112.222,
@@ -278,7 +279,6 @@ Page({
   
     return {
         title: '邀请你一起打卡@'+ that.data.pk.name ,
-        desc: "from",
         imageUrl:that.data.pk.backUrl+"?x-oss-process=image/crop,w_1000,h_1000,g_center",
         path: '/pages/pk/timepage/timepage?type=share&pkId=' + that.data.pk.pkId,
     }
@@ -1010,6 +1010,34 @@ Page({
       current:current,
       urls: images,
     })
+  },
+  onPageScroll:function(e){
+    var that = this;
+    var top = e.scrollTop;
+
+    if(top<200 && top > 100)
+    { 
+        var topValue = parseInt((top-100) * (256/100)).toString(16);
+        that.setData({
+            opacity:topValue
+        })
+    }
+    if(top<100)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"00"
+        })
+    }
+    if(top>200)
+    {
+        var topValue = parseInt(top).toString(16);
+        that.setData({
+            opacity:"ff"
+        })
+    }
+
+
   }
 
 })

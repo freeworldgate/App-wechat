@@ -146,17 +146,17 @@
                                     </view>
                                 </view>
                                 <view class="css">
-                                            <view class="rcc h-10vw">
-                                                <view class="rus-wrap fs-20 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
+                                            <view class="rcc fs-20 fw-300 c-word-6">时间</view>
+                                            <view class="rcc ">
+                                                <view class="rus-wrap fs-23 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
                                             </view>
-                                            <view class="ccc h-10vw">
-                                                <view class="rcc fs-25 fw-700">{{post.ptime.date}}</view>
-                                                <view class="h-5vw"></view>
+                                            <view class="rcc fs-20 fw-300 pt-20  c-word-6">日期</view>
+                                            <view class="ccc ">
+                                                <view class="rcc fs-25 fw-300">{{post.ptime.date}}</view>
                                             </view>
-                                        
-                                            <view class="ccc h-10vw">
-                                                <view class="rcc fs-25 fw-400 c-4">{{post.ptime.year}}</view>
-                                                <view class="h-5vw"></view>
+                                            <view hidden="{{!post.ptime.year}}" class="rcc fs-20 fw-300 pt-20">年份</view>
+                                            <view hidden="{{!post.ptime.year}}" class="ccc ">
+                                                <view class="rcc fs-25 fw-300 c-4">{{post.ptime.year}}</view>
                                             </view>
                                         
                                 </view>
@@ -277,48 +277,19 @@
 </view>
 
 
-<!-- //头部 -->
-<view class="css customBarTop z3 buildHead1" >
-  <view class="rcs " style="height:{{top}}px"></view>
-  <view class="rcs pl-3vw pr-3vw" style="height:32px">
-
-      <view class="rcc h-32px " bindtap="back">
-          <image class="h-25 w-25" mode="aspectFit" src="/images/back1.png"></image>
-          <view class="fs-30 fw-400 pl-20 c-white"></view>
-      </view>
-
-  </view>
-  <view class="rcs " style="height:{{top}}px"></view>
-  <!-- <view class="rbc pt-30 pb-30" >
-            <view class="rcc">
-                <view class="rcc" style="width: 17vw">
-                            <view class="rcc">
-                                <view class="rcc ">
-                                    <image class="rcc w-10vw h-10vw br-10 " src="{{creator.imgUrl}}" mode="aspectFit"></image>
-                                </view>
-                            </view>
-                
-                </view>
-                <view style="width: 3vw"></view>
-                <view class="cas" style="width:30vw">
-                    <view class="css"> 
-                       <view class="rus line-1-start fs-35 fw-650 c-word-6 f-shadow3" >{{creator.userName}}</view>
-                    </view>
-                </view>
-                
-            </view>
-            <view class="rcc">
-                <view class="rcc">
-                    <image class="w-40 h-40" mode="aspectFit" src="/images/hiscard.png"></image>
-                 
-                </view>
-                <view style="width:10vw"></view>
-
+<view class="css scrollCustomBar z5" style="background-color:#f5f5f5{{opacity}}">
+    <view class="css  {{opacity==='ff'?'':'buildHead1-1'}} pl-4vw pr-4vw" >
+        <view class="rcs " style="height:{{top}}px"></view>
+        <view class="rcs " style="height:32px">
+            <view class="rcc h-32px w-50" bindtap="back">
+                <image class="h-30 w-30" mode="aspectFit" src="{{opacity === 'ff'?'/images/back.png':'/images/back1.png'}}"></image>
             </view>
 
-  </view> -->
+            <view hidden="{{opacity != 'ff'}}" class="rus w-400"><view class="rus fs-30 fw-700 line-1-start">{{creator.userName}}</view></view>
+        </view>
+        <view class="rcs " style="height:{{5}}px"></view>
+    </view>
 </view>
-
 
 
 

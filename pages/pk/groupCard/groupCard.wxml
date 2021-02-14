@@ -165,28 +165,29 @@
 
 
 <!-- //头部 -->
-<view class="css customCenterBar z3" >
-    <view class="rcs " style="height:{{top}}px"></view>
-    <view class="rbc" style="height:32px">
-        <view class="rcs" style="flex:1">
-            <view class="rcc h-32px" bindtap="back">
-                <view class="w-4vw"></view>
-                <image class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
-                <view class="w-4vw"></view>
+<view class="css scrollCustomBar z5" style="background-color:#000000{{opacity}}">
+    <view class="css buildHead1" >
+        <view class="rcs " style="height:{{top}}px"></view>
+        <view class="rbc" style="height:32px">
+            <view class="rcs" style="flex:1">
+                <view class="rcc h-32px" bindtap="back">
+                    <view class="w-4vw"></view>
+                    <image class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
+                    <view class="w-4vw"></view>
+                </view>
+
             </view>
-
-        </view>
-        <view class="rcc">
-            <view class="rcc fs-35 fw-700 c-white">交友</view>
-        </view>
+            <view class="rcc">
+                <view class="rcc fs-35 fw-700 c-white">交友</view>
+            </view>
+            
+            <view class="rcc" style="flex:1">
+            </view>
         
-        <view class="rcc" style="flex:1">
         </view>
-    
+        <view class="rcs " style="height:{{5}}px"></view>
     </view>
-    <view class="rcs " style="height:10px"></view>
 </view>
-
 
 
 
