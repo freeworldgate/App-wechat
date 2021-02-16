@@ -52,7 +52,7 @@ Page({
   uploadImage:function(){
     var that = this;
   
-    template.createOperateDialog(that).show("上传卡点背景图?", "图片审核通过后可称为卡点背景素材...", function () {
+    template.createOperateDialog(that).show("上传卡点背景图?", "图片审核通过后可成为卡点背景素材...", function () {
 
         wx.chooseImage({
           count: 1,

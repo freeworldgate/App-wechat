@@ -17,6 +17,9 @@
                 <view class="css z4" style="padding-left:2vw;padding-right:2vw" >
 
                     <view class="css b-white br-20 pt-20 pb-20 z4" style="padding-left:4vw;padding-right:4vw" >
+                            
+                            <view hidden="{{!findUser.reason || findUser.statu.key!=1}}" class="rus fs-25 fw-300 c-1">{{findUser.reason}}</view>
+
                             <navigator class="rbc-nowrap pt-30 pb-30 " hover-class="none" url="/pages/pk/userFind/userFind?pkId={{findUser.pkId}}"> 
                                 <view class="rcs fs-30 fw-700">状态</view>
                                 <view class="rcc">
@@ -31,11 +34,13 @@
                                     </view>
                                 </view>
                             </navigator>
+
                             <view hidden="{{!findUser.startTime||!findUser.endTime}}" class="rbc-nowrap pt-30 pb-30"> 
                                 <view class="rcs w-150 fs-30 fw-700">时间</view>
                             
                                 <view class="rcc fs-30 fw-400 c-4 ">{{findUser.startTime}}~{{findUser.endTime}}</view>
                             </view>
+                            
                             <navigator class="rbc-nowrap pt-30 pb-30" hover-class="none" url="/pages/pk/timepage/timepage?pkId={{findUser.pkId}}"> 
                                 <view class="rcs fs-30 fw-700">卡点</view>
                                 <view class="w-100"></view>
@@ -48,6 +53,7 @@
                                 </view>
                                 <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                             </navigator>
+                            
                             <navigator class="css pt-30 pb-30 " hover-class="none" url="/pages/pk/userFind/userFind?pkId={{findUser.pkId}}">
                                 <view class="rbc-nowrap "> 
                                     <view class="rcs ">
@@ -227,7 +233,24 @@
             <view class="labelLoadingDialog_text">加载失败</view>
         </view>
     </view>
-
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+        <view></view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialogError.visible!=true}}">
+        <view></view>
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+    </view>
 </view>
 
 

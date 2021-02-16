@@ -96,7 +96,7 @@
                     </view>
                     <view class="rcc">
 
-                        <view class="rcc h-50 w-120 border-locate br-10 fs-25 fw-300" bindtap="deletApply" data-index="{{bindex}}" data-applyid="{{apply.applyId}}">删除招呼</view>
+                        <view class="rcc h-50 w-120 b-red br-10 fs-25 fw-300 c-white" bindtap="deletApply" data-index="{{bindex}}" data-applyid="{{apply.applyId}}">删除招呼</view>
                         <!-- <view class="rcc h-50 w-120 b-red c-white br-10  fs-25 fw-700" >删除</view> -->
 
                     </view>

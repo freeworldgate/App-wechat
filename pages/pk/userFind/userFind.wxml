@@ -47,7 +47,7 @@
 
         <view class="css pl-5vw pr-5vw pt-30 pb-30 b-white br-20">
 
-
+            <view hidden="{{!findUser.reason || findUser.statu.key!=1}}" class="rus fs-25 fw-300 c-1">{{findUser.reason}}</view>
 
             <view class="rbc-nowrap pt-30 pb-30 "> 
                 <view class="rcs fs-30 fw-700">状态</view>
