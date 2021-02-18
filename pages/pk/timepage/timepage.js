@@ -530,7 +530,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("顶置图册", "确定将该帖设置为首页?", function () {
+    template.createOperateDialog(that).show("顶置卡册", "确定顶置该条打卡信息?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {
@@ -542,19 +542,15 @@ Page({
                   that.data.posts.unshift(post);
                   that.setData({
                     posts: that.data.posts,
-                    ['pk.topPostId']:post.postId  
+                    ['pk.topPostId']:post.postId,
+                    ['pk.topPostTimeLength']:value,
+                    topTime:"1秒钟"
                   })
               })
               httpClient.send(request.url.setTopPostTime, "GET", { postId: post.postId,pkId:pkId,value:value });
           
 
           });
-
-
-
-
-
-
 
 
       })

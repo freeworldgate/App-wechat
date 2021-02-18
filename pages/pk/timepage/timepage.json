@@ -1,5 +1,6 @@
 {
 
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "卡点主页"
   
 }

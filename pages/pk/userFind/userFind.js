@@ -69,8 +69,7 @@ Page({
     var that = this;
     if(that.data.findUser&&that.data.findUser.statu)
     {
-      template.createOperateDialog(that).show("提示", "当前状态不支持修改",function(){
-      },function(){});
+      template.createDialog(that).show("提示", "当前状态不支持修改");
       return;
     }
     wx.chooseImage({
@@ -111,8 +110,7 @@ Page({
     var that = this;
     if(that.data.findUser&&that.data.findUser.statu)
     {
-      template.createOperateDialog(that).show("提示", "当前状态不支持修改",function(){
-      },function(){});
+      template.createDialog(that).show("提示", "当前状态不支持修改");
       return;
     }
     that.setData({

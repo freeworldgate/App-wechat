@@ -552,6 +552,9 @@
 .max-h-600{
   max-height: 600rpx;
 }
+.h-5vh{
+  height: 5vh;
+}
 .h-1vw{
   height: 1vw;
 }

@@ -202,7 +202,19 @@ Page({
       
     })
   },
+  setPkRange:function(res)
+  {
+    var that  = this;
+    var pk = res.currentTarget.dataset.pk;
+    var index = res.currentTarget.dataset.index;
+    var pk = res.currentTarget.dataset.pk;
+    wx.setStorageSync('editRange', pk)
+    wx.navigateTo({
+      url: '/pages/pk/setPkRange/setPkRange',
+    })
 
+
+  },
 
   // 获取定位当前位置的经纬度
   getLocation: function (pkId,index) {

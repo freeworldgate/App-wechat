@@ -159,7 +159,7 @@ Page({
     
     login.getUser(function(user){
       if(user.userId === creator){
-        template.createShortTextDialog(that).show('修改名字', 50,name, function(newname){
+        template.createShortTextDialog(that).show('修改名字', 12,name, function(newname){
             if(newname === name ){return;}
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);

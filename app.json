@@ -11,8 +11,7 @@
     "pages/webservice/policy-list/policy-list",
 
     "pages/pk/userCardApply/userCardApply",
-    "pages/pk/payForPk/payForPk",
-    "pages/pk/payForTime/payForTime",
+
     "pages/pk/pay/pay",
     "pages/pk/userFind/userFind",
     "pages/pk/editText/editText",
@@ -42,7 +41,8 @@
     "pages/pk/timepage/timepage",
     "pages/pk/hiddentimepage/hiddentimepage",
     "pages/user/login/login",
-    "pages/pk/message/message"
+    "pages/pk/message/message",
+    "pages/pk/setPkRange/setPkRange"
 
 
 

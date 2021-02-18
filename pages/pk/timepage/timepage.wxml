@@ -33,7 +33,7 @@
                 <!-- bottomBack -->
                 <view class="css">
                     <view class="rbc p-3vw">
-                        <view class="rus line-3-start fs-25 fw-300 c-white f-shadow4" style="flex:1" bindtap="showText" data-text="{{pk.sign}}">{{pk.sign}}</view>
+                        <view class="rus line-3-start fs-25 fw-300 c-white f-shadow4" style="flex:2" bindtap="showText" data-text="{{pk.sign}}">{{pk.sign}}</view>
                         <view style="flex:1"></view>
                     </view>
                     
@@ -112,8 +112,8 @@
                                                     <image class="w-30 h-30" mode="aspectFit" src="/images/daka1.png"></image>
                                                     <view class="w-10"></view>
                                              
-                                                    <view class="rcc fs-28 c-4">{{pk.pkDynamic.totalUsers}}</view>
-                                                    <view class="rcc fs-25 c-4">人在此打卡</view>
+                                                    <view class="rcc fs-28 c-4">{{pk.totalUsers}}</view>
+                                                    <view class="rcc fs-25 c-4">人到此打卡</view>
                                                 </view>
                                         
                                         </view>
@@ -179,7 +179,6 @@
                                    
                                             <view class="css">
 
-
                                                 <view  wx:if="{{!post.postImages||post.postImages.length===0}}" >
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===1}}" class="rus">
@@ -195,15 +194,15 @@
                                                 </view>
                                                 <view  wx:elif="{{post.postImages.length===4}}" class="css">
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 33vw;height:33vw" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10"  style="width: 37.8vw;height:37.8vw" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 33vw;height:33vw" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10" style="width: 37.8vw;height:37.8vw" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                     <view style="height: 0.6vw"></view>
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 33vw;height:33vw" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10"  style="width: 37.8vw;height:37.8vw" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 33vw;height:33vw" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc br-10" style="width: 37.8vw;height:37.8vw" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                 </view>
                                                 <view wx:else class="css">
@@ -238,7 +237,7 @@
                                                     </view>
                                                     
                                                 </view>
-                                                <view wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-500 pt-10" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</view>
+                                                <view wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-300 pt-10" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</view>
                                                 <view class="h-10"></view>
 
                                             </view>
@@ -247,16 +246,32 @@
                                             
                                                         <view class="rbc-nowrap ">
                                                             <view class="rcc pt-20 pb-20">
-                                                                <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFill"></image>
-                                                                <view class="w-10"></view>
-                                                                <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次在此打卡</view>
+                                                                
+                                                                <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc">
+                                                                    <image class="rcc w-25 h-25" src="/images/time.png" mode="aspectFit"></image>
+                                                                    <view class="w-10"></view>
+                                                                    <view class="fs-23 fw-300 c-1">已顶置{{topTime}}</view>
+                                                                </view>
+                                                                <view wx:else class="rcc">
+                                                                    <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFit"></image>
+                                                                    <view class="w-10"></view>
+                                                                    <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次在此打卡</view>
+                                                                </view>
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
                                                                 <view class="w-10"></view>
                                                                 <view hidden="{{post.creator.userId != user.userId  ||  (bindex === 0 && post.postId === pk.topPostId)  }}" class="fs-20 fw-300 pl-10 pr-10 br-5 b-48 c-4" bindtap="removePost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除</view>
                                                             </view>
                                                         
                                                             <view class="rcc">
                                                                 <view  class="rcc" >
-                                                                        <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc fs-20 c-1 b-48 fw-400 pl-20 pr-20 pt-10 pb-10 br-10" style="pointer-events: none">已顶置</view>
+                                                                        <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc fs-20 c-4 b-48 fw-400 pl-20 pr-20 pt-10 pb-10 br-10" style="pointer-events: none">周期{{pk.topPostTimeLength}}分钟</view>
                                                                         <view wx:else class="rcc">
                                                                             <view class="rcc fs-20 fw-300 line-1-start pl-10 pr-10 pt-5 pb-5 br-5 b-48 c-4">{{post.time}}</view>
                                                                         </view>
@@ -304,28 +319,20 @@
 </view>
 
 <view class="rbc bottomBar1 z4">
-    
 
-
-    
         <view class="rss ">
-                                 
-
-        
-        
-        
         </view>
         <view class="rcc">
 
             <view class=" rcc">
                                     <view wx:if="{{length<pk.type.rangeLength && leftTime < 1}}" bindtap="signLocation" bindlongtap="signLocation1" class=" w-100 h-100 br-100 rcc box100 b-publish" >
-                                        <view class="rcc ">
+                                        <view class="rcc">
                                             <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/pan.png"></image>
                                         </view>
 
                                     </view>
                                     <view wx:else bindtap="signLocation" class=" w-100 h-100 br-100 rcc box100 b-publish-disable" >
-                                        <view class="rcc ">
+                                        <view class="rcc">
                                             <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/pan.png"></image>
                                         </view>
 
@@ -334,7 +341,7 @@
             <view class="w-70"></view>
             <view class=" rcc">
                                     <button  open-type="share" class=" h-100 br-100 rcc box100 b-share message" style="width:100rpx">
-                                        <view class="rcc ">
+                                        <view class="rcc">
                                             <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/invite.png"></image>
                                         </view>
 
@@ -352,7 +359,7 @@
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rcs " style="height:32px">
             <view class="rcc h-32px w-50" bindtap="{{type === 'share'?'relaunch':'back'}}">
-                <image wx:if="{{type === 'share'}}" class="h-50 w-50" mode="aspectFit" src="/images/home1.png"></image>
+                <image wx:if="{{type === 'share'}}" class="h-50 w-50" mode="aspectFit" src="{{opacity === 'ff'?'/images/home.png':'/images/home1.png'}}"></image>
                 <image wx:else class="h-30 w-30" mode="aspectFit" src="{{opacity === 'ff'?'/images/back.png':'/images/back1.png'}}"></image>
             </view>
             <view hidden="{{opacity != 'ff' || type === 'share' }}" class="rus w-400"><view class="rus fs-30 fw-700 line-1-start">{{pk.name}}</view></view>
@@ -467,20 +474,36 @@
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
         <view class="css">
-            <view class="h-80"></view>
-            <view class="css b-white br-10"   >
+            <view class="h-100"></view>
+            <view class="rcc" style="max-width:90vw">
+       
+                <view class="css b-white br-10 p-50" >
+                    <view class="css">
+                        <view class="rus fs-30 fw-300 line-3-center">{{dialog.text}}</view> 
+                    </view>
+                    <view class="h-60"></view>
+                    <view class="rbc">
+                            <view></view>
+                            <view></view>
+                            <view></view>
+                            <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
+                    </view>        
+                </view>
+            </view>
+
+            <!-- <view class="css b-white br-10"   >
     
                 <view class="css p-5vw ">
-                    <view class="css pt-70 pb-70">
-                        <view class="rus fs-35 fw-300 line-3-start">{{dialog.text}}</view> 
+                    <view class="css pt-80 pb-70">
+                        <view class="rus fs-35 fw-300 line-3-center">{{dialog.text}}</view> 
                     </view>
-                    <view class="h-3vw"></view>
+           
                     <view class="rbc pl-3vw pr-3vw">
                         <view></view>
                         <view class="rcc">
                             <view class="rcc fs-32 fw-300 c-green"  bindtap="dialog_confirm" >知道了</view>
                         </view>
-                        
+                        <view></view>
                     </view>
         
                 </view>
@@ -489,66 +512,53 @@
             </view>
             <view class="rbc h-200 absolute" style="width:90vw">
                     <view></view>
-                    <view></view>
-                    <view></view>
-                    <view></view>
-                    <view></view>
+             
                     <view class="rcc">
                         <image class="w-120 h-120" mode="aspectFit" src="/images/message.png"></image>
                     </view>
                     <view></view>
-            </view>
+            </view> -->
          
-        </view>
-    </view>
-    <view class="rcc tipDialog" hidden="{{tipDialog.visible!=true}}">
-        <view class="ccc levelDialog_view">
-            <view class="rcc">
-                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
-                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
-                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
-            </view>
-            <view style="height:30rpx"></view>
-            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
         <view class="css">
-            <view class="h-80"></view>
-            <view class="css b-white br-10"   >
-    
-                <view class="css p-5vw ">
-                    <view class="css pt-70 pb-70">
-                        <view class="rus fs-35 fw-300 line-3-start">{{operateDialog.text}}</view> 
+            <view class="h-100"></view>
+            <view class="rcc" style="max-width:90vw">
+       
+                <view class="css b-white br-10 p-50" >
+                    <view class="css">
+                        <view class="rus fs-30 fw-300 line-3-center">{{operateDialog.text}}</view> 
                     </view>
-                    <view class="h-3vw"></view>
-                    <view class="rbc pl-3vw pr-3vw">
-                        <view></view>
-                        <view class="rcc">
-                            <view class="rcc fs-32 fw-300 c-3"  bindtap="operateDialog_cancel">取消</view> 
-                            <view class="w-70"></view>
+                    <view class="h-60"></view>
+                    <view class="rbc">
+                            <view></view>
+                     
+                            <view></view>
+                            <view class="rcc fs-32 fw-300 c-4"  bindtap="operateDialog_cancel">取消</view> 
                             <view class="rcc fs-32 fw-300 c-green"  bindtap="operateDialog_confirm" >确定</view>
-                        </view>
-                        
-                    </view>
-                    <!-- <view class="rcc p-30 fs-25 fw-400 c-3"  bindtap="operateDialog_cancel">知道了</view> -->
-        
+                    </view>        
                 </view>
-
-
             </view>
-            <view class="rbc h-200 absolute" style="width:90vw">
-                <view></view>
-                <view></view>
-                <view></view>
-                <view></view>
+            <!-- <view class="css b-white br-10"   >
+                <view class="css p-5vw ">
+                    <view class="css pt-80 pb-70">
+                        <view class="rus fs-35 fw-400 line-3-center">{{operateDialog.text}}</view> 
+                    </view>
+                    <view class="rac pl-3vw pr-3vw">
+                            <view class="rcc fs-32 fw-700 c-3"  bindtap="operateDialog_cancel">取消</view> 
+                            <view class="rcc fs-32 fw-700 c-green"  bindtap="operateDialog_confirm" >确定</view>
+                    </view>        
+                </view>
+            </view> -->
+            <!-- <view class="rbc h-200 absolute" style="width:90vw">
                 <view></view>
                 <view class="rcc">
                     <image class="w-120 h-120" mode="aspectFit" src="/images/message.png"></image>
                 </view>
                 <view></view>
-            </view>
+            </view> -->
         </view>
 
 

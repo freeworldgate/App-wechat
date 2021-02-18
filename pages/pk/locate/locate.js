@@ -256,7 +256,7 @@ Page({
           const referer = REFERER;
           const location = JSON.stringify(res);
           let url = 'plugin://chooseLocation/index?key=' + key + '&referer=' + referer;
-          url += '&location=' + location;
+          // url += '&location=' + location;
           wx.navigateTo({
             url
           });
@@ -374,7 +374,6 @@ Page({
     var current =  res.detail.current;
     var pk = that.data.pks[current];
     
-    console.log("当前PK位置:",location);
     that.setData({
       latitude : pk.latitude - 0.000,
       longitude : pk.longitude,
