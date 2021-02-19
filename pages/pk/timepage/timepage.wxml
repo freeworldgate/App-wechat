@@ -140,6 +140,7 @@
         <view class="css z3">
             <view class="h-50"></view>
             <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
+                <view class="h-50"></view>
                 <view class="css">
                     <view class="rss" >
                         <view class="css " style="width: 16vw">
@@ -293,9 +294,12 @@
                         </view>
                     </view>
          
-                </view>
-                <view class="h-30 b-line"></view>
+                </view> 
                 <view class="h-30"></view>
+   
+                <view hidden="{{bindex === (posts.length-1)}}" class="h-10 b-48"></view>
+       
+
 
             </view>
             <view class="css h-300">

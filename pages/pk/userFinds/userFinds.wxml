@@ -142,7 +142,7 @@
     <view class="rcc h-32px ">
         <image class="h-40 w-40"  mode="aspectFit" src="/images/yu.png"></image>
         <view class="w-20"></view>
-        <view class="fs-30 fw-400 c-white">打捞记录</view>
+        <view class="fs-30 fw-400 c-white">{{findUsers.length>0?"打捞记录":"没有打捞记录"}}</view>
     </view>
 
     </view>
