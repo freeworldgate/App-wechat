@@ -1254,7 +1254,7 @@ mw-200{
 
 }
 .b-49{
-  background-color: rgba(245, 245, 245);
+  background-color: #f5f5f5;
 }
 .b-52{
   background-color: rgb(245, 245, 245);

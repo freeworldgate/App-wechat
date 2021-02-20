@@ -1,4 +1,4 @@
-<view class="css b-white" style="min-height:100vh">
+<view class="css {{findUsers.length > 0?'b-49':'b-white'}}" style="min-height:100vh">
 
 
 
@@ -119,7 +119,7 @@
                 <view class="h-300"></view>
             </view>
             <view wx:else class="ccc" style="height:100vh ">
-                <image class="rcc w-400 h-400" src="{{emptyData}}" mode="aspectFit"></image>
+                <image class="rcc w-400 h-400" src="/images/emptydata.png" mode="aspectFit"></image>
                 <view class="rcc fs-30 fw-300 c-3">此处暂无打捞信息</view>
             </view>
 
@@ -136,22 +136,22 @@
 
 </view>
 
-<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
+<view hidden="{{!findUsers || (findUsers.length === 0)}}" class="pageback z2"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
 <!-- //头部 -->
-<view class="css scrollCustomBar z5" style="background-color:#000000{{opacity}}">
-    <view class="css buildHead1" >
+<view class="css scrollCustomBar z5" style="background-color:#f5f5f5{{opacity}}">
+    <view class="css " >
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rbc" style="height:32px">
             <view class="rcs" style="flex:1">
                 <view class="rcc h-32px" bindtap="back">
                     <view class="w-4vw"></view>
-                    <image class="h-30 w-30" mode="aspectFit" src="/images/back1.png"></image>
+                    <image class="h-30 w-30" mode="aspectFit" src="/images/back.png"></image>
                     <view class="w-4vw"></view>
                 </view>
 
             </view>
             <view class="rcc">
-                <view class="rcc fs-35 fw-700 c-white">捞一捞</view>
+                <view class="rcc fs-35 fw-700">捞一捞</view>
             </view>
             
             <view class="rcc" style="flex:1">
@@ -191,11 +191,11 @@
 
 </view>
 
-<view class="ccc uploadButton z4">
-    <view class="rcc  p-10">
-        <view class="rcc fs-25 fw-300 c-white">遇见不撩</view>
+<view class="ccc uploadButton z4 ">
+    <view class="rcc  p-10 pt-10">
+        <view class="rcc fs-25 fw-300">遇见不撩</view>
         <image class="w-35 h-35 pl-10 pr-10" mode="aspectFit" src="/images/shank.png"></image>
-        <view class="rcc fs-25 fw-300 c-white">卡点互捞</view>
+        <view class="rcc fs-25 fw-300">卡点互捞</view>
     </view>
 
 

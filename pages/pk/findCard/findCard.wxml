@@ -42,7 +42,7 @@
 
                 <view class="css pl-3vw pr-3vw" >
                     <view class="css pt-30 pb-30">
-                            <view class="rus fs-32 fw-400 line-5-center" bindtap="showText" data-text="{{findUser.text}}">{{findUser.text}}</view>
+                            <view class="rus fs-32 fw-400 line-3-center" bindtap="showText" data-text="{{findUser.text}}">{{findUser.text}}</view>
                     </view>
                     <view wx:if="{{findUser.img1&&findUser.img2&&findUser.img3}}" class="css">
                         <swiper style="height:65vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">

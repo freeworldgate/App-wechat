@@ -159,18 +159,14 @@
 
                                 </view>
                                 <view class="h-10"></view>
-                                <view class="rcc pl-2vw pr-2vw"><view class="line-1-center fs-25 fw-610 c-username">{{post.creator.userName}}</view></view>
+                                <view class="rcc pl-2vw pr-2vw"><view class="line-1-center fs-23 fw-610 c-username">{{post.creator.userName}}</view></view>
                             </view>   
 
                                 
                             <view class="ccc pb-20">
                          
-                                <view hidden="{{pk.user.userId != user.userId || (post.postImages.length===0 || pk.topPostId === post.postId)}}" bindtap="hiddenPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
-                                    <image class="rcc w-40 h-40" src="/images/hidden.png" mode="aspectFit"></image>
-                                </view>
-                                <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="h-50"></view>
                                 <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="pl-10 pr-10" bindtap="topPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
-                                    <image class="rcc w-40 h-40" src="/images/top.png" mode="aspectFit"></image>
+                                    <image class="rcc w-45 h-45" src="/images/top.png" mode="aspectFit"></image>
                                 </view>
                            
                             </view>
@@ -275,6 +271,14 @@
                                                             </view>
                                                         
                                                             <view class="rcc">
+
+                                                                <view hidden="{{pk.user.userId != user.userId || (post.postImages.length===0 || pk.topPostId === post.postId)}}" bindtap="hiddenPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
+                                                                    <image class="rcc w-45 h-45" src="/images/hidden.png" mode="aspectFit"></image>
+                                                                </view>
+                                                                <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="w-50"></view>
+
+
+
                                                                 <view  class="rcc" >
                                                                         <view wx:if="{{(bindex === 0 && post.postId === pk.topPostId)}}" class="rcc fs-20 c-4 b-48 fw-400 pl-20 pr-20 pt-10 pb-10 br-10" style="pointer-events: none">周期{{pk.topPostTimeLength}}分钟</view>
                                                                         <view wx:else class="rcc">
