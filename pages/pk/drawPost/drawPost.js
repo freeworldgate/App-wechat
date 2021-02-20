@@ -145,7 +145,7 @@ Page({
           var size = imgW>imgH?imgH:imgW;
           var imgData = {x:x,y:y,size:size,url:res.path,lx:2,ly:2,lwidth:94,lheight:94};
           that.data.backUrl = imgData;
-          console.log("userImg:",res.path);
+          console.log("backImg:",res.path);
           if(that.data.backUrl && that.data.wxcode && that.data.userImg){
             that.refresh(); 
           }

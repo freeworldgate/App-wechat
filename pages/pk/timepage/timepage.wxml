@@ -159,15 +159,19 @@
 
                                 </view>
                                 <view class="h-10"></view>
-                                <view class="rcc pl-2vw pr-2vw"><view class="line-2-center fs-25 fw-610 c-username">{{post.creator.userName}}</view></view>
+                                <view class="rcc pl-2vw pr-2vw"><view class="line-1-center fs-25 fw-300 c-username">{{post.creator.userName}}</view></view>
                             </view>   
 
                                 
                             <view class="ccc">
                                 <view class="h-50"></view>
-                                <view hidden="{{pk.user.userId != user.userId || (post.postImages.length===0 || pk.topPostId === post.postId)}}" bindtap="hiddenPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}" class="fs-23 fw-300 pl-10 pr-10 br-5 b-48 c-4">隐藏</view>
+                                <view hidden="{{pk.user.userId != user.userId || (post.postImages.length===0 || pk.topPostId === post.postId)}}" bindtap="hiddenPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
+                                    <image class="rcc w-40 h-40" src="/images/hidden.png" mode="aspectFit"></image>
+                                </view>
                                 <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="h-50"></view>
-                                <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="fs-23 fw-300 pl-10 pr-10 br-5 b-48 c-4" bindtap="topPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">顶置</view>
+                                <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0 || pk.topPostId === post.postId}}" class="pl-10 pr-10" bindtap="topPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
+                                    <image class="rcc w-40 h-40" src="/images/top.png" mode="aspectFit"></image>
+                                </view>
                            
                             </view>
 
@@ -183,7 +187,7 @@
                                                 <view  wx:if="{{!post.postImages||post.postImages.length===0}}" >
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===1}}" class="rus">
-                                                    <image class="rcc br-20"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                    <image class="rcc br-10"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===2}}" class="css">
                                                     <view class="rcs">
@@ -242,8 +246,8 @@
                                                 <view class="h-10"></view>
 
                                             </view>
-                                            <view class="rss">
-                                                    <view class="css" style="flex:1">
+                                            
+                                            <view class="css" style="flex:1">
                                             
                                                         <view class="rbc-nowrap ">
                                                             <view class="rcc pt-20 pb-20">
@@ -280,10 +284,10 @@
                                                             </view>
                                                         </view>
                                                     
-                                                    </view>
+                                            </view>
                                                     
                             
-                                            </view>
+                                          
                                         </view>
                                     </view>
                                
