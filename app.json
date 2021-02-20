@@ -4,11 +4,6 @@
     "pages/pk/locate/locate",
    
     "pages/plugin/location-picker/location-picker",
-		"pages/webservice/search-form/search-form",
-    "pages/webservice/search-result/search-result",
-    "pages/webservice/reverseGeocoder-form/reverseGeocoder-form",
-    "pages/webservice/reverseGeocoder-result/reverseGeocoder-result",
-    "pages/webservice/policy-list/policy-list",
 
     "pages/pk/userCardApply/userCardApply",
 

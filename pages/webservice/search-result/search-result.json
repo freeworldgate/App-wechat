@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "tab": "../../../components/tab/tab"
-  },
-  "navigationBarTitleText": "地点搜索"
-}

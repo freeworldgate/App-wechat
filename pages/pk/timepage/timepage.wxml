@@ -143,7 +143,7 @@
                 <view class="h-50"></view>
                 <view class="css">
                     <view class="rss" >
-                        <view class="css " style="width: 16vw">
+                        <view class="cbs " style="width: 16vw">
                             <view class="css" bindtap="userPage" data-user="{{post.creator.userId}}">
 
 
@@ -159,12 +159,12 @@
 
                                 </view>
                                 <view class="h-10"></view>
-                                <view class="rcc pl-2vw pr-2vw"><view class="line-1-center fs-25 fw-300 c-username">{{post.creator.userName}}</view></view>
+                                <view class="rcc pl-2vw pr-2vw"><view class="line-1-center fs-25 fw-610 c-username">{{post.creator.userName}}</view></view>
                             </view>   
 
                                 
-                            <view class="ccc">
-                                <view class="h-50"></view>
+                            <view class="ccc pb-20">
+                         
                                 <view hidden="{{pk.user.userId != user.userId || (post.postImages.length===0 || pk.topPostId === post.postId)}}" bindtap="hiddenPost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">
                                     <image class="rcc w-40 h-40" src="/images/hidden.png" mode="aspectFit"></image>
                                 </view>
@@ -187,7 +187,7 @@
                                                 <view  wx:if="{{!post.postImages||post.postImages.length===0}}" >
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===1}}" class="rus">
-                                                    <image class="rcc br-10"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                    <image class="rcc br-20"  style="width: 76.2vw;height:60vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                 </view> 
                                                 <view  wx:elif="{{post.postImages.length===2}}" class="css">
                                                     <view class="rcs">

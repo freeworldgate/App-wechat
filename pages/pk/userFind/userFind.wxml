@@ -156,7 +156,7 @@
 
         </view>
         <view class="css p-3vw">
-            <view class="rcs fs-30 fw-700 c-white">温馨提示:</view>
+            <view hidden="{{!tips || tips.length===0}}" class="rcs fs-30 fw-700 c-white">温馨提示:</view>
 
             <block wx:for="{{tips}}" wx:for-index="bindex" wx:for-item="tip" >
                 <view class="rss">

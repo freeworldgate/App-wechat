@@ -1303,6 +1303,9 @@ mw-200{
   color:rgb(131, 117, 103);
 
 }
+.border-nopay{
+  border: 0.5px solid rgb(240, 240, 240); 
+}
 .border-pay{
   border: 0.5px solid rgb(0, 177, 221); 
 }

@@ -56,15 +56,15 @@
 
         </view>
         <view class="h-50"></view>
-        <view class="rus">
+        <view class="rus-wrap">
             <block wx:for="{{pay.payItems}}" wx:for-index="bindex" wx:for-item="payItem" >
                 <view class="rcc pb-20" style="width:30vw" bindtap="change" data-select="{{payItem}}">
-                    <view class="css {{selectPay.payId===payItem.payId?'border-pay':''}} b-48 br-20" style="width:29vw;background-position: bottom;background-image: url({{selectPay.payId===payItem.payId?payItem.selectImg:payItem.img}});background-repeat: no-repeat;background-size: 100% auto;  ">
+                    <view class="css {{selectPay.payId===payItem.payId?'border-pay':'border-nopay'}} b-48 br-20" style="width:29vw;background-position: bottom;background-image: url({{selectPay.payId===payItem.payId?payItem.selectImg:payItem.img}});background-repeat: no-repeat;background-size: 100% auto;  ">
                         <view class="css pl-20 pt-20">
                             <view class="rcs ">
                               <view class="rdc">
                                   <view class="fs-28 fw-300 {{selectPay.payId===payItem.payId?'c-red':'c-3'}}">￥</view>
-                                  <view class="fs-35 fw-700 {{selectPay.payId===payItem.payId?'c-red':'c-3'}}">{{payItem.pay}}</view>
+                                  <view class="fs-35 fw-700 {{selectPay.payId===payItem.payId?'c-red':'c-3'}}">{{payItem.pay}}.00</view>
                               </view>
                             </view>
                         </view>
@@ -83,7 +83,7 @@
         </view>
         <view class="h-50"></view>
         <view class="css">
-                <view class="rcs fs-30 fw-700">温馨提示:</view>
+                <view hidden="{{!pay.tips || pay.tips.length===0}}" class="rcs fs-30 fw-700">温馨提示:</view>
 
                 <block wx:for="{{pay.tips}}" wx:for-index="bindex" wx:for-item="tip" >
                     <view class="rss">
