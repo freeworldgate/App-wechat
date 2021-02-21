@@ -111,7 +111,7 @@
 <view  hidden="{{!pageTag}}" class="bottomPk css z3 bottomBack1">
      
         <view class="css z3">
-            <swiper wx:if="{{!(!pks || (pks.length < 1))}}"  style="height:90vw" indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}" interval="2000" vertical="{{vertical}}" current="{{current}}" bindchange="changePk" >
+            <swiper wx:if="{{!(!pks || (pks.length < 1))}}"  style="height:90vw" indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}" interval="3000" vertical="{{vertical}}" current="{{current}}" bindchange="changePk" >
                 <block wx:for="{{pks}}" wx:for-index="bindex" wx:for-item="pk" wx:key="postkey">
                     <swiper-item  >
  

@@ -8,7 +8,7 @@
                 <view style="height:{{top+42}}px"></view>
                 <block wx:for="{{findUsers}}" wx:for-index="bindex" wx:for-item="findUser" wx:key="findKey">
                     <view class="h-30"></view>
-                    <view class="css pl-5vw pr-5vw ">
+                    <view class="css pl-5vw pr-5vw">
 
                         <view class="css b-white br-20 z4">
 
@@ -116,7 +116,7 @@
                     </view>
                                 
                 </block>
-                <view class="h-300"></view>
+                <view class="h-500"></view>
             </view>
             <view wx:else class="ccc" style="height:100vh ">
                 <image class="rcc w-400 h-400" src="/images/emptydata.png" mode="aspectFit"></image>

@@ -210,7 +210,7 @@ Page({
     var pk = res.currentTarget.dataset.pk;
     wx.setStorageSync('editRange', pk)
     wx.navigateTo({
-      url: '/pages/pk/setPkRange/setPkRange',
+      url: '/pages/pk/setPkRange/setPkRange?rangeTime='+that.data.rangeTime,
     })
 
 

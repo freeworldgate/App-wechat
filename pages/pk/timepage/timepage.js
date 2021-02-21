@@ -710,7 +710,7 @@ Page({
                   var files = res.tempFilePaths;
                   wx.setStorageSync('publish-pk', that.data.pk)
                   wx.navigateTo({
-                    url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + that.data.pkId+"&postTimes="+that.data.postTimes,
+                    url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
                   })
               },
             })
@@ -989,6 +989,13 @@ Page({
     var text = res.currentTarget.dataset.text;
     wx.navigateTo({
       url: '/pages/pk/showText/showText?text='+text,
+    })
+  },
+  showSingleImg:function(res){
+    var that  = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
     })
   },
   showImg:function(res){

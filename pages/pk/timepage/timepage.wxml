@@ -1,6 +1,6 @@
 
 <view class="css z3 b-white"  style="min-height:100vh">
-        <view  class="css" style="height:84vw">
+        <view  class="css" style="height:84vw" >
             <view  class="rcc b-49" style="height: 80vw">
                 <image class="" style="width: 100vw; height: 80vw" src="{{pk.backUrl}}" mode="aspectFill"></image>
             </view>
@@ -31,7 +31,7 @@
                             </view>
                 </view>
                 <!-- bottomBack -->
-                <view class="css">
+                <view class="css" >
                     <view class="rbc p-3vw">
                         <view class="rus line-3-start fs-25 fw-300 c-white f-shadow4" style="flex:2" bindtap="showText" data-text="{{pk.sign}}">{{pk.sign}}</view>
                         <view style="flex:1"></view>
@@ -256,7 +256,7 @@
                                                                 <view wx:else class="rcc">
                                                                     <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFit"></image>
                                                                     <view class="w-10"></view>
-                                                                    <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次在此打卡</view>
+                                                                    <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次到此打卡</view>
                                                                 </view>
                                                                 
                                                                 
@@ -371,7 +371,7 @@
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rcs " style="height:32px">
             <view class="rcc h-32px w-50" bindtap="{{type === 'share'?'relaunch':'back'}}">
-                <image wx:if="{{type === 'share'}}" class="h-50 w-50" mode="aspectFit" src="{{opacity === 'ff'?'/images/home.png':'/images/home1.png'}}"></image>
+                <image wx:if="{{type === 'share'}}" class="h-40 w-40" mode="aspectFit" src="{{opacity === 'ff'?'/images/home.png':'/images/home1.png'}}"></image>
                 <image wx:else class="h-30 w-30" mode="aspectFit" src="{{opacity === 'ff'?'/images/back.png':'/images/back1.png'}}"></image>
             </view>
             <view hidden="{{opacity != 'ff' || type === 'share' }}" class="rus w-400"><view class="rus fs-30 fw-700 line-1-start">{{pk.name}}</view></view>
@@ -392,7 +392,7 @@
                 <view class="rbc pt-70 pb-70">
                     <view class="ccc" style="flex:1">
                         <view class="rcc">
-                            <view class="fs-40 fw-700">{{postTimes}}</view>
+                            <view class="fs-40 fw-700">{{totalPostTimes}}</view>
                             <!-- <view class="fs-25 fw-300">次</view> -->
                         </view>
                         <view class="h-20"></view>
@@ -404,7 +404,7 @@
                     
                         </view>
                         <view class="h-20"></view>
-                        <view class="rcs fs-30 fw-300 c-4">打卡时间</view>
+                        <view class="rcs fs-30 fw-300 c-4">下次打卡时间</view>
                     </view>
                     <view class="rus fs-35 h-50 fw-700"></view>
                 </view>

@@ -118,7 +118,7 @@
 
     </view>
     <view hidden="{{!nomore}}" class="rcc p-50">
-            <view class="fs-30 fw-400 c-white ">没有更多</view>
+            <view class="fs-30 fw-400 c-4 ">没有更多</view>
     </view>
 
 </view>

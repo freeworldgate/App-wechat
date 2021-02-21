@@ -146,7 +146,7 @@
                                     </view>
                                 </view>
                                 <view class="css">
-                                            <view class="rcc fs-20 fw-300 c-word-6">时间</view>
+                                            <!-- <view class="rcc fs-20 fw-300 c-word-6">时间</view> -->
                                             <view class="rcc ">
                                                 <view class="rus-wrap fs-20 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
                                             </view>
@@ -250,7 +250,7 @@
                                         </view>
                                         <!-- 随着天数增加，会变得越来越长 -->
                                         <view class="rcc" >
-                                            <view hidden="{{creator.userId != user.userId}}" class="fs-25 fw-300 pb-20 pt-20 z3"  bindtap="deletePost" data-post="{{post}}" data-pkid="{{post.pkId}}" data-index="{{bindex}}" >删除</view>
+                                            <view hidden="{{creator.userId != user.userId}}" class="fs-21 fw-300 pb-20 pt-20 z3"  bindtap="deletePost" data-post="{{post}}" data-pkid="{{post.pkId}}" data-index="{{bindex}}" >删除</view>
                                             <!-- 预留评论和点赞 -->
                                         </view>
                                     </view>

@@ -68,6 +68,8 @@
                                         <view class="rcc fs-30 fw-700 b-red c-white br-10 pl-50 pr-50 pb-10 pt-10" bindtap="decr">-</view>
                                         <view class="rcc fs-30 fw-700 b-red c-white br-10 pl-50 pr-50 pb-10 pt-10" bindtap="incr">+</view>
                                     </view>
+                                    <view class="h-30"></view>
+                                    <view class="rcc fs-23 fw-300 c-4">{{rangeTime}}小时内仅能设置一次</view>
                                 </view>                      
     </view> 
 

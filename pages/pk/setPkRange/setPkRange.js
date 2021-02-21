@@ -49,6 +49,9 @@ Page({
     })
     var pk = wx.getStorageSync('editRange');
     wx.removeStorageSync('editRange')
+    that.setData({
+      rangeTime:options.rangeTime
+    })
   
     that.setData({
       pk:pk,
@@ -80,12 +83,16 @@ Page({
     var radius = res.currentTarget.dataset.radius;
     var pkId = res.currentTarget.dataset.pkid;
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
-      tip.showContentTip("设置成功");
-    });
-    httpClient.send(request.url.setUserPkRange, "GET", {pkId:pkId,radius:radius});
+    template.createOperateDialog(that).show("", "设置打卡范围!", function () {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function () {
+          tip.showContentTip("设置成功");
+        });
+        httpClient.send(request.url.setUserPkRange, "GET", {pkId:pkId,radius:radius});
+    }, function () {});
+
+
 
 
 

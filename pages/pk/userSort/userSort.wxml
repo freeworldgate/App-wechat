@@ -31,7 +31,7 @@
             
                         <view class="css" style="width: 15vw">
                             <view class="css">
-                                            <view class="rcc fs-20 fw-300  c-word-6">时间</view>
+                                            <!-- <view class="rcc fs-20 fw-300  c-word-6">时间</view> -->
                                             <view class="rcc">
                                                 <view class="rus-wrap fs-23 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
                                             </view>
