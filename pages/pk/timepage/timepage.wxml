@@ -408,7 +408,7 @@
                     </view>
                     <view class="rus fs-35 h-50 fw-700"></view>
                 </view>
-                <view class="rus fs-25 fw-300 c-4">计时结束后可在此打卡...</view>
+                <view class="rus fs-25 fw-300 c-4">计时结束后可再次在此打卡...</view>
                 <view class="h-3vw"></view>
                 <view class="rbc pl-3vw pr-3vw">
                     <view></view>
