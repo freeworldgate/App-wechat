@@ -43,6 +43,9 @@ Page({
     })
     var pkId = options.pkId;   
     that.data.pkId = pkId;
+    var pk = wx.getStorageSync('imgPk');
+    wx.removeStorageSync('imgPk');
+    that.setData({pk:pk});
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
     httpClient.send(request.url.queryPkImages, "GET", { pkId:pkId});
@@ -51,49 +54,67 @@ Page({
 
   uploadImage:function(){
     var that = this;
-  
-    template.createOperateDialog(that).show("上传卡点背景图?", "图片审核通过后可成为卡点背景素材...", function () {
+    login.getUser(function(user){
+      locationUtil.getLocation(function(latitude,longitude){
 
-        wx.chooseImage({
-          count: 1,
-          sizeType: ['compressed', 'original'],
-          sourceType: ['album'],
-          success(res) {
-            var files = res.tempFilePaths;
-            template.uploadImages3("PK-User-Back", files,that, function(urls){
-    
-              var httpClient = template.createHttpClient(that);
-              httpClient.setMode("label", true);
-              httpClient.addHandler("success", function (image) {
-    
-                  for(var i=0;i<that.data.images.length;i++)
-                  {
-                      if(image.imageId === that.data.images[i].imageId ){
-                        that.data.images.splice(i, 1); 
-                        break;
-                      }
-    
-                  }
-    
-    
-                  that.data.images.unshift(image);
-                  that.setData({
-                    images:that.data.images
+            var distance = locationUtil.getDistance(latitude,longitude,that.data.pk.latitude,that.data.pk.longitude);
+ 
+            if(distance*1000 < that.data.pk.type.rangeLength)
+            {
+
+              template.createOperateDialog(that).show("上传卡点背景图?", "图片审核通过后可成为卡点背景素材...", function () {
+                  wx.chooseImage({
+                    count: 1,
+                    sizeType: ['compressed', 'original'],
+                    sourceType: ['album'],
+                    success(res) {
+                      var files = res.tempFilePaths;
+                      template.uploadImages3("PK-User-Back", files,that, function(urls){
+              
+                        var httpClient = template.createHttpClient(that);
+                        httpClient.setMode("label", true);
+                        httpClient.addHandler("success", function (image) {
+              
+                            for(var i=0;i<that.data.images.length;i++)
+                            {
+                                if(image.imageId === that.data.images[i].imageId ){
+                                  that.data.images.splice(i, 1); 
+                                  break;
+                                }
+              
+                            }
+              
+              
+                            that.data.images.unshift(image);
+                            that.setData({
+                              images:that.data.images
+                            })
+                        })
+                        httpClient.send(request.url.uploadPkImages, "GET", { pkId:that.data.pkId,imgUrl:urls[0]});
+              
+              
+              
+              
+                      }, function(){});
+              
+              
+                    },
                   })
-              })
-              httpClient.send(request.url.uploadPkImages, "GET", { pkId:that.data.pkId,imgUrl:urls[0]});
-    
-    
-    
-    
-            }, function(){});
-    
-    
-          },
-        })
-    
-  
-    }, function () {});
+              }, function () {});
+        
+        
+            }
+            else
+            {
+              tip.showContentTip("超出打卡范围...");
+            }
+
+
+      })
+    })
+
+
+
 
 
 

@@ -100,7 +100,7 @@ Page({
   decr:function(){
     var that  = this;
     var value = that.data.circles[0].radius;
-    if(value<20){
+    if(value<30){
       tip.showContentTip("超出可设置范围")
       return;
     }

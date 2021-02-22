@@ -288,6 +288,7 @@ Page({
   pkImage:function(res){
     var that = this;
     login.getUser(function(user){
+      wx.setStorageSync('imgPk', that.data.pk)
       wx.navigateTo({
         url: '/pages/pk/locationImages/locationImages?pkId='+that.data.pk.pkId,
       })
@@ -568,7 +569,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("确定删除该条记录吗?", "确定删除该条记录吗?", function () {
+    template.createOperateDialog(that).show("确定删除该条打卡信息吗?", "确定删除该条打卡信息吗?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {
@@ -718,11 +719,6 @@ Page({
 
 
   })
-
-
-
-
-
     })
 
   },

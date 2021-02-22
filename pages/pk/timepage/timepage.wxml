@@ -238,7 +238,7 @@
                                                     </view>
                                                     
                                                 </view>
-                                                <view wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-300 pt-10" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</view>
+                                                <view wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-400 pt-10" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</view>
                                                 <view class="h-10"></view>
 
                                             </view>
@@ -266,8 +266,8 @@
                                                                 
                                                                 
                                                                 
-                                                                <view class="w-10"></view>
-                                                                <view hidden="{{post.creator.userId != user.userId  ||  (bindex === 0 && post.postId === pk.topPostId)  }}" class="fs-20 fw-300 pl-10 pr-10 br-5 b-48 c-4" bindtap="removePost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除</view>
+                                                                <!-- <view class="w-10"></view> -->
+                                                                <!-- <view hidden="{{post.creator.userId != user.userId  ||  (bindex === 0 && post.postId === pk.topPostId)  }}" class="fs-20 fw-300 pl-10 pr-10 br-5 b-48 c-4" bindtap="removePost" data-post="{{post}}" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除</view> -->
                                                             </view>
                                                         
                                                             <view class="rcc">

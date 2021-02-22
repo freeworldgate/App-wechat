@@ -109,7 +109,7 @@ Page({
   },
   decr:function(){
     var that = this;
-    if(that.data.circles[0].radius<20){tip.showContentTip("范围不能再小了!");return;}
+    if(that.data.circles[0].radius<30){tip.showContentTip("范围不能再小了!");return;}
     var key = "circles[0].radius"
     that.setData({
       [key]:that.data.circles[0].radius-10

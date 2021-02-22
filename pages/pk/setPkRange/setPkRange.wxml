@@ -61,7 +61,7 @@
                                     </view>
                                     
                                     <view class="css pb-30 pt-30">
-                                        <slider bindchange="changeRange" min="1" max="100" show-value value="{{circles[0].radius/10}}" />
+                                        <slider bindchange="changeRange" min="2" max="100" show-value value="{{circles[0].radius/10}}" />
                                     </view>
                        
                                     <view class="rac">
