@@ -52,7 +52,7 @@ Page({
           success (res) {
 
             var httpClient = template.createHttpClient(that);
-            httpClient.setMode("page", true);
+            httpClient.setMode("label", true);
             httpClient.send(request.url.paySuccess, "GET", {payId:pay.payId});
 
             that.setData({

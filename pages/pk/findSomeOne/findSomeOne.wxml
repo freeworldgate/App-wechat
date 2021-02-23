@@ -59,30 +59,30 @@
                                             <view class="css">
                                                 <view wx:if="{{findUser.img1&&findUser.img2&&findUser.img3}}" class="css">
                                                     <view class="rbc">
-                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
-                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:27.5vw">
+                                                            <image class="br-10" style="width:27.5vw;height:27.5vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
-                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
-                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:27.5vw">
+                                                            <image class="br-10" style="width:27.5vw;height:27.5vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
-                                                        <view class="rcc br-10" style="width:27.5vw;height:25vw">
-                                                            <image class="br-10" style="width:27.5vw;height:25vw" mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:27.5vw;height:27.5vw">
+                                                            <image class="br-10" style="width:27.5vw;height:27.5vw" mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
                                                     </view>
                                                 </view>
                                                 <view wx:elif="{{findUser.img1&&findUser.img2&&!findUser.img3}}" class="css">
                                                     <view class="rbc">
-                                                        <view class="rcc br-10" style="width:41.5vw;height:35vw">
-                                                            <image class="br-10" style="width:41.5vw;height:35vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:41.5vw;height:41.5vw">
+                                                            <image class="br-10" style="width:41.5vw;height:41.5vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
-                                                        <view class="rcc br-10" style="width:41.5vw;height:35vw">
-                                                            <image class="br-10" style="width:41.5vw;height:35vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                        <view class="rcc br-10" style="width:41.5vw;height:41.5vw">
+                                                            <image class="br-10" style="width:41.5vw;height:41.5vw" mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                         </view>
                                                     </view>
                                                 </view>
                                                 <view wx:else class="css">
-                                                    <view class="rcc br-10" style="width:84vw;height:60vw">
-                                                            <image class="br-10" style="width:84vw;height:60vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                                    <view class="rcc br-10" style="width:84vw;height:84vw">
+                                                            <image class="br-10" style="width:84vw;height:84vw" mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                                     </view>
 
                                                 </view>

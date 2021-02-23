@@ -55,11 +55,51 @@ Page({
   uploadImage:function(){
     var that = this;
     login.getUser(function(user){
+      if(that.data.pk.user.userId === user.userId){
+              template.createOperateDialog(that).show("上传卡点背景图?", "图片上传后可设置为卡点背景...", function () {
+                  wx.chooseImage({
+                    count: 1,
+                    sizeType: ['compressed', 'original'],
+                    sourceType: ['album'],
+                    success(res) {
+                      var files = res.tempFilePaths;
+                      template.uploadImages3("PK-User-Back", files,that, function(urls){
+              
+                        var httpClient = template.createHttpClient(that);
+                        httpClient.setMode("label", true);
+                        httpClient.addHandler("success", function (image) {
+              
+                            for(var i=0;i<that.data.images.length;i++)
+                            {
+                                if(image.imageId === that.data.images[i].imageId ){
+                                  that.data.images.splice(i, 1); 
+                                  break;
+                                }
+              
+                            }
+              
+              
+                            that.data.images.unshift(image);
+                            that.setData({
+                              images:that.data.images
+                            })
+                        })
+                        httpClient.send(request.url.uploadPkImages, "GET", { pkId:that.data.pkId,imgUrl:urls[0]});
+              
+              
+              
+              
+                      }, function(){});
+              
+              
+                    },
+                  })
+              }, function () {});
+        return;
+      }
       locationUtil.getLocation(function(latitude,longitude){
-
             var distance = locationUtil.getDistance(latitude,longitude,that.data.pk.latitude,that.data.pk.longitude);
- 
-            if(distance*1000 < that.data.pk.type.rangeLength)
+            if(distance*1000 < that.data.uploadRange*1000)
             {
 
               template.createOperateDialog(that).show("上传卡点背景图?", "图片审核通过后可成为卡点背景素材...", function () {
@@ -106,20 +146,10 @@ Page({
             }
             else
             {
-              tip.showContentTip("超出打卡范围...");
+              tip.showContentTip("有效操作范围"+that.data.uploadRange+"公里...");
             }
-
-
       })
     })
-
-
-
-
-
-
-
-
 
   },
   onReachBottom:function(){

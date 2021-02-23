@@ -501,7 +501,7 @@ Page({
     var that = this;
     that.data.locationUpdate = true;
 
-
+    
   },
   onUnload:function(){
     var that = this;

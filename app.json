@@ -59,18 +59,12 @@
     }
   },
   "plugins": {
-    "routePlan": {
-      "version": "1.0.5",
-      "provider": "wx50b5593e81dd937a"
-    },
+          
     "chooseLocation": {
       "version": "1.0.5",
       "provider": "wx76a9a06e5b4e693e"
-    },
-    "subway": {
-      "version": "1.0.8",
-      "provider": "wx6aaf93c4435fa1c1"
     }
+
   },
   "window": {
     "backgroundTextStyle": "light",

@@ -57,9 +57,9 @@ Page({
     if(res.from==='menu')
     {
       return {
-                title: '欢迎打卡君!' ,
+                title: 'Hello,打卡君!' ,
                 desc: "",
-                imageUrl:that.data.backUrl+"?x-oss-process=image/crop,w_1000,h_1000,g_center",
+                imageUrl:that.data.appBack,
                 path: '/pages/pk/locate/locate',
             }
     }

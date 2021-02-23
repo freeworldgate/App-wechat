@@ -134,7 +134,7 @@
 
 <!-- <view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto  100% ; "></view> -->
 
-<view class="css customBar z4 b-49">
+<view class="css customBar z4 {{findUsers.length > 0?'b-49':'b-white'}}">
         <view class="rcs " style="height:{{top}}px"></view>
         <view class="rcs " style="height:32px">
 

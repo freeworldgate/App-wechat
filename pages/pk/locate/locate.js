@@ -46,9 +46,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     // that.locate();
-    wx.hideShareMenu({
-      complete: (res) => {},
-    })
+
     inviteReq.getHeight(function (res) {
       that.setData({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
@@ -460,6 +458,19 @@ Page({
     httpClient.send(request.url.changeUser, "GET",{});   
 
 
-  }
+  },
+  onShareAppMessage:function(res){
+    var that = this;
+
+    return {
+                title: 'Hello,打卡君!' ,
+                desc: "",
+                imageUrl:that.data.appBack,
+                path: '/pages/pk/locate/locate',
+            }
+    
+   
+
+  },
 
 })

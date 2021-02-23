@@ -1,5 +1,5 @@
 <!--pages/pk/findCard/findCard.wxml-->
-<view class="csc b-black" style="height:90vh">
+<view class="csc b-49" style="height:90vh">
 
     <view wx:if="{{findUser}}" class="css pl-5vw pr-5vw">
 
@@ -45,57 +45,57 @@
                             <view class="rus fs-32 fw-400 line-3-center" bindtap="showText" data-text="{{findUser.text}}">{{findUser.text}}</view>
                     </view>
                     <view wx:if="{{findUser.img1&&findUser.img2&&findUser.img3}}" class="css">
-                        <swiper style="height:65vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
+                        <swiper style="height:84vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
                         
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img3}}" bindtap="showImg" data-img="{{findUser.img3}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                         </swiper>
                     </view>
                     <view wx:elif="{{findUser.img1&&findUser.img2&&!findUser.img3}}" class="css">
-                        <swiper style="height:65vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
+                        <swiper style="height:84vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
                         
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img2}}" bindtap="showImg" data-img="{{findUser.img2}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                         </swiper>
                     </view>
                     <view wx:elif="{{findUser.img1&&!findUser.img2&&!findUser.img3}}" class="css">
-                        <swiper style="height:65vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
+                        <swiper style="height:84vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
                         
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="{{findUser.img1}}" bindtap="showImg" data-img="{{findUser.img1}}" data-img1="{{findUser.img1}}" data-img2="{{findUser.img2}}" data-img3="{{findUser.img3}}"></image>
                                     </view>
                             </swiper-item>
                         
                         </swiper>
                     </view>
                     <view wx:else class="css">
-                        <swiper style="height:65vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
+                        <swiper style="height:84vw;width:84vw" indicator-dots="true" autoplay="true" circular="true" interval="2000">
                         
                             <swiper-item >
-                                    <view class="rcc" style="height:65vw;width:84vw" >
-                                    <image class="br-10" style="height:65vw;width:84vw"  mode="aspectFill" src="/images/img.png"></image>
+                                    <view class="rcc" style="height:84vw;width:84vw" >
+                                    <image class="br-10" style="height:84vw;width:84vw"  mode="aspectFill" src="/images/img.png"></image>
                                     </view>
                             </swiper-item>
                     
@@ -144,7 +144,7 @@
     </view>
     <view wx:else class="ccc">
                 <!-- <image class="rcc w-400 h-400" src="{{userFindImage}}" mode="aspectFit"></image> -->
-                <view class="rcc fs-30 fw-700 p-20 br-20 b-white">卡片已失效</view>
+                <view class="rcc fs-30 fw-700 p-20 br-20 b-4">卡片已失效</view>
     </view>
 
 
@@ -155,7 +155,7 @@
 
 </view>
 
-<view class="pageback z2 b-black"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
+<view class="pageback z2"  style="width:100vw;height:100vh;background-position: center;background-image: url({{backUrl}});background-repeat: no-repeat;background-size: auto 100%; "></view>
 
 <view class="css customCenterBar z3" >
         <view class="rcs " style="height:{{top}}px"></view>
@@ -164,13 +164,13 @@
                 <view class="w-4vw"></view>
                 <view class="rcc h-32px w-32px br-32px " bindtap="relaunch">
              
-                    <image class="h-40 w-40" mode="aspectFit" src="/images/home1.png"></image>
+                    <image class="h-40 w-40" mode="aspectFit" src="/images/home.png"></image>
   
                 </view>
 
             </view>
             <view class="rcc">
-                <view class="rcc fs-35 fw-700 c-white">打捞卡</view>
+                <view class="rcc fs-35 fw-700 ">打捞卡</view>
             </view>
             
             <view class="rcc" style="flex:1">
@@ -182,9 +182,9 @@
 <view class="rcc uploadButton z3">
 
   <view class="rcc p-20">
-    <view class="rcc fs-25 fw-300 c-white">遇见不撩</view>
+    <view class="rcc fs-25 fw-300">遇见不撩</view>
     <image class="w-35 h-35 pl-10 pr-10" mode="aspectFit" src="/images/shank.png"></image>
-    <view class="rcc fs-25 fw-300 c-white">卡点互捞</view>
+    <view class="rcc fs-25 fw-300">卡点互捞</view>
   </view>
   
 </view>

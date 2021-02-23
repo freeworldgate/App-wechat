@@ -4,9 +4,6 @@
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
- 
-var tipBack = ''; 
-var tipImg = '/images/pk.png'; 
 
 var appinfo = { 
     appName:'APP1号', 

@@ -221,11 +221,14 @@ Page({
               {//不存在顶置
                 prevPage.data.posts.unshift(post);
               }
+     
               prevPage.setData({
                 leftTime:post.leftTime,
-                postTimes:post.postTimes,
+                totalPostTimes:post.postTimes,
                 posts:prevPage.data.posts
               })
+    
+         
               wx.navigateBack({
                 delta: 0,
               })
@@ -282,6 +285,8 @@ Page({
               prevPage.data.posts.unshift(post);
             }
             prevPage.setData({
+              leftTime:post.leftTime,
+              totalPostTimes:post.postTimes,
               posts:prevPage.data.posts
             })
             wx.navigateBack({
