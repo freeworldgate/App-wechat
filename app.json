@@ -69,12 +69,10 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "Hello,打卡君!",
     "navigationBarTextStyle": "black"
   },
-  "useExtendedLib": {
-    "weui": true
-  },
+
   "style": "v2",
 	"sitemapLocation": "sitemap.json",
 	"servicemarket": true

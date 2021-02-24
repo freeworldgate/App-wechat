@@ -2827,7 +2827,6 @@ input {
 
 .circle2{
   width:10vw;
-  border-radius: 10vw;
   height: 10vw;
   /* border: 2px solid #ff7300;  */
   /* border-radius: 7vw; */

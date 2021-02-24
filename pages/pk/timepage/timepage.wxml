@@ -73,7 +73,7 @@
         </view>
  
 
-        <view class="css pt-30 pb-40 b-line" style="padding-left:3.5vw;padding-right:5vw">
+        <view class="css pt-30 pb-40 {{posts.length===0?'b-line':''}}" style="padding-left:3.5vw;padding-right:5vw">
                                         <view class="rss">
                                             <view class="cas h-60" style="flex:1" bindtap="showText" data-text="{{pk.name}}">
                                                 <view class="rus line-2-start fs-35 fw-650" >{{pk.name}} </view>    
@@ -138,7 +138,7 @@
 
 
         <view class="css z3">
-            <view class="h-50"></view>
+            <view hidden="{{posts.length===0}}" class="h-10 b-48"></view>
             <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
                 <view class="h-50"></view>
                 <view class="css">
@@ -152,7 +152,7 @@
                                     <view class="rcc">
                                     
                                         <view class="rcc"   >
-                                            <image class="rcc circle2 box8 " src="{{post.creator.imgUrl}}" mode="aspectFill"></image>
+                                            <image class="rcc circle2 box8 " style="border-radius:{{borderRadius}}vw" src="{{post.creator.imgUrl}}" mode="aspectFill"></image>
                                         </view>
                             
                                     </view>

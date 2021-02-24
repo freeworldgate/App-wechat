@@ -248,20 +248,21 @@ Page({
   },
   searchLocation:function(){
     var that = this;
-    wx.getLocation({
-      success:(res)=>{
-          const key = YULU_KEY;
-          const referer = REFERER;
-          const location = JSON.stringify(res);
-          let url = 'plugin://chooseLocation/index?key=' + key + '&referer=' + referer;
-          // url += '&location=' + location;
-          wx.navigateTo({
-            url
-          });
-          that.data.choose = true;
-      }
-    })
-
+    login.getUser(function(user){
+      wx.getLocation({
+        success:(res)=>{
+            const key = YULU_KEY;
+            const referer = REFERER;
+            const location = JSON.stringify(res);
+            let url = 'plugin://chooseLocation/index?key=' + key + '&referer=' + referer;
+            // url += '&location=' + location;
+            wx.navigateTo({
+              url
+            });
+            that.data.choose = true;
+        }
+      })
+    });
   },
   updateDistance:function(){
     var that = this;
