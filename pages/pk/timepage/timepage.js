@@ -324,13 +324,19 @@ Page({
 
   onPullDownRefresh:function(){
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", false);
+    template.createPageLoadingError(that).hide();
     var user = wx.getStorageSync("user");
-
-    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});  
-
-    // that.queryLengthTime(that.data.pkId);
+    var httpClient = template.createHttpClient(that);
+    if(that.data.pageTag)
+    {
+      httpClient.setMode("label", false);
+    }
+    else
+    {
+      httpClient.setMode("page", false);
+    }
+    
+    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});
   },
 
   refreshPage: function () {
@@ -350,7 +356,85 @@ Page({
     // wx.stopPullDownRefresh()
   },
 
-  
+  oper:function(res){
+    var that  = this;
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+    var pkId = res.currentTarget.dataset.pkid;
+
+    var selection = template.createSelectionDialog(that).setLayout("bottom","y")
+
+    login.getUser(function(user){
+        //发布者
+        selection.addItem("","举报Ta",function(){});
+        selection.addItem("","Ta的打卡记录",function(){});
+        if(user.userId === post.creator.userId){selection.addItem("","删除",function(){
+            template.createOperateDialog(that).show("确定删除该条打卡信息吗?", "确定删除该条打卡信息吗?", function () {
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function () {
+                      that.data.posts.splice(index, 1); 
+                      that.setData({
+                        posts: that.data.posts,
+                      })
+        
+        
+              })
+              httpClient.send(request.url.removePost, "GET", { postId: post.postId,pkId:pkId });
+            }, function () {});
+        
+      
+        });}
+        // //榜主
+        if(user.userId === that.data.pk.user.userId){selection.addItem("","隐藏该条打卡信息",function(){
+
+          template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?", function () {
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function () {
+                    that.data.posts.splice(index, 1); 
+                    that.setData({
+                      posts: that.data.posts,
+                    })
+            })
+            httpClient.send(request.url.hiddenPost, "GET", { postId: post.postId,pkId:pkId });
+          }, function () {});
+        }).addItem("","顶置该条打卡信息",function(){
+
+          template.createOperateDialog(that).show("顶置卡册", "确定顶置该条打卡信息?", function () {
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function () {
+                template.createEditNumberDialog(that).show("设置顶置周期(单位分钟)",4,"顶置周期内不可更改...",function(value){
+                    var httpClient = template.createHttpClient(that);
+                    httpClient.setMode("label", true);
+                    httpClient.addHandler("success", function (post) {
+                        that.data.posts.splice(index, 1); 
+                        that.data.posts.unshift(post);
+                        that.setData({
+                          posts: that.data.posts,
+                          ['pk.topPostId']:post.postId,
+                          ['pk.topPostTimeLength']:value,
+                          topTime:"1秒钟"
+                        })
+                    })
+                    httpClient.send(request.url.setTopPostTime, "GET", { postId: post.postId,pkId:pkId,value:value });
+                
+      
+                });
+      
+      
+            })
+            httpClient.send(request.url.topPost, "GET", { postId: post.postId,pkId:pkId });
+          }, function () {});
+      
+    
+        });}
+       
+        selection.show();
+    });
+    
+  },
 
   showImg:function(res){
     var post = res.currentTarget.dataset.post;
@@ -500,6 +584,14 @@ Page({
   onShow:function(){
     var that = this;
     that.data.locationUpdate = true;
+    var update = wx.getStorageSync('postUpdate');
+    wx.removeStorageSync('postUpdate');
+    if(update){
+      var user = wx.getStorageSync("user");
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", false);
+      httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});
+    }
 
     
   },
@@ -659,10 +751,11 @@ Page({
   },
   userPage:function(res){
     var that = this;
-    var userId =  res.currentTarget.dataset.user;
+    var user =  res.currentTarget.dataset.user;
+    if( user.userType === 3){return;}
     login.getUser(function(user){
       wx.navigateTo({
-        url: "/pages/pk/userPublishPost/userPublishPost?userId=" + userId,
+        url: "/pages/pk/userPublishPost/userPublishPost?userId=" + user.userId,
       })
 
     })

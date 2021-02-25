@@ -386,30 +386,7 @@ function createSelectionDialog(page) {
   selectionDialog.setLayout = function (location, direction) {
     selectionDialog.items.length = 0;
     selectionDialog.itemSelect.clear();
-    if (direction === 'x' && location === 'top') {
-      selectionDialog._selectionDialog_layout = 'css selectionDialog_top';
-      selectionDialog.style = 5;
-    }
-    else if (direction === 'y' && location === 'top') {
-      selectionDialog._selectionDialog_layout = 'css selectionDialog_top';
-      selectionDialog.style = 4;
-    }
-    else if (location === 'left') {
-      selectionDialog._selectionDialog_layout = 'ccc  selectionDialog_left';
-      selectionDialog.style = 3;
-    }
-    else if (location === 'right') {
-      selectionDialog._selectionDialog_layout = 'ccc selectionDialog_right';
-      selectionDialog.style = 2;
-    }
-    else if (direction === 'x' && location === 'bottom') {
-      selectionDialog._selectionDialog_layout = 'css selectionDialog_bottom';
-      selectionDialog.style = 1;
-    }
-    else {
-      selectionDialog._selectionDialog_layout = 'css selectionDialog_bottom';
-      selectionDialog.style = 0;
-    }
+
 
     return selectionDialog;
 
@@ -450,6 +427,7 @@ function createSelectionDialog(page) {
     })
   }
   page._selectDialog_choose = function (res) {
+    page._selectionDialog_hide();
     if (page.selectionDialog.statu === 0) {
       page.selectionDialog.statu = 1;
       var name = res.currentTarget.dataset.name;

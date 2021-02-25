@@ -102,7 +102,10 @@ Page({
       urls: imgs,
     })
   },
-
+  onPullDownRefresh:function(){
+    var that = this;
+    that.queryFinds("label",that.data.pkId);
+  },
   onPageScroll:function(e){
     var that = this;
     var top = e.scrollTop;

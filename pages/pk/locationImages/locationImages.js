@@ -228,6 +228,7 @@ Page({
               wx.navigateBack({
                 delta: 0,
               })
+              wx.setStorageSync('postUpdate',true);
       })
       httpClient.send(request.url.setPkBack, "GET", { pkId: that.data.pkId,imageId:image.imageId });
     }, function () {});

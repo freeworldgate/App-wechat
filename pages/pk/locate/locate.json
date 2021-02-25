@@ -1,4 +1,5 @@
 {
+  "backgroundColor": "#000000",
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "Hello,打卡君!",
   "navigationStyle": "custom"

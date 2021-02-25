@@ -2,7 +2,7 @@
 
 <view class="csc" style="min-height:100vh">
 
-  <view class="p-5vw rcc fs-40 fw-400">{{text}}</view>
+  <text class="p-5vw rcc fs-40 fw-400">{{text}}</text>
 
 
 

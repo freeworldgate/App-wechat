@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
-   "navigationBarTitleText": "打榜邀请",
+  "backgroundColor": "#000000",
    "navigationStyle": "custom"
   
 

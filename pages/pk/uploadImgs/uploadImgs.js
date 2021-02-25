@@ -30,8 +30,8 @@ Page({
     text:"",
     left:200,
     maxLength:200,
-    whiteBack: {backId:-1,backColor:'fafafa',backUrl:'',fontColor:'000000'},
-    currentBack: {backId:-1,backColor:'fafafa',backUrl:'',fontColor:'000000'},
+    whiteBack: {backId:-1,backColor:'ffffff',backUrl:'',fontColor:'000000'},
+    currentBack: {backId:-1,backColor:'ffffff',backUrl:'',fontColor:'000000'},
     imgs:[],
     textBacks:[]
 
@@ -93,6 +93,9 @@ Page({
     var back = res.currentTarget.dataset.back;
     that.setData({
       currentBack:back
+    })
+    that.setData({
+      text:that.data.text
     })
 
   },

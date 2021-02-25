@@ -1,7 +1,7 @@
 <view class="css b-white "  style="min-height:100vh">
         <!-- 背景图片 -->
         <view  class="css absolute z1" bindtap="{{creator.userId===user.userId?'uploadImg':''}}" data-userid="{{creator.userId}}" style="width: 100vw; height: 55vw;background-position: center;background-image: url({{userDynamic.userBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
-        <view class="" style="height:50vw"></view>
+        <view class="b-49" style="height:50vw"></view>
         <view class="rbc pl-3vw pr-3vw z2">
             <image class="" style="width: 200rpx; height: 200rpx; border-radius:200rpx" mode="aspectFill" src="{{creator.imgUrl}}" bindtap="showSingleImg" data-url="{{creator.imgUrl}}" data-creator="{{creator.userId}}"></image>
             <view class="rcc">
@@ -102,13 +102,13 @@
             <navigator class="rcc" hover-class="none" url="/pages/pk/invite/invite?userId={{creator.userId}}">
                 <view class="fs-30 fw-700 ">{{userDynamic.collectTimes}}</view>
                 <view class="w-10"></view>
-                <view class="fs-25 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}的收藏</view>
+                <view class="fs-25 fw-300 c-4">收藏</view>
             </navigator>
             <view class="w-40"></view>
             <navigator class="rcc" hover-class="none" url="/pages/pk/userPk/userPk?userId={{creator.userId}}">
                 <view class="fs-30 fw-700 ">{{userDynamic.pkTimes}}</view>
                 <view class="w-10"></view>
-                <view class="fs-25 fw-300 c-4">{{user.userId===creator.userId?"我":"Ta"}}的卡点</view>
+                <view class="fs-25 fw-300 c-4">卡点</view>
             </navigator>
             <view class="w-40"></view>
             <view class="rcc">
@@ -116,10 +116,21 @@
                 <view class="w-10"></view>
                 <view class="fs-25 fw-300 c-4">次打卡</view>
             </view>
+            <view class="w-40"></view>
+            <view class="rcc">
+                <view class="fs-30 fw-700 ">54</view>
+                <view class="w-10"></view>
+                <view class="fs-25 fw-300 c-4">评论</view>
+            </view>
+            <!-- <view class="rcc">
+                <view class="fs-30 fw-700 ">549</view>
+                <view class="w-10"></view>
+                <view class="fs-25 fw-300 c-4">赞</view>
+            </view> -->
         </view>
 
 
-<!-- 
+        <!-- 
         <view class="h-80 b-line"></view> -->
         <!-- <view class="h-40"></view> -->
 

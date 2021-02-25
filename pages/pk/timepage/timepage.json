@@ -1,6 +1,6 @@
 {
 
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "卡点主页"
-  
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#000000",
+  "navigationStyle": "custom"  
 }

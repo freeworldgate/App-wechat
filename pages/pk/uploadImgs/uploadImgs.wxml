@@ -8,17 +8,20 @@
       </view>
       <view class="rcs " style="height:20px"></view>
     </view>
-    <view class="css pr-3vw pl-3vw">
-        <view wx:if="{{imgs&&imgs.length>0}}" class="css p-2vw " >
+    <view class="css p-3vw">
+        <view wx:if="{{(imgs&&imgs.length>0) || (whiteBack.backId === currentBack.backId) || text.length>60}}" class="css p-2vw " >
+            <view class="h-30"></view>
             <view class="css">
                 <textarea adjustPosition="true" bindinput="_input" class="h-200 fs-35 fw-400" style="width:90vw"  cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="说点什么..." value="{{text}}"></textarea>
             </view>
+            <view class="h-30"></view>
         </view>
         <view wx:else class="csc b-timepage br-20" style="background-color:#{{currentBack.backColor}}" >
-            <view class="csc p-5vw" style="background-position: center;background-image: url({{currentBack.backUrl}});background-repeat: no-repeat;background-size: 100% auto;" >
+            <view class="csc p-5vw br-20" style="background-position: center;background-image: url({{currentBack.backUrl}});background-repeat: no-repeat;background-size: 100% auto;" >
                 <view class="csc p-2vw">
                     <view class="csc h-330">
                         <textarea adjustPosition="true" bindinput="_input" auto-height="true" class="fs-40 fw-700" style="width:80vw;text-align:center;color:#{{currentBack.fontColor}}" cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="说点什么..." value="{{text}}"></textarea>
+                        
                     </view>
                 </view>
             </view>

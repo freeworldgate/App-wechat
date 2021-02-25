@@ -778,11 +778,11 @@
 
 .selectionDialog_bottom{
     position: fixed;
-    z-index: 2;
+
     /* background-color: rgb(255, 0, 0); */
     height: auto;
     width: 96%;
-    bottom: 5px;
+    bottom: 10px;
     left: 2%;
 }
 
@@ -820,7 +820,7 @@
 
 .selectionDialog_BT{
   border-radius: 20rpx;
-  padding:40rpx;
+  padding:30rpx;
   background-color: white;
 }
 .selectionDialog_RL{
