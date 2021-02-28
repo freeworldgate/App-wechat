@@ -17,9 +17,6 @@ var value = {
  
 var url = { 
  
-
-
-
         createPost: `${host}/pk/createPost`, 
         queryPk: `${host}/pk/queryPk`, 
         queryUserPost: `${host}/pk/queryUserPost`, 
@@ -125,13 +122,25 @@ var url = {
         setUserName:`${host}/pk/setUserName`, 
         queryGroupMembers:`${host}/pk/queryGroupMembers`, 
         nextGroupMembers:`${host}/pk/nextGroupMembers`, 
-        
         payType:`${host}/pk/payType`, 
-        
         paySuccess:`${host}/pk/paySuccess`, 
         setUserPkRange:`${host}/pk/setUserPkRange`, 
+        greate:`${host}/pk/greate`, 
+        complainPost:`${host}/pk/complainPost`, 
+        queryComments:`${host}/pk/queryComments`, 
+        nextComments:`${host}/pk/nextComments`, 
+        publishComment:`${host}/pk/publishComment`, 
+        delComment:`${host}/pk/delComment`, 
+        queryRestores:`${host}/pk/queryRestores`, 
+        nextRestores:`${host}/pk/nextRestores`, 
+        publishRestore:`${host}/pk/publishRestore`, 
+        delRestore:`${host}/pk/delRestore`, 
         
-
+        queryUserComments:`${host}/pk/queryUserComments`, 
+        nextUserComments:`${host}/pk/nextUserComments`, 
+        queryUserMessages:`${host}/pk/queryUserMessages`, 
+        nextUserMessages:`${host}/pk/nextUserMessages`, 
+        
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

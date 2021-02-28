@@ -414,7 +414,7 @@ function createSelectionDialog(page) {
 
   selectionDialog.hide = function () {
     page.setData({
-      'selectionDialog.visible': false,
+      'selectionDialog': undefined,
     })
     // page.selectionDialog = undefined;
   }

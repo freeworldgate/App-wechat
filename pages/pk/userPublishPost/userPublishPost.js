@@ -46,10 +46,8 @@ Page({
     var that = this;
 
       if(that.data.nomore){return;}
-      var user = wx.getStorageSync('user');
-      var fromUser = wx.getStorageSync('fromUser')
       var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", false);
+      httpClient.setMode("label", true);
       httpClient.addHandler("success", function (posts) {
         that.setData({
             page:that.data.page + 1,
@@ -108,7 +106,13 @@ Page({
       [tag]:!ctag
     })
   },
-
+  userComment:function(){
+    login.getUser(function(){
+      wx.navigateTo({
+        url: '/pages/pk/usercomments/usercomments',
+      })
+    })
+  },
   
   showSingleImg:function(res){
     var that  = this;
@@ -224,8 +228,116 @@ Page({
   },
 
 
+  like:function(res){
+    var that = this;
+    var id = res.currentTarget.dataset.id;
+    var index = res.currentTarget.dataset.index;
+    login.getUser(function(user){
+      
+      if(!that.data.posts[index].gtag){
+          that.data.posts[index].gtag = true;
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("", true);
+          httpClient.addHandler("success", function () {
+            that.data.posts[index].gtag = false;
+          })
+          httpClient.send(request.url.greate, "GET", { id: id,scene:1,statu:that.data.posts[index].statu === 1?0:1});
+          var key = "posts["+index+"].statu";
+          var likes = "posts["+index+"].likes";
+          var dislikes = "posts["+index+"].dislikes";
+          var width = "posts["+index+"].lwidth";
+          var height = "posts["+index+"].lheight";
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:5,[height]:5})
+          that.setData({
+            [likes]:(that.data.posts[index].statu!=1)?that.data.posts[index].likes+1:that.data.posts[index].likes>0?that.data.posts[index].likes-1:0,
+            [dislikes]:(that.data.posts[index].statu===2)?that.data.posts[index].dislikes>0?that.data.posts[index].dislikes-1:0:that.data.posts[index].dislikes,
+            [key]:(that.data.posts[index].statu===1)?0:1,
+          })
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:35,[height]:35})
+          setTimeout(() => {
+            that.data.posts[index].gtag = false;
+          }, 2000);
+      }
 
 
+    })
+
+
+
+  },
+  dislike:function(res){
+    var that = this;
+    var id = res.currentTarget.dataset.id;
+    var index = res.currentTarget.dataset.index;
+    login.getUser(function(user){
+      
+      if(!that.data.posts[index].gtag){
+          that.data.posts[index].gtag = true;
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("", true);
+          httpClient.addHandler("success", function () {
+            that.data.posts[index].gtag = false;
+          })
+          httpClient.send(request.url.greate, "GET", { id: id,scene:2,statu:that.data.posts[index].statu === 2?0:2});
+          var key = "posts["+index+"].statu";
+          var likes = "posts["+index+"].likes";
+          var dislikes = "posts["+index+"].dislikes";
+          var width = "posts["+index+"].dwidth";
+          var height = "posts["+index+"].dheight";
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:5,[height]:5})
+
+          that.setData({
+            [likes]:(that.data.posts[index].statu!=1)?that.data.posts[index].likes:that.data.posts[index].likes>0?that.data.posts[index].likes-1:0,
+            [dislikes]:(that.data.posts[index].statu===2)?that.data.posts[index].dislikes>0?that.data.posts[index].dislikes-1:0:that.data.posts[index].dislikes+1,
+            [key]:(that.data.posts[index].statu===2)?0:2,
+          })
+
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:35,[height]:35})
+          setTimeout(() => {
+            that.data.posts[index].gtag = false;
+          }, 2000);
+      }
+
+
+    })
+
+
+
+  },
+  comment:function(res){
+    var that = this;
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+    login.getUser(function(user){
+        wx.navigateTo({
+          url: '/pages/pk/comments/comments?pkId='+post.pkId+"&postId="+post.postId,
+        })
+    })
+  },
+  
+  message:function(res){
+    login.getUser(function(user){
+        wx.navigateTo({
+          url: '/pages/pk/userMessages/userMessages',
+        })
+    })
+  },
   viewImg:function(res){
     var that = this;
     var url = res.currentTarget.dataset.url;
@@ -243,7 +355,14 @@ Page({
 
 
 
-
+  showText:function(res){
+    var that  = this;
+    var text = res.currentTarget.dataset.text;
+    wx.navigateTo({
+      url: '/pages/pk/showText/showText?text='+text,
+    })
+  },
+  
   deletePost:function(res){
     var that = this;
 
@@ -274,9 +393,6 @@ Page({
     wx.navigateTo({
       url: '/pages/pk/timepage/timepage?pkId='+pkId,
     })
-   
-
-
   },
   userCardApply:function(res){
     var that = this;

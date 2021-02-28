@@ -6,7 +6,10 @@
     "pages/plugin/location-picker/location-picker",
 
     "pages/pk/userCardApply/userCardApply",
-
+    "pages/pk/comments/comments",
+    "pages/pk/usercomments/usercomments",
+    "pages/pk/userMessages/userMessages",
+    "pages/pk/restore/restore",
     "pages/pk/pay/pay",
     "pages/pk/userFind/userFind",
     "pages/pk/editText/editText",

@@ -160,7 +160,10 @@ Page({
   },
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryPks("label",that.data.latitude,that.data.longitude)
+      login.getUser(function(user){
+        that.queryPks("label",that.data.latitude,that.data.longitude,user.userId)
+      })
+     
   },
 
   /**

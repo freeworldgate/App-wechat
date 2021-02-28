@@ -366,8 +366,28 @@ Page({
 
     login.getUser(function(user){
         //发布者
-        selection.addItem("","举报Ta",function(){});
-        selection.addItem("","Ta的打卡记录",function(){});
+        selection.addItem("","举报Ta",function(){
+          template.createSelectionDialog(that).hide();
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("label", true);
+          httpClient.addHandler("success", function () {
+              tip.showContentTip("已收到您的投诉信息");
+          })
+          var selection = template.createSelectionDialog(that).setLayout("bottom","y")
+          selection.addItem("","垃圾或广告",function(){httpClient.send(request.url.complainPost, "GET", { postId: post.postId,pkId:pkId,type:1 });})
+                    .addItem("","涉黄或有害信息",function(){httpClient.send(request.url.complainPost, "GET", { postId: post.postId,pkId:pkId,type:2 });})
+                    .addItem("","暴恐或违法",function(){httpClient.send(request.url.complainPost, "GET", { postId: post.postId,pkId:pkId,type:3 });})
+                    .addItem("","诈骗或谣言",function(){httpClient.send(request.url.complainPost, "GET", { postId: post.postId,pkId:pkId,type:4 });})
+                    .addItem("","人身攻击或者抄袭",function(){httpClient.send(request.url.complainPost, "GET", { postId: post.postId,pkId:pkId,type:5 });})
+          selection.show();
+        });
+        selection.addItem("","Ta的打卡记录",function(){
+
+            wx.navigateTo({
+                url: '/pages/pk/userSort/userSort?pkId='+pkId+"&targetId="+post.creator.userId,
+            })
+      
+        });
         if(user.userId === post.creator.userId){selection.addItem("","删除",function(){
             template.createOperateDialog(that).show("确定删除该条打卡信息吗?", "确定删除该条打卡信息吗?", function () {
               var httpClient = template.createHttpClient(that);
@@ -386,7 +406,7 @@ Page({
       
         });}
         // //榜主
-        if(user.userId === that.data.pk.user.userId){selection.addItem("","隐藏该条打卡信息",function(){
+        if((user.userId === that.data.pk.user.userId) && (that.data.pk.topPostId != post.postId) && (post.postImages.length>0)){selection.addItem("","隐藏该条打卡信息",function(){
 
           template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?", function () {
             var httpClient = template.createHttpClient(that);
@@ -427,8 +447,6 @@ Page({
             })
             httpClient.send(request.url.topPost, "GET", { postId: post.postId,pkId:pkId });
           }, function () {});
-      
-    
         });}
        
         selection.show();
@@ -454,13 +472,115 @@ Page({
       wx.navigateTo({
         url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
       })
+  },
+  comment:function(res){
+      var that = this;
+      var post = res.currentTarget.dataset.post;
+      var index = res.currentTarget.dataset.index;
+      login.getUser(function(user){
+          wx.navigateTo({
+            url: '/pages/pk/comments/comments?pkId='+post.pkId+"&postId="+post.postId,
+          })
+  
+  
+      })
+  
+  
+
+
+  },
+  like:function(res){
+    var that = this;
+    var id = res.currentTarget.dataset.id;
+    var index = res.currentTarget.dataset.index;
+    login.getUser(function(user){
+      
+      if(!that.data.posts[index].gtag){
+          that.data.posts[index].gtag = true;
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("", true);
+          httpClient.addHandler("success", function () {
+            that.data.posts[index].gtag = false;
+          })
+          httpClient.send(request.url.greate, "GET", { id: id,scene:1,statu:that.data.posts[index].statu === 1?0:1});
+          var key = "posts["+index+"].statu";
+          var likes = "posts["+index+"].likes";
+          var dislikes = "posts["+index+"].dislikes";
+          var width = "posts["+index+"].lwidth";
+          var height = "posts["+index+"].lheight";
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:5,[height]:5})
+          that.setData({
+            [likes]:(that.data.posts[index].statu!=1)?that.data.posts[index].likes+1:that.data.posts[index].likes>0?that.data.posts[index].likes-1:0,
+            [dislikes]:(that.data.posts[index].statu===2)?that.data.posts[index].dislikes>0?that.data.posts[index].dislikes-1:0:that.data.posts[index].dislikes,
+            [key]:(that.data.posts[index].statu===1)?0:1,
+          })
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:35,[height]:35})
+          setTimeout(() => {
+            that.data.posts[index].gtag = false;
+          }, 2000);
+      }
+
+
+    })
 
 
 
   },
+  dislike:function(res){
+    var that = this;
+    var id = res.currentTarget.dataset.id;
+    var index = res.currentTarget.dataset.index;
+    login.getUser(function(user){
+      
+      if(!that.data.posts[index].gtag){
+          that.data.posts[index].gtag = true;
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("", true);
+          httpClient.addHandler("success", function () {
+            that.data.posts[index].gtag = false;
+          })
+          httpClient.send(request.url.greate, "GET", { id: id,scene:2,statu:that.data.posts[index].statu === 2?0:2});
+          var key = "posts["+index+"].statu";
+          var likes = "posts["+index+"].likes";
+          var dislikes = "posts["+index+"].dislikes";
+          var width = "posts["+index+"].dwidth";
+          var height = "posts["+index+"].dheight";
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:5,[height]:5})
+
+          that.setData({
+            [likes]:(that.data.posts[index].statu!=1)?that.data.posts[index].likes:that.data.posts[index].likes>0?that.data.posts[index].likes-1:0,
+            [dislikes]:(that.data.posts[index].statu===2)?that.data.posts[index].dislikes>0?that.data.posts[index].dislikes-1:0:that.data.posts[index].dislikes+1,
+            [key]:(that.data.posts[index].statu===2)?0:2,
+          })
+
+          that.setData({[width]:15,[height]:15})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:25,[height]:25})
+          for(var i=0;i<1000;i++){}
+          that.setData({[width]:35,[height]:35})
+          setTimeout(() => {
+            that.data.posts[index].gtag = false;
+          }, 2000);
+      }
+
+
+    })
 
 
 
+  },
 
 
 
@@ -506,9 +626,10 @@ Page({
   {
     var that = this;
     var pkId = res.currentTarget.dataset.pkid;
+    var target = res.currentTarget.dataset.user;
     login.getUser(function(user){
         wx.navigateTo({
-            url: '/pages/pk/userSort/userSort?pkId='+pkId,
+            url: '/pages/pk/userSort/userSort?pkId='+pkId+"&targetId="+target.userId,
         })
     })
 
@@ -751,11 +872,11 @@ Page({
   },
   userPage:function(res){
     var that = this;
-    var user =  res.currentTarget.dataset.user;
-    if( user.userType === 3){return;}
-    login.getUser(function(user){
+    var poster =  res.currentTarget.dataset.user;
+    if( poster.userType === 3){return;}
+    login.getUser(function(){
       wx.navigateTo({
-        url: "/pages/pk/userPublishPost/userPublishPost?userId=" + user.userId,
+        url: "/pages/pk/userPublishPost/userPublishPost?userId=" + poster.userId,
       })
 
     })

@@ -23,11 +23,12 @@ Page({
         })
     })
     that.setData({
-      pkId:options.pkId
+      pkId:options.pkId,
+      targetId:options.targetId
     })
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
-    httpClient.send(request.url.queryUserPkPosts, "GET", {pkId:options.pkId});
+    httpClient.send(request.url.queryUserPkPosts, "GET", {pkId:options.pkId,targetId:options.targetId});
 
   },
   back:function(){

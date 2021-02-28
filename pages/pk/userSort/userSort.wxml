@@ -32,34 +32,35 @@
                         <view class="css" style="width: 15vw">
                             <view class="css">
                                             <!-- <view class="rcc fs-20 fw-300  c-word-6">时间</view> -->
+                                            <!-- <view class="h-30"></view> -->
                                             <view class="rcc">
-                                                <view class="rus-wrap fs-23 fw-300 line-1-start">{{post.ptime.timeStr}}</view>
+                                                <view class="rus-wrap fs-21 fw-300 line-1-start c-3">{{post.time}}</view>
                                             </view>
-                                            <view class="rcc fs-20 fw-300 pt-20 c-word-6">日期</view>
+                                            <!-- <view class="rcc fs-20 fw-300 pt-20 c-word-6">日期</view>
                                             <view class="ccc ">
                                                 <view class="rcc fs-25 fw-300">{{post.ptime.date}}</view>
                                             </view>
                                             <view hidden="{{!post.ptime.year}}" class="rcc fs-20 fw-300 pt-20">年份</view>
                                             <view hidden="{{!post.ptime.year}}" class="ccc">
                                                 <view class="rcc fs-25 fw-300 c-4">{{post.ptime.year}}</view>
-                                            </view>
+                                            </view> -->
                                         
                             </view>
 
                         </view>
                         <view class="rss" style="width:77vw">
-                                <view class="css" style="flex:1">
+                            <view class="css" style="flex:1">
                                     <view class="css">
-                                      
-                                        <view class="css {{(!post.postImages||post.postImages.length===0)?'':'p-3vw b-48'}}">
+                                        <view class="css {{(post.backUrl && (!post.postImages||post.postImages.length===0))?'':'p-3vw b-48'}}" catchtap="return">
                                             <view class="css">
-                                                <view wx:if="{{!post.postImages||post.postImages.length===0}}" class="css br-20" style="background-color:#{{post.backColor}}">
-                                                    <view class="csc p-50 br-20 "  style="min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
-                                                        <text class="{{post.tag?'line-100-center':'line-5-center '}} fs-35 fw-700" bindtap="openText" data-index="{{bindex}}" style="color:#{{post.fontColor}}">{{post.topic}}</text>
+                                                <view wx:if="{{post.backUrl && (!post.postImages||post.postImages.length===0)}}" class="css" style="background-color:#{{post.backColor}};border-radius:{{post3BorderRadius}}rpx">
+                                                    <view class="csc p-50 "  style="border-radius:{{post3BorderRadius}}rpx;min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
+                                                        <text class="line-15-center fs-30 fw-610" bindtap="showText" data-text="{{post.topic}}" style="color:#{{post.fontColor}}">{{post.topic}}</text>
                                                     </view>
+                                                    
                                                 </view>
-                                                <text wx:else class="{{post.tag?'':'line-3-start '}} rus fs-32 fw-500" bindtap="openText" data-index="{{bindex}}" >{{post.topic}}</text>
-
+                                                <text wx:else class="line-15-start rus fs-33 line-h43 fw-400"  bindtap="showText" data-text="{{post.topic}}" >{{post.topic}}</text>
+       
                                                 <view class="h-10"></view>
                                             </view>
                                             <view class="css">
@@ -67,52 +68,52 @@
                                                     
                                                 <!-- 9张图片 -->
                                                 <view  wx:if="{{post.postImages.length===1}}" class="rus">
-                                                    <image class="rcc br-10"  style="width: 71vw;height:50vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                    <image class="rcc"  style="width: 71vw;height:50vw;border-radius:{{post2BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                 </view>
                                                 <view  wx:elif="{{post.postImages.length===2}}" class="css">
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 35vw;height:35vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc "  style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 35vw;height:35vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                     
                                                 </view>
                                                 <view  wx:elif="{{post.postImages.length===4}}" class="css">
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 35vw;height:30vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc"  style="width: 35vw;height:30vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 35vw;height:30vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 35vw;height:30vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                     <view style="height: 0.6vw"></view>
                                                     <view class="rcs">
-                                                        <image class="rcc br-10"  style="width: 35vw;height:30vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc"  style="width: 35vw;height:30vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 35vw;height:30vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 35vw;height:30vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                 </view>
                                                 <view wx:else class="css">
                                                     <view hidden="{{post.postImages.length===0}}" class="rcs">
-                                                        <image class="rcc br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[2].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                     <view hidden="{{post.postImages.length<4}}" style="height: 0.6vw"></view>
                                                     <view hidden="{{post.postImages.length<4}}" class="rcs">
-                                                        <image class="rcc  br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[3].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc  br-10" style="width: 23vw;height:23vw" src="{{post.postImages[4].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="4" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[4].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="4" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc  br-10" style="width: 23vw;height:23vw" src="{{post.postImages[5].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="5" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[5].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="5" data-imgs="{{post.postImages}}"></image>
                                                     </view> 
                                                     <view hidden="{{post.postImages.length<7}}" style="height: 0.6vw"></view>
                                                     <view hidden="{{post.postImages.length<7}}" class="rcs">
-                                                        <image class="rcc br-10"  style="width: 23vw;height:23vw" src="{{post.postImages[6].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="6" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[6].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="6" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[7].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="7" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[7].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="7" data-imgs="{{post.postImages}}"></image>
                                                         <view style="width: 0.6vw"></view>
-                                                        <image class="rcc br-10" style="width: 23vw;height:23vw" src="{{post.postImages[8].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="8" data-imgs="{{post.postImages}}"></image>
+                                                        <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[8].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="8" data-imgs="{{post.postImages}}"></image>
                                                     </view>
                                                 </view>
 
@@ -127,7 +128,6 @@
                                         </view>
                                         <!-- 随着天数增加，会变得越来越长 -->
                                         <view class="rcc" >
-                                            <!-- <view hidden="{{post.userId != user.userId}}" class="fs-25 fw-300 pb-20 pt-20 z3"  bindtap="deletePost" data-post="{{post}}" data-pkid="{{post.pkId}}" data-index="{{bindex}}" >删除</view> -->
                                             <!-- 预留评论和点赞 -->
                                         </view>
                                     </view>

@@ -969,12 +969,12 @@
     position: fixed;
     z-index: 31;
     left: 0px;
-    top: 15%;
+    top: 30%;
 }
 .editTextDialog_view{
     margin-left: 25rpx;
     margin-right: 25rpx;
-    border-radius: 10rpx;
+
     /* box-shadow: 3px 3px 3px 3px #ececec; */
     background-color: white;
     padding: 30rpx;
