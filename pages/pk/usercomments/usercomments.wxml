@@ -13,19 +13,19 @@
           <view class="css b-line">
               <view class="css p-5vw">
                   <view class="rbc">
-                      <view class="rcc" bindtap="userPage" data-user="{{comment.user}}"><image class="rcc box8 " style="width:10vw;height:10vw;border-radius:{{borderRadius}}vw" src="{{comment.user.imgUrl}}" mode="aspectFill"></image></view>
-                      <view class="w-20"></view>
+                      <!-- <view class="rcc" bindtap="userPage" data-user="{{comment.user}}"><image class="rcc box8 " style="width:10vw;height:10vw;border-radius:{{borderRadius}}vw" src="{{comment.user.imgUrl}}" mode="aspectFill"></image></view> -->
+                      <!-- <view class="w-20"></view> -->
                       <view class="csc" style="flex:1" bindtap="userPage" data-user="{{comment.user}}">
-                          <view class="rus"><view class="line-1-center fs-25 fw-610 c-username">{{comment.user.userName}}</view></view>
-                          <view class="rus"><view class="rcc fs-23 fw-300 c-3">{{comment.time}}</view></view>
+                          <!-- <view class="rus"><view class="line-1-center fs-25 fw-610 c-username">{{comment.user.userName}}</view></view> -->
+                          <view class="rus"><view class="rcc fs-25 fw-300 c-4">{{comment.time}}</view></view>
                       </view>
                       <view class="rcc" style="width:10vw" bindtap="oper" data-index="{{bindex}}" data-commentid="{{comment.commentId}}" data-post="{{comment.postColum}}"><image class="rcc"  style="width:5vw;height:5vw"  src="/images/oper.png" mode="aspectFit"></image></view>
                   </view>
                   <view class="rss">
-                      <view class="rss"><view class="w-10vw"></view><view class="w-20"></view></view>
+                      <!-- <view class="rss"><view class="w-10vw"></view><view class="w-20"></view></view> -->
                       <view class="css" style="flex:1">
                           <view class="css pt-10 pb-10">
-                              <text class="line-5-start rus fs-33 line-h43 fw-400"  bindtap="showText" data-text="{{comment.comment}}" >{{comment.comment}}</text>
+                              <text class="line-5-start rus fs-33 line-h43 fw-400 "  bindtap="showText" data-text="{{comment.comment}}" >{{comment.comment}}</text>
                           </view>
                           <view class="css p-20 b-49">
                               <text class="line-1-start rus fs-30 fw-700"   bindtap="inPk" data-pkid="{{comment.postColum.pkId}}">{{comment.postColum.pkName}}</text>
@@ -35,7 +35,15 @@
                                     <text class="line-2-start rus fs-30 line-h40 fw-400" >{{comment.postColum.text}}</text>
                                   </view>
                                   <view class="w-20"></view>
-                                  <view class="rcc"> <image class="rcc w-90 h-90" src="{{comment.postColum.imgUrl?comment.postColum.imgUrl:'/images/noimg.png'}}" mode="aspectFill"></image></view>
+                                  <view class="rcc"> 
+                                      <!-- <image class="rcc w-90 h-90" src="{{comment.postColum.postType===3?comment.postColum.contentUrl:'/images/noimg.png'}}" mode="aspectFill"></image> -->
+                                        <view wx:if="{{comment.postColum.postType===4}}" class="rcc">
+                                            <video class="w-120 h-120" src="{{comment.postColum.contentUrl}}" objectFit="cover" controls="{{false}}" play-btn-position="center" coustom-cache="{{false}}" show-center-play-btn="{{false}}"></video>
+                                            <view class="rcc absolute w-120 h-120 b-post"> <image class="rcc w-60 h-60" src="/images/video.png" mode="aspectFit"></image></view>
+                                        </view>
+                                        <image wx:elif="{{comment.postColum.postType===3}}" class="rcc w-120 h-120" src="{{comment.postColum.contentUrl}}" mode="aspectFill"></image>
+                                        <image wx:else class="rcc w-120 h-120" src="/images/noimg.png" mode="aspectFill"></image>
+                                  </view>
                               </view>
                           </view>
                           <view class="rbc-nowrap pt-30">

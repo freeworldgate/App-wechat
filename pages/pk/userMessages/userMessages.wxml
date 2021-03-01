@@ -26,7 +26,14 @@
                         <view class="rus"><view class="rcc fs-23 fw-300 c-4">{{message.time}}</view></view>
                     </view>
                     <view class="w-20"></view>
-                    <view class="rus" bindtap="gopost" data-message="{{message}}"> <image class="rcc w-120 h-120" src="{{message.postColum.imgUrl?message.postColum.imgUrl:'/images/noimg.png'}}" mode="aspectFill"></image></view>
+                    <view class="rus" bindtap="gopost" data-message="{{message}}"> 
+                        <view wx:if="{{message.postColum.postType===4}}" class="rcc">
+                            <video id="video{{bindex}}" class="w-120 h-120" src="{{message.postColum.contentUrl}}" objectFit="cover" controls="{{false}}" play-btn-position="center" coustom-cache="{{false}}" show-center-play-btn="{{false}}"></video>
+                            <view class="rcc absolute w-120 h-120 b-post"> <image class="rcc w-60 h-60" src="/images/video.png" mode="aspectFit"></image></view>
+                        </view>
+                        <image wx:elif="{{message.postColum.postType===3}}" class="rcc w-120 h-120" src="{{message.postColum.contentUrl}}" mode="aspectFill"></image>
+                        <image wx:else class="rcc w-120 h-120" src="/images/noimg.png" mode="aspectFill"></image>
+                    </view>
 
 
 
@@ -37,11 +44,9 @@
 
 
                 </view>
-  
-
-
+            
             </view>
-
+            <view hidden="{{!message.new}}" class="absolute css w-100vw "><view class="rbc pt-20 pr-20"><view></view><view class=" w-15 h-15 br-15 b-red"></view></view></view>
         </view>
     </view>
     <view class="css h-300">

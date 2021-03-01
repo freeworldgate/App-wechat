@@ -33,8 +33,10 @@
                             <view class="css">
                                             <!-- <view class="rcc fs-20 fw-300  c-word-6">时间</view> -->
                                             <!-- <view class="h-30"></view> -->
-                                            <view class="rcc">
-                                                <view class="rus-wrap fs-21 fw-300 line-1-start c-3">{{post.time}}</view>
+                                            <view class="ccc">
+                                                <image class="rcc w-30 h-30" src="/images/daka1.png" mode="aspectFill"></image>
+                                                <view class="h-10"></view>
+                                                <view class="rus-wrap fs-21 fw-300 line-1-start c-4">{{post.time}}</view>
                                             </view>
                                             <!-- <view class="rcc fs-20 fw-300 pt-20 c-word-6">日期</view>
                                             <view class="ccc ">
@@ -51,22 +53,106 @@
                         <view class="rss" style="width:77vw">
                             <view class="css" style="flex:1">
                                     <view class="css">
-                                        <view class="css {{(post.backUrl && (!post.postImages||post.postImages.length===0))?'':'p-3vw b-48'}}" catchtap="return">
-                                            <view class="css">
+                                        <view class="css {{(post.type === 2)?'':'p-3vw b-48'}}" catchtap="return">
+                                                <!-- 文字区域 -->
+                                                <view class="css " bindtap="comment" data-post="{{post}}">
+                                                    <!-- 卡片或者非卡片 -->
+                                                    <view wx:if="{{post.type === 2}}"  class="rbc pt-20">
+                                                        <view class="css" style="width:76.2vw;">
+                                                            <view class="css" style="background-color:#{{post.backColor}};border-radius:{{post3BorderRadius}}rpx">
+                                                                <view class="csc p-50"  style="border-radius:{{post3BorderRadius}}rpx;min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
+                                                                    <text class="line-15-center fs-30 fw-610" style="color:#{{post.fontColor}}">{{post.topic}}</text>
+                                                                </view>                        
+                                                            </view>
+
+                                                        </view>
+                                                        <view class="css"></view>
+                                                    </view>
+                                                    <view wx:else class="css">
+                                                        <text class="line-15-start rus fs-33 line-h43 fw-400"  >{{post.topic}}</text>
+                                                    </view>
+                                                    
+                                                </view>    
+                                                <!-- //图片.视频 -->
+                                                <view class="css">
+                                                    <view wx:if="{{post.type === 3}}" class="css">
+                                                                                    <view class="h-2vw"></view>
+                                                                                    <view  wx:if="{{post.postImages.length===0}}" >
+                                                                                    </view> 
+                                                                                    <view  wx:elif="{{post.postImages.length===1}}" class="rus">
+                                                                                        <image class="rcc br-20"  style="width: 71vw;height:50vw;border-radius:{{post2BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                                                    </view> 
+                                                                                    <view  wx:elif="{{post.postImages.length===2}}" class="css">
+                                                                                        <view class="rcs">
+                                                                                            <image class="rcc"  style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view>
+                                                                            
+                                                                                    </view>
+                                                                                    <view  wx:elif="{{post.postImages.length===4}}" class="css">
+                                                                                        <view class="rcs">
+                                                                                            <image class="rcc"  style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view>
+                                                                                        <view style="height: 0.6vw"></view>
+                                                                                        <view class="rcs">
+                                                                                            <image class="rcc"  style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 35vw;height:35vw;border-radius:{{post1BorderRadius}}rpx" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_600,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                    <view wx:else class="css">
+                                                                                        <view hidden="{{post.postImages.length===0}}" class="rcs">
+                                                                                            <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[1].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="1" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[2].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="2" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view>
+                                                                                        <view hidden="{{post.postImages.length<4}}" style="height: 0.6vw"></view>
+                                                                                        <view hidden="{{post.postImages.length<4}}" class="rcs">
+                                                                                            <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[3].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="3" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[4].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="4" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[5].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="5" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view> 
+                                                                                        <view hidden="{{post.postImages.length<7}}" style="height: 0.6vw"></view>
+                                                                                        <view hidden="{{post.postImages.length<7}}" class="rcs">
+                                                                                            <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[6].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="6" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc" style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[7].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="7" data-imgs="{{post.postImages}}"></image>
+                                                                                            <view style="width: 0.6vw"></view>
+                                                                                            <image class="rcc"  style="width: 23vw;height:23vw;border-radius:{{postBorderRadius}}rpx" src="{{post.postImages[8].imgUrl}}?x-oss-process=image/resize,w_400,m_lfit" mode="aspectFill" bindtap="showImg" data-index="8" data-imgs="{{post.postImages}}"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                    </view>
+                                                    <view wx:elif="{{post.type === 4}}" class="css">
+                                                        <view class="h-2vw"></view>
+                                                        <view class="rus">
+                                                            <video id="video{{bindex}}" bindtap="video_play" style="width:71vw;height:{{post.videoheight<20?(20):(post.videoheight-(post.videoheight*(5.2/76.2)))}}vw;border-radius:{{videoBorderRadius}}rpx" src="{{post.videoUrl}}" objectFit="cover" controls="{{true}}" play-btn-position="bottom" coustom-cache="{{false}}" show-center-play-btn="{{false}}"></video>
+                                                        </view>
+
+                                                    </view>
+                                                    <view wx:else class=""></view>
+                                                </view>
+                                            <!-- <view class="css" bindtap="comment" data-post="{{post}}">
                                                 <view wx:if="{{post.backUrl && (!post.postImages||post.postImages.length===0)}}" class="css" style="background-color:#{{post.backColor}};border-radius:{{post3BorderRadius}}rpx">
-                                                    <view class="csc p-50 "  style="border-radius:{{post3BorderRadius}}rpx;min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
-                                                        <text class="line-15-center fs-30 fw-610" bindtap="showText" data-text="{{post.topic}}" style="color:#{{post.fontColor}}">{{post.topic}}</text>
+                                                    <view class="csc p-50"  style="border-radius:{{post3BorderRadius}}rpx;min-height:300rpx;background-position: center;background-image: url({{post.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
+                                                        <text class="line-15-center fs-30 fw-610" style="color:#{{post.fontColor}}">{{post.topic}}</text>
                                                     </view>
                                                     
                                                 </view>
-                                                <text wx:else class="line-15-start rus fs-33 line-h43 fw-400"  bindtap="showText" data-text="{{post.topic}}" >{{post.topic}}</text>
+                                                <text wx:else class="line-15-start rus fs-33 line-h43 fw-400">{{post.topic}}</text>
        
                                                 <view class="h-10"></view>
                                             </view>
                                             <view class="css">
 
                                                     
-                                                <!-- 9张图片 -->
+                                
                                                 <view  wx:if="{{post.postImages.length===1}}" class="rus">
                                                     <image class="rcc"  style="width: 71vw;height:50vw;border-radius:{{post2BorderRadius}}rpx" src="{{post.postImages[0].imgUrl}}" mode="aspectFill" bindtap="showImg" data-index="0" data-imgs="{{post.postImages}}"></image>
                                                 </view>
@@ -117,9 +203,14 @@
                                                     </view>
                                                 </view>
 
-                                            </view>
+                                            </view> -->
                                         </view>
                                     </view>
+
+
+
+
+
                                     <view class="rbc" catchtap="return">
                                         <view class="rcc pt-20 pb-20">
                                             <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFill"></image>
@@ -127,8 +218,31 @@
                                             <view class="fs-25 fw-400 c-word-6">第{{post.postTimes}}次在此打卡</view>
                                         </view>
                                         <!-- 随着天数增加，会变得越来越长 -->
-                                        <view class="rcc" >
-                                            <!-- 预留评论和点赞 -->
+                                        <view class="rcc">
+                                                                        <view class="rcc" bindtap="like" data-id="{{post.postId}}" data-index="{{bindex}}">
+                                                                            <view class="rcc w-25 h-25">
+                                                                                <image class="rcc" style="width:25rpx;height:25rpx" src="{{post.statu===1?'/images/like.png':'/images/like1.png'}}" mode="aspectFit"></image>
+                                                                            </view>
+                                                                            <view class="w-10"></view>
+                                                                            <view class="rcc fs-25 fw-300 {{post.statu===1?'c-red':''}}">{{post.likes}}</view>
+                                                                        </view>
+                                                                        <view class="w-30"></view>
+                                                                        <view class="rcc" bindtap="dislike" data-id="{{post.postId}}" data-index="{{bindex}}">
+                                                                            <view class="rcc w-25 h-25">
+                                                                                <image class="rcc" style="width:25rpx;height:25rpx" src="{{post.statu===2?'/images/dislike.png':'/images/dislike1.png'}}" mode="aspectFit"></image>
+                                                                            </view>
+                                                                            <view class="w-10"></view>
+                                                                            <view class="rcc fs-25 fw-300 {{post.statu===2?'c-red':''}}">{{post.dislikes}}</view>
+                                                                        </view>
+                                                                        <view class="w-30"></view>
+                                                                        <view class="rcc" bindtap="comment" data-post="{{post}}">
+                                                                            <view class="rcc w-25 h-25">
+                                                                                <image class="rcc w-25 h-25" src="/images/comment.png" mode="aspectFit"></image>
+                                                                            </view>
+                                                                            <view class="w-10"></view>
+                                                                            <view class="rcc fs-25 fw-300">{{post.comments}}</view>
+                                                                        </view>
+
                                         </view>
                                     </view>
                                 </view>

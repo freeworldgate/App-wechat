@@ -245,23 +245,13 @@ Page({
           var key = "posts["+index+"].statu";
           var likes = "posts["+index+"].likes";
           var dislikes = "posts["+index+"].dislikes";
-          var width = "posts["+index+"].lwidth";
-          var height = "posts["+index+"].lheight";
-          that.setData({[width]:25,[height]:25})
-          for(var i=0;i<1000;i++){}
-          that.setData({[width]:15,[height]:15})
-          for(var i=0;i<1000;i++){}
-          that.setData({[width]:5,[height]:5})
+
           that.setData({
             [likes]:(that.data.posts[index].statu!=1)?that.data.posts[index].likes+1:that.data.posts[index].likes>0?that.data.posts[index].likes-1:0,
             [dislikes]:(that.data.posts[index].statu===2)?that.data.posts[index].dislikes>0?that.data.posts[index].dislikes-1:0:that.data.posts[index].dislikes,
             [key]:(that.data.posts[index].statu===1)?0:1,
           })
-          that.setData({[width]:15,[height]:15})
-          for(var i=0;i<1000;i++){}
-          that.setData({[width]:25,[height]:25})
-          for(var i=0;i<1000;i++){}
-          that.setData({[width]:35,[height]:35})
+        
           setTimeout(() => {
             that.data.posts[index].gtag = false;
           }, 2000);
@@ -321,9 +311,9 @@ Page({
 
   },
   comment:function(res){
-    var that = this;
+
     var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
+
     login.getUser(function(user){
         wx.navigateTo({
           url: '/pages/pk/comments/comments?pkId='+post.pkId+"&postId="+post.postId,
@@ -452,7 +442,29 @@ Page({
     }
 
 
-  }
+  },
+  video_play(e) {
+    var curIdx = e.currentTarget.id;
+    // 没有播放时播放视频
+    console.log(curIdx)
+    if (!this.data.indexCurrent) {
+      this.setData({
+        indexCurrent: curIdx
+      })
+      var videoContext = wx.createVideoContext(curIdx,this) //这里对应的视频id
+      videoContext.play()
+    } else { // 有播放时先将prev暂停，再播放当前点击的current
+      var videoContextPrev = wx.createVideoContext(this.data.indexCurrent,this)//this是在自定义组件下，当前组件实例的this，以操作组件内 video 组件（在自定义组件中药加上this，如果是普通页面即不需要加）
+      if (this.data.indexCurrent != curIdx) {
+        videoContextPrev.pause()
+        this.setData({
+          indexCurrent: curIdx
+        })
+        var videoContextCurrent = wx.createVideoContext(curIdx,this)
+        videoContextCurrent.play()
+      }
+    }
+  },
 
 
 })

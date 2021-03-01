@@ -94,6 +94,11 @@ Page({
   gopost:function(res){
     var that = this;
     var message = res.currentTarget.dataset.message;
+    if(message.new){
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.send(request.url.seeMsg, "GET", { messageId:message.messageId });
+    }
     login.getUser(function(user){
       wx.navigateTo({
         url: '/pages/pk/comments/comments?pkId='+message.pkId+"&postId="+message.postId,
@@ -103,6 +108,14 @@ Page({
   detail:function(res){
     var that = this;
     var message = res.currentTarget.dataset.message;
+    console.log("消息",message);
+    if(message.new){
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.send(request.url.seeMsg, "GET", { messageId:message.messageId });
+    }
+
+
     if(message.type === 1)
     {
       wx.navigateTo({
@@ -115,8 +128,6 @@ Page({
         url: '/pages/pk/restore/restore?commentId='+message.commentId,
       })
     }
-
-
   },
 
 

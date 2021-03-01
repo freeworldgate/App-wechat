@@ -1430,9 +1430,7 @@
 .t19-1-2{
   /* text-align:center; */
   width: 100%;
-  font-size: 35rpx;
-  font-weight: 400;
-  height: 200rpx;
+  height: 100rpx;
   padding-left: 15rpx;
   padding-right: 15rpx;
   padding-bottom: 15rpx;

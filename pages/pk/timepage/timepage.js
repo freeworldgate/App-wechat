@@ -152,28 +152,7 @@ Page({
         httpClient.send(request.url.addUserInvite, "GET", { pkId: that.data.pk.pkId});
   },
 
-  createPay:function(payInfo)
-  {
 
-    wx.requestPayment({
-      timeStamp: payInfo.timeStamp,//记住，这边的timeStamp一定要是字符串类型的，不然会报错
-      nonceStr: payInfo.nonceStr,
-      package: payInfo.package,
-      signType: 'MD5',
-      paySign: payInfo.paySign,
-      success: function (event) {
-
-       
-      },
-      fail: function (error) {
-       
-      },
-       
-
-       
-    });
-
-  },
   like:function(){
     var that = this;
     login.getUser(function(user){
@@ -183,29 +162,8 @@ Page({
       httpClient.send(request.url.likePk, "GET",{pkId: that.data.pkId});
     })
   },
-  collect:function(){
-    var that = this;
-    login.getUser(function(user){
-
-      that.setData({inviteStatu:!that.data.inviteStatu})
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", true);    
-      httpClient.send(request.url.collectPk, "GET",{pkId: that.data.pkId});
-    })
-
-  },
-  goPost:function(){
-
-    var that = this;
-    var pkId = res.currentTarget.dataset.pkId;
-    var postId = res.currentTarget.dataset.postId;
-
-    wx.navigateTo({
-      url: '/pages/pk/prepost/prepost?pkId='+pkId + "&postId=" + postId,
-    })
 
 
-  },
   goUser:function(res){
     var userId = res.currentTarget.dataset.userid;
     login.getUser(function(user)
@@ -229,47 +187,6 @@ Page({
   },
 
 
-
-  publish:function(){
-    var that = this;
-  
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-
-    
-    httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
-  },
-
-  uploadImgs:function(successCallBack){
-    var that = this;
-
-  },
-
-
-
-
-  hiddenMap:function(){
-    this.setData({
-      mapShow:false
-    })
-  },
-  showMap:function(){
-    this.setData({
-      mapShow:true
-    })
-  },
-  queryLengthTime:function(pkId){
-    var that = this;
-    // locationUtil.getLocation(function(latitude,longitude){
-    //     var user = wx.getStorageSync("user");
-    //     var httpClient = template.createHttpClient(that);
-    //     httpClient.setMode("", false);
-    //     httpClient.send(request.url.queryLengthTime, "GET", { pkId: pkId, userId: user.userId,latitude:latitude,longitude:longitude});
-    // })
-
-
-
-  },
 
   /**
    * 用户点击右上角分享
@@ -366,6 +283,13 @@ Page({
 
     login.getUser(function(user){
         //发布者
+        selection.addItem("","详情",function(){
+
+          wx.navigateTo({
+              url: '/pages/pk/comments/comments?pkId='+pkId+"&postId="+post.postId,
+          })
+    
+      });
         selection.addItem("","举报Ta",function(){
           template.createSelectionDialog(that).hide();
           var httpClient = template.createHttpClient(that);
@@ -388,8 +312,10 @@ Page({
             })
       
         });
-        if(user.userId === post.creator.userId){selection.addItem("","删除",function(){
-            template.createOperateDialog(that).show("确定删除该条打卡信息吗?", "确定删除该条打卡信息吗?", function () {
+        if(user.userId === post.creator.userId){
+          
+            selection.addItem("","删除",function(){
+              template.createOperateDialog(that).show("确定删除该条打卡信息吗?", "确定删除该条打卡信息吗?", function () {
               var httpClient = template.createHttpClient(that);
               httpClient.setMode("label", true);
               httpClient.addHandler("success", function () {
@@ -405,23 +331,25 @@ Page({
         
       
         });}
+        if((user.userId === that.data.pk.user.userId) && (that.data.pk.topPostId != post.postId)){
+            selection.addItem("","隐藏该条打卡信息",function(){
+              template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?", function () {
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function () {
+                      that.data.posts.splice(index, 1); 
+                      that.setData({
+                        posts: that.data.posts,
+                      })
+              })
+              httpClient.send(request.url.hiddenPost, "GET", { postId: post.postId,pkId:pkId });
+            }, function () {});
+          })
+        }
         // //榜主
-        if((user.userId === that.data.pk.user.userId) && (that.data.pk.topPostId != post.postId) && (post.postImages.length>0)){selection.addItem("","隐藏该条打卡信息",function(){
-
-          template.createOperateDialog(that).show("确定隐藏该条打卡信息吗?", "确定隐藏该条打卡信息吗?", function () {
-            var httpClient = template.createHttpClient(that);
-            httpClient.setMode("label", true);
-            httpClient.addHandler("success", function () {
-                    that.data.posts.splice(index, 1); 
-                    that.setData({
-                      posts: that.data.posts,
-                    })
-            })
-            httpClient.send(request.url.hiddenPost, "GET", { postId: post.postId,pkId:pkId });
-          }, function () {});
-        }).addItem("","顶置该条打卡信息",function(){
-
-          template.createOperateDialog(that).show("顶置卡册", "确定顶置该条打卡信息?", function () {
+        if((user.userId === that.data.pk.user.userId) && (that.data.pk.topPostId != post.postId) && (post.type != 1)){
+            selection.addItem("","顶置该条打卡信息",function(){
+            template.createOperateDialog(that).show("顶置卡册", "确定顶置该条打卡信息?", function () {
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);
             httpClient.addHandler("success", function () {
@@ -434,6 +362,7 @@ Page({
                         that.setData({
                           posts: that.data.posts,
                           ['pk.topPostId']:post.postId,
+                          ['pk.topPostTimeLengthStr']:post.topPostTimeLengthStr,
                           ['pk.topPostTimeLength']:value,
                           topTime:"1秒钟"
                         })
@@ -466,13 +395,7 @@ Page({
 
   },
 
-  showPost:function(res){
-      var that = this;
-      var post = res.currentTarget.dataset.post;
-      wx.navigateTo({
-        url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
-      })
-  },
+
   comment:function(res){
       var that = this;
       var post = res.currentTarget.dataset.post;
@@ -581,36 +504,6 @@ Page({
 
 
   },
-
-
-
-  updateDynamic:function(){
-    var that = this;
-    // wx.request({
-    //   url: request.url.queryPkStatu,
-    //   method:"GET",
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   data:{
-    //     pkId: that.data.pkId,
-    //     userId:that.data.user.userId,
-
-    //   },
-      
-    //   success:function(res){
-    //       that.setData({ 
-    //          infos:res.data._4_data,
-
-    //       })
-
-    //   }
-      
-    // })
-
-
-    that.onTimeTask();
-  },
   groupCode:function(){
     var that = this;
     login.getUser(function(){
@@ -636,72 +529,11 @@ Page({
 
 
   },
-  onTimeTask:function () {
-    var that = this;
-    if(that.data.isApprove && that.data.posts && that.data.user)
-    {
-      that.data.isApprove = false;  
-      setTimeout(function() {
-        
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("", true);
-        httpClient.addHandler("editApproverMessage", function (result) {
-          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
 
-            that.approverMessage();
-
-          }, function () {});
-          
-        })
-        httpClient.addHandler("groupCode", function (result) {
-          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
-
-              that.groupCode();
-
-
-          }, function () {});
-          
-        })
-
-        httpClient.addHandler("select", function (result) {
-          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
-
-              wx.navigateTo({
-                url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + result.castV1 ,
-              })
-
-          }, function () {});
-          
-        })
-
-        httpClient.addHandler("publish", function (tip) {
-          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
-                that.publish();
-  
-          }, function () {});
-          
-        })
-      
-        httpClient.addHandler("no", function (tip) {
-          
-        })
-        httpClient.send(request.url.oneTimeTask, "GET", { pkId: that.data.pkId });
-        
-      },1)
-    }
-  },
   onReady:function (params) {
     
   },
-  goPost:function(res){
-    var that = this;
-    var postId = res.currentTarget.dataset.postid;
-    var pkId = res.currentTarget.dataset.pkid;
-    wx.navigateTo({
-      url: '/pages/pk/mypost/mypost?pkId='+pkId+"&postId="+postId,
-    })
 
-  },
   onShow:function(){
     var that = this;
     that.data.locationUpdate = true;
@@ -917,18 +749,59 @@ Page({
               return;
             }
 
-            wx.chooseImage({
-              count: 9,
-              sizeType: ['compressed', 'original'],
-              sourceType: ['album', 'camera'],
-              success(res) {
-                  var files = res.tempFilePaths;
-                  wx.setStorageSync('publish-pk', that.data.pk)
-                  wx.navigateTo({
-                    url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
-                  })
-              },
-            })
+
+
+
+          var selection = template.createSelectionDialog(that).setLayout("bottom","y")
+          wx.setStorageSync('publish-pk', that.data.pk)
+          selection.addItem("","文字",function(){
+                          
+                          wx.navigateTo({
+                            url: '/pages/pk/uploadImgs/uploadImgs?type=1&pkId=' + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
+                          })
+                    })
+                    .addItem("","卡片",function(){
+                    
+                          wx.navigateTo({
+                            url: '/pages/pk/uploadImgs/uploadImgs?type=2&pkId=' + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
+                          })
+                    })
+                    .addItem("","图片",function(){
+                          wx.chooseImage({
+                            count: 9,
+                            sizeType: ['compressed', 'original'],
+                            sourceType: ['album', 'camera'],
+                            success(res) {
+                                var files = res.tempFilePaths;
+                  
+                                wx.navigateTo({
+                                  url: '/pages/pk/uploadImgs/uploadImgs?type=3&imgs='+files + "&pkId=" + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
+                                })
+                            },
+                          })
+                    })
+                    .addItem("","视频(30秒以内)",function(){
+                          wx.chooseVideo({
+                            sourceType: ['album','camera'],
+                            maxDuration: 30,
+                            camera: 'back',
+                            success(res) {
+                              if(res.duration > 30){tip.showContentTip("视频过长");return;}
+                              if(res.size > 100 * 1024 * 1024){tip.showContentTip("内容过大");return;}
+                              wx.navigateTo({
+                                url: '/pages/pk/uploadImgs/uploadImgs?type=4&videoUrl='+res.tempFilePath+"&width="+res.width+"&height=" + res.height + "&pkId=" + that.data.pkId+"&postTimes="+that.data.totalPostTimes,
+                              })
+                            }
+                          })
+
+
+
+
+                    })
+          selection.show();
+
+
+
         
 
 
@@ -1135,56 +1008,8 @@ Page({
 
   },
 
-  editTip:function()
-  {
-    var that = this;
-    template.createPkTipDialog(that).show(that.data.tips,that.data.pk.tips,that.data.maxTips,function(newTips){
-      var ids = [];
-      that.setData({
-        'pk.tips':newTips
-      });
-      for (var i = 0; i< newTips.length;i++) {
-        ids.unshift(newTips[i].id);  
-      }
-  
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", true);
-      httpClient.send(request.url.setPkTips, "GET", { pkId: that.data.pk.pkId, tips:ids});
 
 
-    });
-
-
-
-
-
-
-
-
-  },
-  changeCpost:function(res){
-    var that = this;
-    var current =  res.detail.current;
-    that.setData({
-      'cpost.current':current
-    })
-  },
-  selectCpost:function(res){
-    var that = this;
-    var index =  res.currentTarget.dataset.index;
-    that.setData({
-      'cpost.current':index
-    })
-  },
-  changePost:function(res){
-    var that = this;
-    var index =  res.currentTarget.dataset.index;
-    var current =  res.detail.current;
-    var key = "posts["+index+"].current";
-    that.setData({
-      [key]:current
-    })
-  },
   selectPost:function(res){
     var that = this;
     var index =  res.currentTarget.dataset.index;
@@ -1251,6 +1076,30 @@ Page({
     }
 
 
-  }
+  },
+
+  video_play(e) {
+    var curIdx = e.currentTarget.id;
+    // 没有播放时播放视频
+    console.log(curIdx)
+    if (!this.data.indexCurrent) {
+      this.setData({
+        indexCurrent: curIdx
+      })
+      var videoContext = wx.createVideoContext(curIdx,this) //这里对应的视频id
+      videoContext.play()
+    } else { // 有播放时先将prev暂停，再播放当前点击的current
+      var videoContextPrev = wx.createVideoContext(this.data.indexCurrent,this)//this是在自定义组件下，当前组件实例的this，以操作组件内 video 组件（在自定义组件中药加上this，如果是普通页面即不需要加）
+      if (this.data.indexCurrent != curIdx) {
+        videoContextPrev.pause()
+        this.setData({
+          indexCurrent: curIdx
+        })
+        var videoContextCurrent = wx.createVideoContext(curIdx,this)
+        videoContextCurrent.play()
+      }
+    }
+  },
+
 
 })

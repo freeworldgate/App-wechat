@@ -31,7 +31,8 @@ Page({
    */
   data: {
     maxLength:300,
-    left:300
+    left:300,
+    commentStr:''
   },
 
   /**
@@ -96,10 +97,29 @@ Page({
 
   },
 
+  confirmComment:function(res)
+  {
+    var that= this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (restore) {
+      that.data.restores.unshift(restore);
+      var key = 'comment.restores';
+      that.setData({
+        [key]:that.data.comment.restores+1,
+        restores: that.data.restores,
+        commentStr:''
+      })
+    })
+    httpClient.send(request.url.publishRestore, "GET", { commentId: that.data.comment.commentId,targetUserId: "", comment: that.data.commentStr });
 
+  },
   inputRestore:function(res)
   {
     var that= this;
+    
+
+
     template.createEditTextDialog(that).show("回复", "公开回复...","", 300,function(text){
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
@@ -125,23 +145,26 @@ Page({
   {
     var that = this;
     var targetUser =  res.currentTarget.dataset.user;
+    that.setData({
+      targetUser:targetUser,
+      commentStr:'@'+targetUser.userName
+    })
 
-
-    template.createEditTextDialog(that).show("回复 @"+targetUser.userName, "回复","", 300,function(text){
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (restore) {
-          that.data.restores.unshift(restore);
-          var key = 'comment.restores';
-          that.setData({
-            restores: that.data.restores,
-          })
-        })
-        httpClient.send(request.url.publishRestore, "GET", { commentId: that.data.comment.commentId,targetUserId: targetUser.userId, comment: text });
+    // template.createEditTextDialog(that).show("回复 @"+targetUser.userName, "回复","", 300,function(text){
+    //     var httpClient = template.createHttpClient(that);
+    //     httpClient.setMode("label", true);
+    //     httpClient.addHandler("success", function (restore) {
+    //       that.data.restores.unshift(restore);
+    //       var key = 'comment.restores';
+    //       that.setData({
+    //         restores: that.data.restores,
+    //       })
+    //     })
+    //     httpClient.send(request.url.publishRestore, "GET", { commentId: that.data.comment.commentId,targetUserId: targetUser.userId, comment: text });
     
 
 
-    }); 
+    // }); 
 
 
 
@@ -151,8 +174,52 @@ Page({
 
 
 
+  _inputComment:function(res){
+    var that = this;
+    var value = res.detail.value;
+    if (value.length > 300) {
+      tip.showContentTip("内容超出最大长度");
+      return;
+    }
+    that.setData({
+      commentStr: value
+    })
 
 
+  },
+
+
+
+  delComment:function(res){
+    var that = this;
+    var commentId = res.currentTarget.dataset.comment;
+
+    template.createOperateDialog(that).show("删除评论?", "删除评论?", function () {
+
+
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function () {
+          wx.navigateBack({
+            delta: 0,
+          })
+          
+        })
+        httpClient.send(request.url.delComment, "GET", { commentId: commentId });
+    
+  
+
+
+    }, function () {});
+
+
+
+
+
+
+
+
+  },
 
 
 

@@ -974,12 +974,16 @@
 .editTextDialog_view{
     margin-left: 25rpx;
     margin-right: 25rpx;
-
-    /* box-shadow: 3px 3px 3px 3px #ececec; */
     background-color: white;
-    padding: 30rpx;
-}
 
+}
+.bottomInput{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 222;
+    background: #fff;
+}
 .shortTextDialog{
     width: 100%;
     height: auto;

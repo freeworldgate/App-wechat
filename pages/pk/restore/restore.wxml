@@ -11,6 +11,8 @@
 
 
 <view class="css z3">
+      
+    
       <view class="css b-49">
             
             <view class="rss p-5vw">
@@ -22,7 +24,7 @@
                     <view class="rbc">
                         <view class="rus line-1-start fs-25  fw-400 c-4" style="flex:1">{{comment.user.userName}}·{{comment.time}}</view>
                         <view class="rcc">
-                            <image hidden="{{comment.user.userId != user.userId}}" bindtap="delComment" data-index="{{bindex}}" data-comment="{{comment.commentId}}" class="rcc w-35 h-35" src="/images/remove.png" mode="aspectFit"></image>
+                            <image hidden="{{comment.user.userId != user.userId}}" bindtap="delComment" data-comment="{{comment.commentId}}" class="rcc w-35 h-35" src="/images/remove.png" mode="aspectFit"></image>
                         </view>
                         
                     </view>
@@ -60,6 +62,10 @@
             </view>
    
       </view>
+
+
+
+
       <view class="rss p-5vw">
                   <view class="rcs">
                       <view class="w-4vw"></view>
@@ -67,11 +73,16 @@
                   </view>
                   <view class="w-5vw"></view>
                   <view class="csc" style="flex:1">
-                      <!-- <view style="height:2.5vw;"></view> -->
-                      <view class="fs-30 fw-400 c-3" bindtap="inputRestore">发表公开回复...</view>
-                      <!-- <textarea adjustPosition="true" bindinput="_input" class="fs-35 fw-400 " style="text-align:left;height:16vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="发表公开评论..." value="{{text}}"></textarea> -->
-                      <!-- <view style="height:2.5vw;"></view> -->
-                  </view>
+              
+                            <input adjust-position="{{true}}"  bindinput="_inputComment" class="b-white fs-35 fw-400 line-h45" maxlength="300" placeholder="发表公开评论..." value="{{commentStr}}"></input>
+
+                            <!-- <textarea adjustPosition="true" bindinput="_input" class="fs-35 fw-400 " style="text-align:left;height:16vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="发表公开评论..." value="{{text}}"></textarea> -->
+                            <!-- <view style="height:2.5vw;"></view> -->
+                   </view>
+                   <view class="w-3vw"></view>
+                    <view class="rcc">
+                            <view hidden="{{commentStr.length < 1}}" bindtap="confirmComment" class="rcc pl-20 pr-20 pt-10 pb-10 b-red br-10 fs-21 fw-400 c-white">发布</view>
+                    </view>
 
       </view>
 

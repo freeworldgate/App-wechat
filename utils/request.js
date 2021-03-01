@@ -17,7 +17,12 @@ var value = {
  
 var url = { 
  
-        createPost: `${host}/pk/createPost`, 
+        createImgPost: `${host}/pk/createImgPost`, 
+        createVideoPost: `${host}/pk/createVideoPost`, 
+        createTextPost: `${host}/pk/createTextPost`, 
+        createCardPost: `${host}/pk/createCardPost`, 
+
+
         queryPk: `${host}/pk/queryPk`, 
         queryUserPost: `${host}/pk/queryUserPost`, 
         nextPage: `${host}/pk/nextPage`, 
@@ -140,6 +145,7 @@ var url = {
         nextUserComments:`${host}/pk/nextUserComments`, 
         queryUserMessages:`${host}/pk/queryUserMessages`, 
         nextUserMessages:`${host}/pk/nextUserMessages`, 
+        seeMsg:`${host}/pk/seeMsg`, 
         
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 

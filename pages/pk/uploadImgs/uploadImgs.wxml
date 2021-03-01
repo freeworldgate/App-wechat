@@ -8,9 +8,13 @@
       </view>
       <view class="rcs " style="height:20px"></view>
     </view>
+
+
+
+
     <view class="css p-3vw">
-        <view wx:if="{{(imgs&&imgs.length>0) || (whiteBack.backId === currentBack.backId) || text.length>60}}" class="css p-2vw " >
-            <view class="h-30"></view>
+        <view wx:if="{{type != 2}}" class="css p-2vw " >
+            
             <view class="css">
                 <textarea adjustPosition="true" bindinput="_input" class="h-200 fs-35 fw-400" style="width:90vw"  cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="说点什么..." value="{{text}}"></textarea>
             </view>
@@ -21,20 +25,16 @@
                 <view class="csc p-2vw">
                     <view class="csc h-330">
                         <textarea adjustPosition="true" bindinput="_input" auto-height="true" class="fs-40 fw-700" style="width:80vw;text-align:center;color:#{{currentBack.fontColor}}" cursorSpacing="50" fixed="true" maxlength="{{maxLength}}" placeholder="说点什么..." value="{{text}}"></textarea>
-                        
-                    </view>
+                    </view> 
                 </view>
             </view>
         </view>
 
         
-
-        <view hidden="{{imgs&&imgs.length>0}}" class="css pt-20 pb-20">
+        <!-- 非卡片类型时隐藏 -->
+        <view hidden="{{type != 2}}" class="css pt-20 pb-20">
             <scroll-view class="rss" scrollX="true"  enable-flex="true" style="white-space:nowrap;width:94vw;height:15vw">
-                <view class="rcc h-15vw">
-                    <view class="h-10vw w-10vw br-10 box8"  style="background-color:#{{whiteBack.backColor}}"   bindtap="select" data-back="{{whiteBack}}" ></view>
-                </view>
-                <view  style="width:1vw"></view>  
+        
                 <view class="css" style="display:inline-block" wx:for="{{textBacks}}" wx:for-index="sindex" wx:for-item="textBack" wx:key="postkey">
                     <view class="rss">
                         
@@ -57,16 +57,17 @@
             <view class="fs-20 fw-400 c-3">还可输入{{left}}个字</view>
         </view>
     </view>
+    <!-- //内容栏 -->
     <view class="css pr-5vw pl-5vw">
-        <view class="rus-wrap">
+        <view wx:if="{{type === 3}}" class="rus-wrap">
             <block wx:for="{{imgs}}"  wx:for-index="bindex" wx:for-item="img" wx:key="idx2" >
                 <view class="rcc w-30vw h-30vw">
                     <image class="br-10 w-28vw h-28vw" mode="aspectFill" src="{{img}}"></image>
                     <view class="absolute css w-30vw h-30vw">
                         <view class="rbc">
                             <view></view>
-                            <view class="rcc w-12vw h-12vw" bindtap="_remove" class="rcc w-100 h-100" data-index="{{bindex}}">
-                                <image class="w-60 h-60" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"></image>
+                            <view hidden="{{imgs.length < 2}}" class="rcc w-12vw h-12vw" bindtap="_remove" class="rcc w-100 h-100" data-index="{{bindex}}">
+                                <image class="w-60 h-60" mode="aspectFit" src="/images/clear.png"></image>
                             </view>
                         </view>
                     </view> 
@@ -83,6 +84,14 @@
             </view>
 
         </view>
+        <view wx:elif="{{type === 4}}" class="css">
+            <view class="rus">
+                <video id='video1' style="width:{{width}}vw;height:{{height}}vw" autoplay='false' show-center-play-btn="true" src="{{videoUrl}}" controls="true" objectFit="cover"></video>
+            </view>
+
+
+        </view>
+        <view wx:else class=""></view>
     </view>
     <view class="css p-2vw">
         <view class="rss">
@@ -129,7 +138,7 @@
 <view class="ccc uploadButton">
     <!-- <view hidden="{{imgs.length === 9}}" class="p-50 fs-30 fw-400 c-1">只能选择9张图片</view> -->
 
-    <view wx:if="{{ text}}" class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white" bindtap="upload">立即上传</view>
+    <view wx:if="{{(type===3&&imgs.length>0) || (type==4&&videoUrl) || (text && (type==1||type==2))}}" class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white" bindtap="upload">立即上传</view>
     <view wx:else class="rcc fs-30 fw-700 w-500 h-100 br-100 b-40 c-4" >立即上传</view>
 
     <view class="h-50"></view>

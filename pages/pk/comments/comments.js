@@ -31,7 +31,8 @@ Page({
    */
   data: {
     maxLength:300,
-    left:300
+    left:300,
+    commentStr:''
   },
 
   /**
@@ -83,26 +84,34 @@ Page({
     httpClient.send(request.url.nextComments, "GET", { postId: that.data.postId, page: that.data.page });
 
   },
+  _inputComment:function(res){
+    var that = this;
+    var value = res.detail.value;
+    if (value.length > 300) {
+      tip.showContentTip("内容超出最大长度");
+      return;
+    }
+    that.setData({
+      commentStr: value
+    })
 
 
-  inputComment:function(res)
+  },
+
+  confirmComment:function(res)
   {
     var that= this;
-    template.createEditTextDialog(that).show("评论", "公开评论...","", 300,function(text){
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (comment) {
-          that.data.comments.unshift(comment);
-          that.setData({
-            commentNums:that.data.commentNums+1,
-            comments: that.data.comments,
-          })
-        })
-        httpClient.send(request.url.publishComment, "GET", { postId: that.data.postId, comment: text });
-    
-
-
-    }); 
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (comment) {
+      that.data.comments.unshift(comment);
+      that.setData({
+        commentNums:that.data.commentNums+1,
+        comments: that.data.comments,
+        commentStr:''
+      })
+    })
+    httpClient.send(request.url.publishComment, "GET", { postId: that.data.postId, comment: that.data.commentStr });
 
 
 
@@ -385,8 +394,7 @@ Page({
 
   },
 
-
-
+  
   like:function(res){
     var that = this;
     var id = res.currentTarget.dataset.id;
